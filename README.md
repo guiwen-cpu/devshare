@@ -57,7 +57,9 @@ pnpm --filter @devshare/api prisma:seed
 pnpm dev
 ```
 
-浏览器访问 `http://localhost:3000`，API 文档在 `http://localhost:3001/api/docs`。
+浏览器本地访问 `http://localhost:3000`，API 文档在 `http://localhost:3001/api/docs`。
+
+线上访问：http://8.138.211.65
 
 常用脚本：
 
@@ -73,7 +75,7 @@ pnpm dev
 
 ## 部署
 
-阿里云部署全流程（域名、备案、ECS、OSS、CDN）见 [docs/DEPLOY.md](docs/DEPLOY.md)。
+阿里云部署全流程（域名、备案、ECS、OSS、CDN、ACR）见 [docs/DEPLOY.md](docs/DEPLOY.md)。
 
 ## 文档
 
