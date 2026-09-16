@@ -55,7 +55,8 @@
     "publishTime": "发布于",
     "noComments": "还没有评论，快来抢沙发",
     "viewCover": "查看封面大图",
-    "deleteSuccess": "已删除"
+    "deleteSuccess": "已删除",
+    "confirmDelete": "确定删除“{title}”？删除后无法恢复"
   },
   "user": {
     "articles": "文章",

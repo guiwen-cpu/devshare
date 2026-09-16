@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Eye, Heart, MessageSquare, Send, Star, X, ZoomIn } from 'lucide-vue-next'
+import { Eye, Heart, MessageSquare, Pencil, Send, Star, Trash2, X, ZoomIn } from 'lucide-vue-next'
 import type { ArticleDetail, CommentItem, Paginated } from '@devshare/shared'
 import { useAuthStore } from '~/stores/auth'
 import { formatCount, timeAgo } from '~/utils/format'
@@ -7,6 +7,7 @@ import { useNow } from '~/composables/useNow'
 import { useHydrated } from '~/composables/useHydrated'
 
 const route = useRoute()
+const router = useRouter()
 const { t, locale } = useI18n()
 const api = useApi()
 const auth = useAuthStore()
@@ -118,6 +119,36 @@ async function deleteComment(comment: CommentItem) {
   toast.success(t('article.deleteSuccess'))
 }
 
+const deleting = ref(false)
+
+// 作者本人或管理员可管理这篇文章（与后端 PATCH/DELETE /articles/:id 的判定一致）。
+// 用 hydrated 兜住：登录态来自 localStorage，首帧必须等服务端/客户端对齐后再渲染。
+const canManage = computed(
+  () =>
+    !!article.value &&
+    !!auth.user &&
+    (article.value.author.id === auth.user.id || auth.user.role === 'admin'),
+)
+
+function goEdit() {
+  router.push(localePath(`/write/${articleId.value}`))
+}
+
+async function removeArticle() {
+  if (!article.value) return
+  if (!window.confirm(t('article.confirmDelete', { title: article.value.title }))) return
+  deleting.value = true
+  try {
+    await api.del(`/articles/${articleId.value}`)
+    toast.success(t('article.deleteSuccess'))
+    await router.push(localePath('/'))
+  } catch {
+    /* useApi already toasts the error */
+  } finally {
+    deleting.value = false
+  }
+}
+
 useHead(() => ({
   title: article.value ? `${article.value.title} - DevShare` : 'DevShare',
   meta: [
@@ -148,7 +179,7 @@ useHead(() => ({
             {{ article.title }}
           </h1>
 
-          <div class="flex items-center gap-3">
+          <div class="flex flex-wrap items-center gap-3">
             <NuxtLink
               :to="localePath(`/user/${article.author.id}`)"
               class="flex items-center gap-2"
@@ -172,6 +203,20 @@ useHead(() => ({
             >
               {{ following ? t('article.following') : t('article.follow') }}
             </BaseButton>
+            <template v-if="hydrated && canManage">
+              <BaseButton size="sm" variant="secondary" @click="goEdit">
+                <Pencil class="w-3.5 h-3.5" /> {{ t('article.edit') }}
+              </BaseButton>
+              <BaseButton
+                size="sm"
+                variant="secondary"
+                class="text-red-500"
+                :loading="deleting"
+                @click="removeArticle"
+              >
+                <Trash2 class="w-3.5 h-3.5" /> {{ t('article.delete') }}
+              </BaseButton>
+            </template>
           </div>
         </div>
         <div v-if="article.cover" class="w-40 shrink-0">

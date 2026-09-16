@@ -55,7 +55,8 @@
     "publishTime": "Published",
     "noComments": "No comments yet",
     "viewCover": "View cover",
-    "deleteSuccess": "Deleted"
+    "deleteSuccess": "Deleted",
+    "confirmDelete": "Delete “{title}”? This cannot be undone."
   },
   "user": {
     "articles": "Articles",

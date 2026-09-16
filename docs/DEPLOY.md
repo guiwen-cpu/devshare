@@ -161,7 +161,7 @@ docker compose -p devshare-prod --env-file .env.prod \
 - 缓存规则：`/_nuxt/*` 缓存 30 天（不可变）；`/`、`/article/*` 缓存 60 秒（SWR 语义，回源 Nuxt 已有 SWR 缓存）；其余不缓存（动态请求）。
 - 海外用户可开启 CDN 海外节点，实现全球加速。
 
-## 9. 更新与维护
+## 9. 更新与维护f
 
 ```bash
 cd /srv/devshare

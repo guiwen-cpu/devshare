@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
+import { MeiliSearch } from 'meilisearch'
 import { DEFAULT_TAGS } from '@devshare/shared'
 
 const prisma = new PrismaClient()
@@ -55,6 +56,58 @@ console.log(greeting('DevShare'))
 
 优化没有银弹，但**持续度量 + 渐进改进** 永远是正确的方向。欢迎在评论区交流你的实践。
 `
+
+// 种子数据是直接写库的，不会经过 API，也就不会触发 SearchService 的增量索引；
+// 所以播种结束后主动把数据同步进 Meilisearch 一次，避免线上执行 `prisma db seed`
+// 之后搜索一直查不到这批数据（reindexAll 只在 api 容器启动时跑一次）。
+// 文档结构与 SearchService.reindexAll 保持一致：以 id 为主键，重复推送是覆盖，可重复执行。
+async function syncSearchIndex(): Promise<void> {
+  const host = process.env.MEILI_HOST
+  if (!host) {
+    console.log('MEILI_HOST not set, skip search index sync.')
+    return
+  }
+  try {
+    const client = new MeiliSearch({ host, apiKey: process.env.MEILI_MASTER_KEY ?? '' })
+    const articles = await prisma.article.findMany({
+      where: { status: 'published' },
+      select: {
+        id: true,
+        title: true,
+        summary: true,
+        publishedAt: true,
+        author: { select: { username: true } },
+        tags: { include: { tag: { select: { slug: true } } } },
+      },
+    })
+    const users = await prisma.user.findMany({
+      select: { id: true, username: true, bio: true },
+    })
+    if (articles.length > 0) {
+      await client.index('articles').addDocuments(
+        articles.map((a) => ({
+          id: a.id,
+          title: a.title,
+          summary: a.summary ?? '',
+          tagSlugs: a.tags.map((t) => t.tag.slug),
+          authorUsername: a.author.username,
+          status: 'published',
+          publishedAt: a.publishedAt?.getTime() ?? Date.now(),
+        })),
+      )
+    }
+    if (users.length > 0) {
+      await client
+        .index('users')
+        .addDocuments(users.map((u) => ({ id: u.id, username: u.username, bio: u.bio ?? '' })))
+    }
+    console.log(`Search index synced: ${articles.length} articles, ${users.length} users.`)
+  } catch (e) {
+    // 索引同步失败不影响播种结果（数据已写库），这里只告警；
+    // 最坏情况下 api 容器重启时的 reindexAll 还会再全量补一次。
+    console.warn(`Search index sync failed: ${(e as Error).message}`)
+  }
+}
 
 async function main() {
   const passwordHash = await bcrypt.hash('password123', 10)
@@ -142,10 +195,14 @@ async function main() {
     })
   }
 
-  console.log(`Seeded ${DEMO_TITLES.length} articles, ${tags.length} tags, ${allUsers.length} users.`)
+  console.log(
+    `Seeded ${DEMO_TITLES.length} articles, ${tags.length} tags, ${allUsers.length} users.`,
+  )
 }
 
 main()
+  // 无论这次有没有新建文章（库里已有数据时 main 会提前 return），都同步一次搜索索引。
+  .then(() => syncSearchIndex())
   .catch((e) => {
     console.error(e)
     process.exit(1)

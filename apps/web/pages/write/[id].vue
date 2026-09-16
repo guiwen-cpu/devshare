@@ -45,14 +45,18 @@ const form = reactive({
   tagIds: [] as number[],
 })
 
-watch(article, (a) => {
-  if (!a) return
-  form.title = a.title
-  form.summary = a.summary ?? ''
-  form.cover = a.cover ?? ''
-  form.contentMd = a.contentMd
-  form.tagIds = a.tags.map((tag) => tag.id)
-})
+watch(
+  article,
+  (a) => {
+    if (!a) return
+    form.title = a.title
+    form.summary = a.summary ?? ''
+    form.cover = a.cover ?? ''
+    form.contentMd = a.contentMd
+    form.tagIds = a.tags.map((tag) => tag.id)
+  },
+  { immediate: true },
+)
 
 const { data: tags } = await useAsyncData('write-tags-edit', () => api.get<TagDTO[]>('/tags'))
 

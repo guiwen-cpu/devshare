@@ -4,13 +4,12 @@
 
 ## 技术栈
 
-
 | 层   | 选型                                                                                     |
 | ---- | ---------------------------------------------------------------------------------------- |
 | 前端 | Nuxt 4（Vue 3 + Vite + TS）、Tailwind CSS v4、vue-i18n、TanStack Query、TanStack Virtual |
 | 后端 | NestJS 11、Prisma ORM                                                                    |
 | 数据 | PostgreSQL 16（主库）、Redis 7（缓存/计数/刷新令牌）、Meilisearch（搜索）                |
-| 部署 | Docker Compose、Nginx、阿里云（ECS + OSS + CDN）、Let's Encrypt                          |
+| 部署 | Docker Compose、Nginx、阿里云（ECS + OSS + CDN + ACR）、Let's Encrypt                    |
 
 ## 目录结构
 
@@ -58,7 +57,9 @@ pnpm --filter @devshare/api prisma:seed
 pnpm dev
 ```
 
-浏览器访问 `http://localhost:3000`，API 文档在 `http://localhost:3001/api/docs`。
+浏览器本地访问 `http://localhost:3000`，API 文档在 `http://localhost:3001/api/docs`。
+
+线上访问：http://8.138.211.65
 
 常用脚本：
 
@@ -74,7 +75,7 @@ pnpm dev
 
 ## 部署
 
-阿里云部署全流程（域名、备案、ECS、OSS、CDN）见 [docs/DEPLOY.md](docs/DEPLOY.md)。
+阿里云部署全流程（域名、备案、ECS、OSS、CDN、ACR）见 [docs/DEPLOY.md](docs/DEPLOY.md)。
 
 ## 文档
 

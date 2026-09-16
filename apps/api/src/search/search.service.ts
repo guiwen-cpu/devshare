@@ -127,14 +127,25 @@ export class SearchService implements OnModuleInit {
           .index('articles')
           .search(q, { limit, filter: ['status = published'] })
         const ids = result.hits.map((h) => Number((h as { id: number }).id))
-        return { ids, total: result.estimatedTotalHits ?? ids.length }
+        // 只有真的命中才信任索引结果。一条都没命中时不能直接当成「没搜到」：
+        // 索引可能落后于数据库（典型场景是 prisma db seed / 手工写库绕过了 API，
+        // 不会触发 indexArticle 增量索引），此时回落到 PostgreSQL 再查一次，
+        // 保证库里已有的数据一定搜得到。
+        if (ids.length > 0) return { ids, total: result.estimatedTotalHits ?? ids.length }
       } catch (e) {
         this.logger.warn(`Meilisearch search failed, fallback: ${(e as Error).message}`)
       }
     }
-    // 兜底：PostgreSQL 大小写不敏感 + 分词模糊匹配。
-    // 把关键词按空白拆成多个词，每个词都要在「标题/摘要/作者名/标签」任一字段中出现，
-    // 既保证大小写兼容（TypeScript / typescript 都能搜到），也支持多词部分匹配。
+    return this.searchArticlesFromDb(q, limit)
+  }
+
+  // 兜底：PostgreSQL 大小写不敏感 + 分词模糊匹配。
+  // 把关键词按空白拆成多个词，每个词都要在「标题/摘要/作者名/标签」任一字段中出现，
+  // 既保证大小写兼容（TypeScript / typescript 都能搜到），也支持多词部分匹配。
+  private async searchArticlesFromDb(
+    q: string,
+    limit: number,
+  ): Promise<{ ids: number[]; total: number }> {
     const words = q.trim().split(/\s+/).filter(Boolean)
     const andGroups = words.map((word) => ({
       OR: [
@@ -172,11 +183,19 @@ export class SearchService implements OnModuleInit {
       try {
         const result = await this.client.index('users').search(q, { limit })
         const ids = result.hits.map((h) => Number((h as { id: number }).id))
-        return { ids, total: result.estimatedTotalHits ?? ids.length }
+        // 同 searchArticles：索引空命中时回落到数据库，避免索引滞后导致搜不到用户。
+        if (ids.length > 0) return { ids, total: result.estimatedTotalHits ?? ids.length }
       } catch (e) {
         this.logger.warn(`Meilisearch user search failed, fallback: ${(e as Error).message}`)
       }
     }
+    return this.searchUsersFromDb(q, limit)
+  }
+
+  private async searchUsersFromDb(
+    q: string,
+    limit: number,
+  ): Promise<{ ids: number[]; total: number }> {
     const words = q.trim().split(/\s+/).filter(Boolean)
     const andGroups = words.map((word) => ({
       OR: [
