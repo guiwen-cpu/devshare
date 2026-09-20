@@ -56,7 +56,15 @@
     "noComments": "还没有评论，快来抢沙发",
     "viewCover": "查看封面大图",
     "deleteSuccess": "已删除",
-    "confirmDelete": "确定删除“{title}”？删除后无法恢复"
+    "confirmDelete": "确定删除“{title}”？删除后无法恢复",
+    "poster": "生成海报",
+    "posterTitle": "文章海报",
+    "posterDownload": "下载海报",
+    "posterHint": "保存图片后即可分享给朋友",
+    "posterSaved": "海报已保存",
+    "posterFailed": "海报生成失败，请重试",
+    "posterNoCover": "一篇值得分享的技术文章",
+    "posterScan": "扫码看原文"
   },
   "user": {
     "articles": "文章",

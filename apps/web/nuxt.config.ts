@@ -43,7 +43,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     // SSR + SWR：首页与文章详情做服务端渲染并缓存
-    '/': { swr: false },
+    '/': { swr: 60 },
     '/article/**': { swr: 60 },
     '/en': { swr: 60 },
     '/en/article/**': { swr: 60 },
@@ -60,6 +60,11 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    routeRules: {
+      '/oss-assets/**': {
+        proxy: 'https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/**',
+      },
+    },
     devProxy: {
       '/api': {
         // h3 匹配 '/api' 前缀路由时会剥掉 /api 再转发，所以 target 需补上 /api，

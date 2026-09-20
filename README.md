@@ -82,4 +82,5 @@ pnpm dev
 - [需求分析 PRD](docs/PRD.md)
 - [设计规范（品牌/组件）](docs/DESIGN.md)
 - [本地开发启动指南](docs/LOCAL_DEV.md)
+- [开发问题汇总（踩坑记录）](docs/PITFALLS.md)
 - [部署手册](docs/DEPLOY.md)

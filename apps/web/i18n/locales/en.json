@@ -56,7 +56,15 @@
     "noComments": "No comments yet",
     "viewCover": "View cover",
     "deleteSuccess": "Deleted",
-    "confirmDelete": "Delete “{title}”? This cannot be undone."
+    "confirmDelete": "Delete “{title}”? This cannot be undone.",
+    "poster": "Poster",
+    "posterTitle": "Article poster",
+    "posterDownload": "Download poster",
+    "posterHint": "Save the image and share it anywhere",
+    "posterSaved": "Poster saved",
+    "posterFailed": "Failed to generate the poster, try again",
+    "posterNoCover": "A tech article worth sharing",
+    "posterScan": "Scan to read"
   },
   "user": {
     "articles": "Articles",

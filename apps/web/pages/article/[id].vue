@@ -1,5 +1,16 @@
 <script setup lang="ts">
-import { Eye, Heart, MessageSquare, Pencil, Send, Star, Trash2, X, ZoomIn } from 'lucide-vue-next'
+import {
+  Eye,
+  Heart,
+  ImageDown,
+  MessageSquare,
+  Pencil,
+  Send,
+  Star,
+  Trash2,
+  X,
+  ZoomIn,
+} from 'lucide-vue-next'
 import type { ArticleDetail, CommentItem, Paginated } from '@devshare/shared'
 import { useAuthStore } from '~/stores/auth'
 import { formatCount, timeAgo } from '~/utils/format'
@@ -18,12 +29,12 @@ const hydrated = useHydrated()
 
 const articleId = computed(() => Number(route.params.id))
 
-const {
-  data: article,
-  pending,
-  refresh,
-} = await useAsyncData(`article-${articleId.value}`, () =>
-  api.get<ArticleDetail>(`/articles/${articleId.value}`),
+const { data: article, pending } = await useAsyncData(
+  `article-${articleId.value}`,
+  () => api.get<ArticleDetail>(`/articles/${articleId.value}`),
+  // Nuxt 4 的 useAsyncData 默认 deep:false，data 是 shallowRef；点赞 / 收藏 / 评论数都是
+  // 就地改 article 的字段，不显式开 deep 时要等下一次重新渲染才看得到变化。
+  { deep: true },
 )
 const { data: commentsPage } = await useAsyncData(`comments-${articleId.value}`, () =>
   api.get<Paginated<CommentItem>>(`/articles/${articleId.value}/comments`, {
@@ -35,6 +46,9 @@ const comments = ref<CommentItem[]>(commentsPage.value?.items ?? [])
 const commentText = ref('')
 const submitting = ref(false)
 const following = ref(false)
+
+// 生成海报弹窗
+const posterOpen = ref(false)
 
 // 封面图灯箱：点击封面弹大图，Esc / 点遮罩 / 点关闭按钮均可关闭
 const coverPreviewOpen = ref(false)
@@ -63,12 +77,14 @@ async function toggleLike() {
     toast.info(t('errors.UNAUTHORIZED'))
     return
   }
-  await api.post<{ liked: boolean; likeCount: number }>(`/articles/${articleId.value}/like`)
-  // if (article.value) {
-  //   article.value.likedByMe = res.liked
-  //   article.value.likeCount = res.likeCount
-  // }
-  refresh()
+  const res = await api.post<{ liked: boolean; likeCount: number }>(
+    `/articles/${articleId.value}/like`,
+  )
+  if (article.value) {
+    article.value.likedByMe = res.liked
+    article.value.likeCount = res.likeCount
+  }
+  // refresh()
 }
 
 async function toggleCollect() {
@@ -76,14 +92,14 @@ async function toggleCollect() {
     toast.info(t('errors.UNAUTHORIZED'))
     return
   }
-  await api.post<{ collected: boolean; collectCount: number }>(
+  const res = await api.post<{ collected: boolean; collectCount: number }>(
     `/articles/${articleId.value}/collect`,
   )
-  refresh()
-  // if (article.value) {
-  //   article.value.collectedByMe = res.collected
-  //   article.value.collectCount = res.collectCount
-  // }
+  // refresh()
+  if (article.value) {
+    article.value.collectedByMe = res.collected
+    article.value.collectCount = res.collectCount
+  }
 }
 
 async function toggleFollow() {
@@ -217,6 +233,10 @@ useHead(() => ({
                 <Trash2 class="w-3.5 h-3.5" /> {{ t('article.delete') }}
               </BaseButton>
             </template>
+            <BaseButton size="sm" variant="secondary" @click="posterOpen = true">
+              <ImageDown class="w-4 h-4" />
+              {{ t('article.poster') }}
+            </BaseButton>
           </div>
         </div>
         <div v-if="article.cover" class="w-40 shrink-0">
@@ -314,6 +334,9 @@ useHead(() => ({
         </div>
       </section>
     </aside>
+
+    <!-- 生成海报弹窗 -->
+    <ArticlePosterDialog v-if="article" v-model="posterOpen" :article="article" />
 
     <!-- 封面大图灯箱 -->
     <Teleport to="body">
