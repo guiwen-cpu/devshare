@@ -12,8 +12,11 @@ const tab = ref<'articles' | 'collects'>('articles')
 const articles = ref<ArticleListItem[]>([])
 const loading = ref(false)
 
-const { data: profile, pending } = await useAsyncData(`user-${userId.value}`, () =>
-  api.get<UserProfile>(`/users/${userId.value}`),
+const { data: profile, pending } = await useAsyncData(
+  `user-${userId.value}`,
+  () => api.get<UserProfile>(`/users/${userId.value}`),
+  // 同 article/[id].vue：默认 shallowRef 下改 profile.followedByMe / followerCount 不会触发更新。
+  { deep: true },
 )
 
 async function loadList() {
@@ -63,12 +66,23 @@ useHead(() => ({ title: `${profile.value?.username ?? ''} - DevShare` }))
           <p class="text-sm text-slate-500 mt-1">{{ profile.bio ?? t('user.bio') }}</p>
           <p class="text-xs text-slate-400 mt-1">
             {{ t('user.joined') }}:
-            {{ new Date(profile.createdAt).toLocaleDateString(locale === 'zh' ? 'zh-CN' : 'en-US') }}
+            {{
+              new Date(profile.createdAt).toLocaleDateString(locale === 'zh' ? 'zh-CN' : 'en-US')
+            }}
           </p>
           <div class="flex items-center gap-5 mt-3 text-sm text-slate-600">
-            <span><strong class="text-slate-900">{{ profile.articleCount }}</strong> {{ t('user.articles') }}</span>
-            <span><strong class="text-slate-900">{{ profile.followerCount }}</strong> {{ t('user.followers') }}</span>
-            <span><strong class="text-slate-900">{{ profile.followingCount }}</strong> {{ t('user.following') }}</span>
+            <span
+              ><strong class="text-slate-900">{{ profile.articleCount }}</strong>
+              {{ t('user.articles') }}</span
+            >
+            <span
+              ><strong class="text-slate-900">{{ profile.followerCount }}</strong>
+              {{ t('user.followers') }}</span
+            >
+            <span
+              ><strong class="text-slate-900">{{ profile.followingCount }}</strong>
+              {{ t('user.following') }}</span
+            >
           </div>
         </div>
         <BaseButton
@@ -98,10 +112,7 @@ useHead(() => ({ title: `${profile.value?.username ?? ''} - DevShare` }))
       <div v-else-if="articles.length > 0" class="flex flex-col gap-3">
         <ArticleCard v-for="article in articles" :key="article.id" :article="article" />
       </div>
-      <BaseEmpty
-        v-else
-        :text="tab === 'articles' ? t('user.noArticles') : t('user.noCollects')"
-      />
+      <BaseEmpty v-else :text="tab === 'articles' ? t('user.noArticles') : t('user.noCollects')" />
     </div>
   </div>
 </template>
