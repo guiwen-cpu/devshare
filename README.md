@@ -59,7 +59,7 @@ pnpm dev
 
 浏览器本地访问 `http://localhost:3000`，API 文档在 `http://localhost:3001/api/docs`。
 
-线上访问：http://8.138.211.65
+线上访问：https://devshare.cfd
 
 常用脚本：
 
