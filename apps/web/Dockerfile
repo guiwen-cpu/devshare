@@ -16,7 +16,7 @@
 # 选一个基础镜像：node:22-slim 是"官方 Node 22 + 超小体积的 Linux
 # (Alpine)"组合。Alpine 很小（几 MB），所以生产镜像普遍用它。
 # AS base 给这个阶段起了个名字，后面 FROM base 表示"接着这个镜像继续"。
-FROM node:22-slim AS base
+FROM crpi-uo2gx7e52udrmw75.cn-guangzhou.personal.cr.aliyuncs.com/devshare/node:22-slim AS base
 
 # apk 是 Alpine 的软件包管理器（相当于 Ubuntu 的 apt）。
 # --no-cache 表示装完不保留缓存，尽量减小镜像体积。
