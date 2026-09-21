@@ -1,4 +1,4 @@
-FROM node:22-slim AS base
+FROM crpi-uo2gx7e52udrmw75.cn-guangzhou.personal.cr.aliyuncs.com/devshare/node:22-slim AS base
 RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 RUN npm install -g pnpm@11.20.0
 WORKDIR /app

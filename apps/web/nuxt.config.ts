@@ -72,12 +72,12 @@ export default defineNuxtConfig({
         target: process.env.API_PROXY_TARGET || 'http://127.0.0.1:3001/api',
         changeOrigin: true,
       },
-      '/uploads': {
-        target:
-          (process.env.API_PROXY_TARGET || 'http://127.0.0.1:3001/api').replace(/\/api$/, '') +
-          '/uploads',
-        changeOrigin: true,
-      },
+      // '/uploads': {
+      //   target:
+      //     (process.env.API_PROXY_TARGET || 'http://127.0.0.1:3001/api').replace(/\/api$/, '') +
+      //     '/uploads',
+      //   changeOrigin: true,
+      // },
     },
   },
 
