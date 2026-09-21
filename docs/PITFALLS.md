@@ -193,6 +193,59 @@ export default defineConfig({
 **相关文件**：`apps/web/utils/image.ts`、`apps/web/utils/image.spec.ts`、`apps/web/vitest.config.ts`
 **记录时间**：2026-09-18
 
+## 部署与环境变量
+
+### 12. 服务器上改了 NUXT_PUBLIC_SITE_URL 却不生效
+
+**现象**：服务器 `.env.prod` 里把 `NUXT_PUBLIC_SITE_URL` 换成了新域名，重新部署并刷新后，站点里的绝对地址还是旧的——海报二维码扫出来的链接、SSR 输出 HTML 里的 `window.__NUXT__.config.public.siteUrl` 都指着老地址。
+
+**原因**：这个值有两条来路，容易当成一条看。
+
+1. 构建期：CI 构建前端镜像时就把它打进产物（`apps/web/Dockerfile:85` 的 `ARG` / `ENV` → `nuxt build`），上游是 GitHub 仓库变量 `NUXT_PUBLIC_SITE_URL_PROD`（`.github/workflows/ci.yml:149`）。
+2. 运行期：`docker-compose.prod.yml:67` 把 `.env.prod` 的值注入容器，Nitro 启动时按 `NUXT_PUBLIC_*` 覆盖 `runtimeConfig.public.siteUrl`，SSR 再把结果写进 HTML 的 `window.__NUXT__.config`；客户端 `useRuntimeConfig()` 读的就是这段（Nuxt 客户端版实现是 `window.__NUXT__?.config`，并没有把值内联进 bundle）。
+
+所以「只改 `.env.prod`」本身是有效的，前提是**容器被重建**：环境变量只在创建容器时注入一次，`docker compose restart` 和只改文件都不会重新注入，看起来就是「没生效」。
+
+真正只在构建期确定的只有 `nuxt.config.ts:99` 的 `i18n.baseUrl`（@nuxtjs/i18n 生成 hreflang 用），要改它得重新构建镜像。
+
+**处理**：先重建容器，再确认注入结果：
+
+```bash
+cd /srv/devshare
+export DEVSHARE_SHA="$(cat .last-prod)"   # 少这句会报 No such image，见第 13 条
+docker compose -p devshare-prod --env-file .env.prod \
+  -f docker-compose.yml -f docker-compose.prod.yml up -d --no-build
+docker compose -p devshare-prod --env-file .env.prod \
+  -f docker-compose.yml -f docker-compose.prod.yml exec -T web printenv NUXT_PUBLIC_SITE_URL
+```
+
+最后一条打印出新值就说明注入成功了，剩下「页面还是旧的」是缓存：`routeRules` 的 SWR 60s + CDN 60s，等约 2 分钟并刷 CDN。改的是构建期值（`i18n.baseUrl` 之类）时，要先改 GitHub 变量 `NUXT_PUBLIC_SITE_URL_PROD` 再重新触发 main 部署，别让两边长期不一致。
+
+顺带一提，上传文件、图片的绝对地址走的是 api 侧另一个变量 `PUBLIC_API_URL`（`apps/api/src/uploads/uploads.service.ts:43`），改完同样要重建 api 容器。
+
+**相关文件**：`apps/web/Dockerfile`、`apps/web/nuxt.config.ts`、`docker-compose.prod.yml`、`.github/workflows/ci.yml`、`docs/DEPLOY.md`
+**记录时间**：2026-09-20
+
+### 13. 服务器上手动 docker compose up 报 No such image: ...:prod-
+
+**现象**：在服务器上手敲 `docker compose ... up -d --no-build web`，报 `Error response from daemon: No such image: crpi-xxxx.cn-guangzhou.personal.cr.aliyuncs.com/devshare/devshare-api:prod-`——标签末尾的 sha 是空的，而且报的是 **api** 的镜像，哪怕命令里只写了 web。
+
+**原因**：`docker-compose.prod.yml:42` / `:60` 的镜像标签是 `prod-${DEVSHARE_SHA}`，而 `DEVSHARE_SHA` 只在 `deploy/deploy.sh:121` 里 `export`，`.env.prod` 里没有它，手动执行时插值成空串，标签就成了 `prod-`。至于为什么动的是 api：`web` 服务有 `depends_on: api`（`docker-compose.yml:152`），compose 解析依赖时也要拿到 api 的镜像。
+
+**处理**：手动跑就自己带上这个变量（值取上一次成功部署的 sha，即 `.last-prod`；该文件不存在时用 `docker image ls | grep devshare-web` 看现有标签）：
+
+```bash
+cd /srv/devshare
+export DEVSHARE_SHA="$(cat .last-prod)"
+docker compose -p devshare-prod --env-file .env.prod \
+  -f docker-compose.yml -f docker-compose.prod.yml up -d --no-build
+```
+
+只想重建 web 就在末尾加 `web --no-deps`（api 得已经在跑）；对应镜像本地还没拉过时先 `... pull web api`。更省事的是走脚本，它自己导出 sha、拉镜像、做健康检查、失败自动回滚：`bash deploy/deploy.sh prod "$(cat .last-prod)" --no-migrate`。
+
+**相关文件**：`docker-compose.prod.yml`、`docker-compose.staging.yml`、`deploy/deploy.sh`
+**记录时间**：2026-09-20
+
 ## 追加模板
 
 ```md
