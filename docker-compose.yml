@@ -181,11 +181,11 @@ services:
       # 证书相关目录：certbot 申请到的证书放在命名卷里，nginx 读它
       - certbot-www:/var/www/certbot:ro
       - certbot-certs:/etc/letsencrypt:ro
-  depends_on:
-    web:
-      condition: service_healthy
-    api:
-      condition: service_healthy
+    depends_on:
+      web:
+        condition: service_healthy
+      api:
+        condition: service_healthy
     networks: [devshare]
 
   certbot:
