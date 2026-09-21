@@ -1,5 +1,5 @@
-FROM node:22-alpine AS base
-RUN apk add --no-cache openssl libc6-compat
+FROM node:22-slim AS base
+RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 RUN npm install -g pnpm@11.20.0
 WORKDIR /app
 

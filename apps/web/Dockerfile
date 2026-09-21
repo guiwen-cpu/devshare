@@ -13,17 +13,17 @@
 # =====================================================================
 
 # ---------------------------- 阶段 1：base ----------------------------
-# 选一个基础镜像：node:22-alpine 是"官方 Node 22 + 超小体积的 Linux
+# 选一个基础镜像：node:22-slim 是"官方 Node 22 + 超小体积的 Linux
 # (Alpine)"组合。Alpine 很小（几 MB），所以生产镜像普遍用它。
 # AS base 给这个阶段起了个名字，后面 FROM base 表示"接着这个镜像继续"。
-FROM node:22-alpine AS base
+FROM node:22-slim AS base
 
 # apk 是 Alpine 的软件包管理器（相当于 Ubuntu 的 apt）。
 # --no-cache 表示装完不保留缓存，尽量减小镜像体积。
 # openssl：Prisma/Node 加密相关需要 OpenSSL 动态库；
 # libc6-compat：Alpine 用的 C 库 (musl) 与常见 Linux (glibc) 不完全兼容，
 #   装上兼容层，很多原生模块（如 esbuild）才能跑。
-RUN apk add --no-cache openssl libc6-compat
+RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 
 # 官方 node 镜像自带 npm，但项目用 pnpm 管理依赖，所以全局装一份 pnpm。
 RUN npm install -g pnpm@11.20.0
