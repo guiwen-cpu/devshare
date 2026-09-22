@@ -1,5 +1,6 @@
 FROM crpi-uo2gx7e52udrmw75.cn-guangzhou.personal.cr.aliyuncs.com/devshare/node:22-slim AS base
-RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list.d/debian.sources && \
+    apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 RUN npm install -g pnpm@11.20.0
 WORKDIR /app
 

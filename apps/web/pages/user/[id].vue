@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ArticleListItem, Paginated, UserProfile } from '@devshare/shared'
+import type { ArticleListItem, CourseListItem, Paginated, UserProfile } from '@devshare/shared'
 import { useAuthStore } from '~/stores/auth'
 
 const route = useRoute()
@@ -8,9 +8,22 @@ const api = useApi()
 const auth = useAuthStore()
 
 const userId = computed(() => Number(route.params.id))
-const tab = ref<'articles' | 'collects'>('articles')
+const tab = ref<'articles' | 'collects' | 'courses'>('articles')
 const articles = ref<ArticleListItem[]>([])
+const courses = ref<CourseListItem[]>([])
 const loading = ref(false)
+
+// 报名记录属于隐私数据，只有本人能看到「课程」tab（与 GET /users/:id/courses 的权限一致）
+const isSelf = computed(() => !!auth.user && auth.user.id === userId.value)
+
+const tabs = computed(() => {
+  const list = [
+    { key: 'articles', label: t('user.articles') },
+    { key: 'collects', label: t('user.collects') },
+  ]
+  if (isSelf.value) list.push({ key: 'courses', label: t('user.courses') })
+  return list
+})
 
 const { data: profile, pending } = await useAsyncData(
   `user-${userId.value}`,
@@ -22,7 +35,12 @@ const { data: profile, pending } = await useAsyncData(
 async function loadList() {
   loading.value = true
   try {
-    if (tab.value === 'articles') {
+    if (tab.value === 'courses') {
+      const res = await api.get<Paginated<CourseListItem>>(`/users/${userId.value}/courses`, {
+        query: { limit: 12 },
+      })
+      courses.value = res.items
+    } else if (tab.value === 'articles') {
       const res = await api.get<Paginated<ArticleListItem>>(`/users/${userId.value}/articles`, {
         query: { limit: 20 },
       })
@@ -96,18 +114,17 @@ useHead(() => ({ title: `${profile.value?.username ?? ''} - DevShare` }))
       </div>
     </div>
 
-    <BaseTabs
-      v-model="tab"
-      :tabs="[
-        { key: 'articles', label: t('user.articles') },
-        { key: 'collects', label: t('user.collects') },
-      ]"
-      class="mb-4"
-    />
+    <BaseTabs v-model="tab" :tabs="tabs" class="mb-4" />
 
     <div class="bg-white rounded-xl border border-slate-200 p-4">
       <div v-if="loading" class="flex flex-col gap-3">
         <BaseSkeleton v-for="i in 4" :key="i" class="h-28 rounded-xl" />
+      </div>
+      <div v-else-if="tab === 'courses'">
+        <div v-if="courses.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <CourseCard v-for="course in courses" :key="course.id" :course="course" />
+        </div>
+        <BaseEmpty v-else :text="t('user.noCourses')" />
       </div>
       <div v-else-if="articles.length > 0" class="flex flex-col gap-3">
         <ArticleCard v-for="article in articles" :key="article.id" :article="article" />

@@ -15,6 +15,32 @@ export type Role = 'user' | 'admin'
 export type ArticleStatus = 'draft' | 'published'
 export type SortOrder = 'latest' | 'hot'
 
+export type CourseDifficulty = 'beginner' | 'elementary' | 'intermediate' | 'advanced'
+export type CourseStatus = 'draft' | 'published'
+export type EnrollmentStatus = 'enrolled' | 'canceled'
+
+export const COURSE_DIFFICULTIES: CourseDifficulty[] = [
+  'beginner',
+  'elementary',
+  'intermediate',
+  'advanced',
+]
+
+export const COURSE_STATUSES: CourseStatus[] = ['draft', 'published']
+
+/// 首页 Banner 的字段上限，前后端共用一套，避免表单与 DTO 各写一份
+export const BANNER_TITLE_MAX = 40
+export const BANNER_SUBTITLE_MAX = 80
+export const BANNER_LINK_MAX = 500
+
+/// 难度枚举的中英文案，前端用 locale 取对应字段，避免在组件里重复映射
+export const DIFFICULTY_LABELS: Record<CourseDifficulty, { zh: string; en: string }> = {
+  beginner: { zh: '入门', en: 'Beginner' },
+  elementary: { zh: '初级', en: 'Elementary' },
+  intermediate: { zh: '中级', en: 'Intermediate' },
+  advanced: { zh: '高级', en: 'Advanced' },
+}
+
 export interface Paginated<T> {
   items: T[]
   nextCursor: string | null
@@ -100,6 +126,62 @@ export interface RankItem {
   score: number
 }
 
+export interface TeacherDTO {
+  id: number
+  name: string
+  avatar: string | null
+  bio: string | null
+  courseCount?: number
+}
+
+export interface CourseTeacherInfo {
+  id: number
+  name: string
+  avatar: string | null
+  bio: string | null
+}
+
+export interface CourseListItem {
+  id: number
+  title: string
+  cover: string | null
+  summary: string | null
+  teacher: CourseTeacherInfo
+  tags: TagDTO[]
+  difficulty: CourseDifficulty
+  enrollCount: number
+  badge: string | null
+  status: CourseStatus
+  sortOrder: number
+  publishedAt: string
+}
+
+export interface CourseDetail extends CourseListItem {
+  audience: string[]
+  enrolledByMe: boolean
+  updatedAt: string
+}
+
+/// 课程分类直接复用文章标签表，额外带上该标签下的已上架课程数
+export interface CourseCategoryDTO {
+  id: number
+  name: string
+  slug: string
+  courseCount: number
+}
+
+export interface EnrollmentItem {
+  id: number
+  user: { id: number; username: string; email: string; avatar: string | null }
+  status: EnrollmentStatus
+  createdAt: string
+}
+
+export interface EnrollmentResult {
+  enrolled: boolean
+  enrollCount: number
+}
+
 export interface AuthResult {
   accessToken: string
   user: UserProfile
@@ -144,6 +226,46 @@ export interface CommentInput {
   parentId?: number
 }
 
+export interface CourseInput {
+  title: string
+  cover?: string | null
+  summary?: string | null
+  audience?: string[]
+  difficulty: CourseDifficulty
+  badge?: string | null
+  status?: CourseStatus
+  sortOrder?: number
+  teacherId: number
+  tagIds: number[]
+}
+
+export interface TeacherInput {
+  name: string
+  avatar?: string | null
+  bio?: string | null
+}
+
+export interface BannerDTO {
+  id: number
+  title: string
+  subtitle: string | null
+  image: string
+  link: string
+  enabled: boolean
+  sortOrder: number
+  createdAt: string
+  updatedAt: string
+}
+
+export interface BannerInput {
+  title: string
+  subtitle?: string | null
+  image: string
+  link: string
+  enabled?: boolean
+  sortOrder?: number
+}
+
 export interface CursorPage {
   cursor?: string
   limit?: number
@@ -172,6 +294,10 @@ export const ErrorCodes = {
   UPLOAD_TOO_LARGE: 'UPLOAD_TOO_LARGE',
   UNSUPPORTED_FILE_TYPE: 'UNSUPPORTED_FILE_TYPE',
   SEARCH_UNAVAILABLE: 'SEARCH_UNAVAILABLE',
+  COURSE_NOT_FOUND: 'COURSE_NOT_FOUND',
+  TEACHER_NOT_FOUND: 'TEACHER_NOT_FOUND',
+  TEACHER_IN_USE: 'TEACHER_IN_USE',
+  BANNER_NOT_FOUND: 'BANNER_NOT_FOUND',
 } as const
 
 export type ErrorCode = (typeof ErrorCodes)[keyof typeof ErrorCodes]

@@ -24,6 +24,7 @@ model User {
   collects     Collect[]
   following    Follow[]   @relation("follower")
   followers    Follow[]   @relation("followee")
+  enrollments  Enrollment[]
 
   @@map("users")
 }
@@ -62,6 +63,7 @@ model Tag {
   name     String       @unique
   slug     String       @unique
   articles ArticleTag[]
+  courses  CourseTag[]
 
   @@map("tags")
 }
@@ -126,4 +128,79 @@ model Follow {
 
   @@id([followerId, followeeId])
   @@map("follows")
+}
+
+model Teacher {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(50)
+  avatar    String?
+  bio       String?  @db.VarChar(500)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  courses   Course[]
+
+  @@map("teachers")
+}
+
+model Course {
+  id                 Int          @id @default(autoincrement())
+  title              String       @db.VarChar(200)
+  cover              String?
+  summary            String?      @db.VarChar(500)
+  audience           String[]
+  difficulty         String       @default("beginner")
+  badge              String?      @db.VarChar(20)
+  status             String       @default("draft")
+  sortOrder          Int          @default(0)
+  teacherId          Int
+  teacher            Teacher      @relation(fields: [teacherId], references: [id], onDelete: Restrict)
+  publishedAt        DateTime?
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+  tags               CourseTag[]
+  enrollments        Enrollment[]
+
+  @@index([status, sortOrder])
+  @@index([teacherId])
+  @@map("courses")
+}
+
+model CourseTag {
+  courseId Int
+  tagId    Int
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  tag      Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([courseId, tagId])
+  @@map("course_tags")
+}
+
+model Enrollment {
+  id          Int      @id @default(autoincrement())
+  courseId    Int
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status      String   @default("enrolled")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, courseId])
+  @@index([courseId, status])
+  @@map("enrollments")
+}
+
+model Banner {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(80)
+  subtitle  String?  @db.VarChar(160)
+  image     String   @db.Text
+  link      String   @db.VarChar(500)
+  enabled   Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([enabled, sortOrder])
+  @@map("banners")
 }

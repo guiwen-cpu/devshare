@@ -26,10 +26,7 @@ export class UsersController {
   @Get(':id')
   @UseGuards(OptionalJwtAuthGuard)
   @ApiOperation({ summary: '获取用户主页信息（含统计与关注状态）' })
-  async profile(
-    @Param('id', ParseIntPipe) id: number,
-    @CurrentUser() viewer?: AuthenticatedUser,
-  ) {
+  async profile(@Param('id', ParseIntPipe) id: number, @CurrentUser() viewer?: AuthenticatedUser) {
     return this.users.getProfile(id, viewer?.id)
   }
 
@@ -50,11 +47,19 @@ export class UsersController {
   @Get(':id/collects')
   @UseGuards(OptionalJwtAuthGuard)
   @ApiOperation({ summary: '用户收藏的文章（仅本人可见）' })
-  async collects(
+  async collects(@Param('id', ParseIntPipe) id: number, @CurrentUser() viewer?: AuthenticatedUser) {
+    return this.users.getUserCollects(id, viewer?.id)
+  }
+
+  @Get(':id/courses')
+  @UseGuards(OptionalJwtAuthGuard)
+  @ApiOperation({ summary: '用户报名的课程（仅本人可见）' })
+  async courses(
     @Param('id', ParseIntPipe) id: number,
+    @Query() query: CursorPageDto,
     @CurrentUser() viewer?: AuthenticatedUser,
   ) {
-    return this.users.getUserCollects(id, viewer?.id)
+    return this.users.getUserCourses(id, viewer?.id, query.cursor, query.limit)
   }
 
   @Post(':id/follow')

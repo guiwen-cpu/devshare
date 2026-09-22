@@ -23,7 +23,8 @@ FROM crpi-uo2gx7e52udrmw75.cn-guangzhou.personal.cr.aliyuncs.com/devshare/node:2
 # openssl：Prisma/Node 加密相关需要 OpenSSL 动态库；
 # libc6-compat：Alpine 用的 C 库 (musl) 与常见 Linux (glibc) 不完全兼容，
 #   装上兼容层，很多原生模块（如 esbuild）才能跑。
-RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list.d/debian.sources && \
+    apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 
 # 官方 node 镜像自带 npm，但项目用 pnpm 管理依赖，所以全局装一份 pnpm。
 RUN npm install -g pnpm@11.20.0

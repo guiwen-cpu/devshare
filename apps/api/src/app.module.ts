@@ -13,6 +13,9 @@ import { TagsModule } from './tags/tags.module'
 import { SearchModule } from './search/search.module'
 import { UploadsModule } from './uploads/uploads.module'
 import { RankModule } from './rank/rank.module'
+import { CoursesModule } from './courses/courses.module'
+import { TeachersModule } from './teachers/teachers.module'
+import { BannersModule } from './banners/banners.module'
 
 @Module({
   imports: [
@@ -29,6 +32,9 @@ import { RankModule } from './rank/rank.module'
     SearchModule,
     UploadsModule,
     RankModule,
+    CoursesModule,
+    TeachersModule,
+    BannersModule,
   ],
   providers: [
     {
