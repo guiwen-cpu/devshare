@@ -28,6 +28,11 @@ export const COURSE_DIFFICULTIES: CourseDifficulty[] = [
 
 export const COURSE_STATUSES: CourseStatus[] = ['draft', 'published']
 
+/// 首页 Banner 的字段上限，前后端共用一套，避免表单与 DTO 各写一份
+export const BANNER_TITLE_MAX = 40
+export const BANNER_SUBTITLE_MAX = 80
+export const BANNER_LINK_MAX = 500
+
 /// 难度枚举的中英文案，前端用 locale 取对应字段，避免在组件里重复映射
 export const DIFFICULTY_LABELS: Record<CourseDifficulty, { zh: string; en: string }> = {
   beginner: { zh: '入门', en: 'Beginner' },
@@ -240,6 +245,27 @@ export interface TeacherInput {
   bio?: string | null
 }
 
+export interface BannerDTO {
+  id: number
+  title: string
+  subtitle: string | null
+  image: string
+  link: string
+  enabled: boolean
+  sortOrder: number
+  createdAt: string
+  updatedAt: string
+}
+
+export interface BannerInput {
+  title: string
+  subtitle?: string | null
+  image: string
+  link: string
+  enabled?: boolean
+  sortOrder?: number
+}
+
 export interface CursorPage {
   cursor?: string
   limit?: number
@@ -271,6 +297,7 @@ export const ErrorCodes = {
   COURSE_NOT_FOUND: 'COURSE_NOT_FOUND',
   TEACHER_NOT_FOUND: 'TEACHER_NOT_FOUND',
   TEACHER_IN_USE: 'TEACHER_IN_USE',
+  BANNER_NOT_FOUND: 'BANNER_NOT_FOUND',
 } as const
 
 export type ErrorCode = (typeof ErrorCodes)[keyof typeof ErrorCodes]

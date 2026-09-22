@@ -14,6 +14,7 @@
     "adminTags": "Tag Management",
     "adminCourses": "Course Management",
     "adminTeachers": "Instructor Management",
+    "adminBanners": "Banner Management",
     "language": "Language",
     "zh": "中文",
     "en": "English"
@@ -35,6 +36,11 @@
       "desc": "Share your technical insights with every developer",
       "write": "Write an article"
     },
+    "bannerRegion": "Featured",
+    "bannerPrev": "Previous banner",
+    "bannerNext": "Next banner",
+    "bannerGo": "Banner {index}",
+    "bannerExternal": "{title} (opens in a new window)",
     "loadMore": "Load more",
     "noMore": "No more",
     "empty": "No content yet, try another tag"
@@ -189,6 +195,30 @@
     "requireTeacher": "Please pick an instructor",
     "confirmDelete": "Delete course “{name}”? Its enrollments will be removed too."
   },
+  "adminBanners": {
+    "subtitle": "Manage the homepage banner carousel, with full CRUD",
+    "new": "New banner",
+    "createTitle": "New banner",
+    "editTitle": "Edit banner",
+    "title": "Title",
+    "subtitle": "Subtitle",
+    "image": "Image",
+    "imageHint": "A 1600×600 landscape image works best — the homepage crops it to about 2:1",
+    "link": "Link",
+    "linkPlaceholder": "In-site path /courses/1, or an https:// URL",
+    "sortOrder": "Sort order",
+    "enabled": "Status",
+    "enabledOn": "Live",
+    "enabledOff": "Hidden",
+    "enable": "Show",
+    "disable": "Hide",
+    "preview": "Preview",
+    "empty": "No banners yet. Click New banner to create one.",
+    "requireTitle": "Please enter a title",
+    "requireImage": "Please upload or paste an image URL",
+    "requireLink": "Please enter a link",
+    "confirmDelete": "Delete banner “{title}”?"
+  },
   "adminTeachers": {
     "subtitle": "Manage instructor profiles, with full CRUD",
     "new": "New instructor",
@@ -234,7 +264,8 @@
     "TAG_NOT_FOUND": "Tag not found",
     "COURSE_NOT_FOUND": "Course not found",
     "TEACHER_NOT_FOUND": "Instructor not found",
-    "TEACHER_IN_USE": "This instructor still has courses and cannot be deleted"
+    "TEACHER_IN_USE": "This instructor still has courses and cannot be deleted",
+    "BANNER_NOT_FOUND": "Banner not found"
   },
   "footer": {
     "desc": "DevShare — developer tech sharing community",

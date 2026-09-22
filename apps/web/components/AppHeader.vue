@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { DEFAULT_TAGS } from '@devshare/shared'
 import {
+  GalleryHorizontalEnd,
   GraduationCap,
   LogOut,
   PenLine,
@@ -160,6 +161,13 @@ async function onLogout() {
               class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
             >
               <UserCog class="w-4 h-4 text-slate-400" /> {{ t('nav.adminTeachers') }}
+            </NuxtLink>
+            <NuxtLink
+              v-if="auth.user?.role === 'admin'"
+              :to="localePath('/admin/banners')"
+              class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
+            >
+              <GalleryHorizontalEnd class="w-4 h-4 text-slate-400" /> {{ t('nav.adminBanners') }}
             </NuxtLink>
             <button
               class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md text-red-500"

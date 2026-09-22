@@ -15,6 +15,7 @@ import { UploadsModule } from './uploads/uploads.module'
 import { RankModule } from './rank/rank.module'
 import { CoursesModule } from './courses/courses.module'
 import { TeachersModule } from './teachers/teachers.module'
+import { BannersModule } from './banners/banners.module'
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { TeachersModule } from './teachers/teachers.module'
     RankModule,
     CoursesModule,
     TeachersModule,
+    BannersModule,
   ],
   providers: [
     {

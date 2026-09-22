@@ -14,6 +14,7 @@
     "adminTags": "标签管理",
     "adminCourses": "课程管理",
     "adminTeachers": "讲师管理",
+    "adminBanners": "Banner 管理",
     "language": "语言",
     "zh": "中文",
     "en": "English"
@@ -35,6 +36,11 @@
       "desc": "记录你的技术思考，分享给每一位开发者",
       "write": "写文章"
     },
+    "bannerRegion": "精选内容",
+    "bannerPrev": "上一张",
+    "bannerNext": "下一张",
+    "bannerGo": "第 {index} 张",
+    "bannerExternal": "{title}（新窗口打开）",
     "loadMore": "加载更多",
     "noMore": "没有更多了",
     "empty": "暂时没有内容，换个标签看看吧"
@@ -189,6 +195,30 @@
     "requireTeacher": "请选择讲师",
     "confirmDelete": "确定删除课程“{name}”？其报名记录会一并删除"
   },
+  "adminBanners": {
+    "subtitle": "维护首页顶部 Banner，支持增删改查与启用停用",
+    "new": "新建 Banner",
+    "createTitle": "新建 Banner",
+    "editTitle": "编辑 Banner",
+    "title": "标题",
+    "subtitle": "副标题",
+    "image": "图片",
+    "imageHint": "建议 1600×600 的横图，首页按约 2:1 裁切显示",
+    "link": "跳转地址",
+    "linkPlaceholder": "站内路径 /courses/1，或外链 https://…",
+    "sortOrder": "排序值",
+    "enabled": "启用",
+    "enabledOn": "已启用",
+    "enabledOff": "已停用",
+    "enable": "启用",
+    "disable": "停用",
+    "preview": "预览",
+    "empty": "还没有 Banner，点击右上角新建",
+    "requireTitle": "请填写标题",
+    "requireImage": "请上传或填写图片地址",
+    "requireLink": "请填写跳转地址",
+    "confirmDelete": "确定删除 Banner“{title}”？"
+  },
   "adminTeachers": {
     "subtitle": "维护讲师资料，支持增删改查",
     "new": "新建讲师",
@@ -234,7 +264,8 @@
     "TAG_NOT_FOUND": "标签不存在",
     "COURSE_NOT_FOUND": "课程不存在",
     "TEACHER_NOT_FOUND": "讲师不存在",
-    "TEACHER_IN_USE": "该讲师名下还有课程，无法删除"
+    "TEACHER_IN_USE": "该讲师名下还有课程，无法删除",
+    "BANNER_NOT_FOUND": "Banner 不存在"
   },
   "footer": {
     "desc": "DevShare（技享）—— 开发者技术分享社区",

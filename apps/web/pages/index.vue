@@ -4,6 +4,7 @@ import {
   DEFAULT_TAGS,
   type ArticleListItem,
   type AuthorInfo,
+  type BannerDTO,
   type CourseCategoryDTO,
   type Paginated,
   type RankItem,
@@ -29,6 +30,8 @@ const { data: firstPage, pending: initialPending } = await useAsyncData('home-fe
 const { data: rank } = await useAsyncData('home-rank', () =>
   api.get<RankItem[]>('/rank/hot', { query: { limit: 10 } }),
 )
+// 首页顶部轮播改由后台配置，接口只返回启用项，没配就是空数组（整块不渲染）
+const { data: banners } = await useAsyncData('home-banners', () => api.get<BannerDTO[]>('/banners'))
 const { data: tags } = await useAsyncData('home-tags', () => api.get<TagDTO[]>('/tags'))
 const { data: courseCategories } = await useAsyncData('home-course-categories', () =>
   api.get<CourseCategoryDTO[]>('/courses/categories'),
@@ -41,12 +44,6 @@ items.value = firstPage.value?.items ?? []
 cursor.value = firstPage.value?.nextCursor ?? null
 
 // ---------------- 派生数据 ----------------
-// 焦点轮播：优先取热门榜前 4，热门榜为空时回退到信息流里阅读量最高的文章
-const featured = computed<ArticleListItem[]>(() => {
-  const fromRank = (rank.value ?? []).map((r) => r.article)
-  if (fromRank.length > 0) return fromRank.slice(0, 4)
-  return [...items.value].sort((a, b) => b.viewCount - a.viewCount).slice(0, 4)
-})
 
 // 频道条：按品牌预设顺序展示标签，而不是接口顺序
 const channels = computed(() => {
@@ -153,7 +150,7 @@ useHead({
   <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-6 items-start">
     <!-- 主栏 -->
     <div class="flex flex-col gap-5 min-w-0">
-      <HomeFocus :articles="featured" />
+      <HomeBanner v-if="banners?.length" :banners="banners" />
 
       <HomeCourses v-model="activeCourseCategory" :categories="courseCategories ?? []" />
 

@@ -189,3 +189,18 @@ model Enrollment {
   @@index([courseId, status])
   @@map("enrollments")
 }
+
+model Banner {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(80)
+  subtitle  String?  @db.VarChar(160)
+  image     String   @db.Text
+  link      String   @db.VarChar(500)
+  enabled   Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([enabled, sortOrder])
+  @@map("banners")
+}
