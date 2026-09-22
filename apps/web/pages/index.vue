@@ -4,6 +4,7 @@ import {
   DEFAULT_TAGS,
   type ArticleListItem,
   type AuthorInfo,
+  type CourseCategoryDTO,
   type Paginated,
   type RankItem,
   type TagDTO,
@@ -29,6 +30,12 @@ const { data: rank } = await useAsyncData('home-rank', () =>
   api.get<RankItem[]>('/rank/hot', { query: { limit: 10 } }),
 )
 const { data: tags } = await useAsyncData('home-tags', () => api.get<TagDTO[]>('/tags'))
+const { data: courseCategories } = await useAsyncData('home-course-categories', () =>
+  api.get<CourseCategoryDTO[]>('/courses/categories'),
+)
+
+// 课程板块的分类筛选：左栏 tab 与右栏「热门方向」共享，null = 推荐（全部课程）
+const activeCourseCategory = ref<string | null>(null)
 
 items.value = firstPage.value?.items ?? []
 cursor.value = firstPage.value?.nextCursor ?? null
@@ -148,6 +155,8 @@ useHead({
     <div class="flex flex-col gap-5 min-w-0">
       <HomeFocus :articles="featured" />
 
+      <HomeCourses v-model="activeCourseCategory" :categories="courseCategories ?? []" />
+
       <section
         class="bg-white rounded-2xl border border-slate-200 px-3 sm:px-4 pt-3 pb-4 shadow-sm"
       >
@@ -221,6 +230,8 @@ useHead({
     <!-- 右侧栏 -->
     <aside class="hidden lg:flex flex-col gap-5 sticky top-20">
       <HomeCreateCard />
+
+      <HomeCourseCategories v-model="activeCourseCategory" :categories="courseCategories ?? []" />
 
       <HotRank :items="rank ?? []" />
 

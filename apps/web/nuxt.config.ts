@@ -45,8 +45,10 @@ export default defineNuxtConfig({
     // SSR + SWR：首页与文章详情做服务端渲染并缓存
     '/': { swr: 60 },
     '/article/**': { swr: 60 },
+    '/courses/**': { swr: 60 },
     '/en': { swr: 60 },
     '/en/article/**': { swr: 60 },
+    '/en/courses/**': { swr: 60 },
     // 其余重交互页面保持 SPA，减少服务端渲染开销
     '/write': { ssr: false },
     '/write/**': { ssr: false },

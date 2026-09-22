@@ -57,6 +57,170 @@ console.log(greeting('DevShare'))
 优化没有银弹，但**持续度量 + 渐进改进** 永远是正确的方向。欢迎在评论区交流你的实践。
 `
 
+interface DemoCourse {
+  title: string
+  summary: string
+  audience: string[]
+  difficulty: 'beginner' | 'elementary' | 'intermediate' | 'advanced'
+  badge?: string
+  tagSlugs: string[]
+}
+
+const DEMO_TEACHERS = [
+  {
+    name: '林深',
+    bio: '前大厂后端架构师，十年 JVM 与分布式系统经验，擅长把复杂机制画成漫画讲清楚。',
+  },
+  {
+    name: '苏航',
+    bio: 'AI 应用工程师，专注 LLM 工程化落地，带队把代码助手接进真实研发流水线。',
+  },
+  {
+    name: '陈默',
+    bio: '全栈独立开发者，做过 20+ 微信小游戏与效率工具，信奉一个人也能跑通整条生产链。',
+  },
+  {
+    name: '周晓',
+    bio: '前端技术专家，Vue / React 双栈，长期关注渲染性能与前端工程化体系搭建。',
+  },
+]
+
+const DEMO_COURSES: DemoCourse[] = [
+  {
+    title: 'AI 时代再学 Java（漫画版）',
+    summary: 'AI 时代再学 Java（小白入行 / 前端转全栈必修），把 JVM、并发与集合底层画成漫画。',
+    audience: ['想转行后端的初学者', '只会写业务代码的前端', '面试前需要补底层原理的同学'],
+    difficulty: 'beginner',
+    badge: '新课',
+    tagSlugs: ['backend', 'ai'],
+  },
+  {
+    title: '超级个体必修课，Codex 多场景自动化生产实战',
+    summary: '把 AI 编码助手接进真实研发流程：需求拆解、批量重构、测试补齐与文档生成。',
+    audience: ['独立开发者', '想用 AI 提效的小团队', '对自动化流水线感兴趣的同学'],
+    difficulty: 'beginner',
+    badge: '新课',
+    tagSlugs: ['ai', 'tools'],
+  },
+  {
+    title: 'Suno AI 人人都是音乐创作者全流程实战课',
+    summary: '从一句提示词到完整单曲：作词、编曲、混音与发行，全流程用 AI 跑通。',
+    audience: ['零基础音乐爱好者', '短视频运营', '想把 AI 用进创作的开发者'],
+    difficulty: 'beginner',
+    badge: '新课',
+    tagSlugs: ['ai', 'tools'],
+  },
+  {
+    title: 'Agent Loop + Graph Engineer 工程化实战',
+    summary: '从零搭建可观测、可回滚的 Agent 编排循环，把智能体接进生产系统的工程方法论。',
+    audience: ['有后端经验的工程师', '正在做 AI 应用的团队', '想系统理解 Agent 架构的同学'],
+    difficulty: 'elementary',
+    badge: '新课',
+    tagSlugs: ['ai', 'backend'],
+  },
+  {
+    title: 'Vibe Gaming 一人工作室微信小游戏开发实战',
+    summary: '一个人做完一款能上线的微信小游戏：玩法设计、渲染性能、分包与广告变现。',
+    audience: ['想独立做游戏的全栈工程师', '有前端基础的开发者', '游戏方向学生'],
+    difficulty: 'beginner',
+    badge: '新课',
+    tagSlugs: ['frontend', 'tools'],
+  },
+  {
+    title: '零基础 AI 漫剧智能量产创作营',
+    summary: '从脚本到成片批量产出 AI 漫剧，覆盖分镜生成、角色一致性与批量渲染流水线。',
+    audience: ['内容创作者', '想批量产出视频的运营', '对 AI 生成流水线感兴趣的开发者'],
+    difficulty: 'elementary',
+    badge: '公益',
+    tagSlugs: ['ai'],
+  },
+  {
+    title: '前端性能优化实战：从 Lighthouse 到真实用户监控',
+    summary: '把指标落到真实业务上：关键渲染路径、包体拆分、缓存策略与 RUM 监控闭环。',
+    audience: ['有 1 年以上经验的前端', '负责 C 端性能的同学', '准备进阶面试的工程师'],
+    difficulty: 'intermediate',
+    tagSlugs: ['performance', 'frontend'],
+  },
+  {
+    title: 'PostgreSQL 索引设计与慢查询治理',
+    summary: '从 B+ 树原理到执行计划解读，用真实慢 SQL 案例讲清索引设计与查询改写。',
+    audience: ['后端工程师', 'DBA 与运维', '被慢查询困扰的开发者'],
+    difficulty: 'intermediate',
+    tagSlugs: ['database', 'backend'],
+  },
+  {
+    title: '云原生入门：Docker 与 Kubernetes 实战',
+    summary: '入门公开课：容器化你的应用、写出可维护的镜像，并部署到 Kubernetes 集群。',
+    audience: ['第一次接触容器化的开发者', '需要自己部署服务的前端', '运维新人'],
+    difficulty: 'beginner',
+    tagSlugs: ['cloud-native'],
+  },
+  {
+    title: 'TypeScript 类型体操进阶：从能用到好用',
+    summary: '条件类型、infer、映射类型与类型推导的组合拳，写出既安全又好维护的公共类型。',
+    audience: ['写 TS 但很少碰泛型的前端', '负责公共库与组件库的同学', '想提升类型设计的工程师'],
+    difficulty: 'advanced',
+    tagSlugs: ['frontend', 'react'],
+  },
+]
+
+/// 课程演示数据：库中已有课程就整体跳过，可重复执行 `pnpm db:seed`
+async function seedCourses(tags: { id: number; slug: string }[], users: { id: number }[]) {
+  if ((await prisma.course.count()) > 0) {
+    console.log('Courses already present, skipping.')
+    return
+  }
+
+  const teachers = await Promise.all(
+    DEMO_TEACHERS.map((teacher) =>
+      prisma.teacher.create({ data: { name: teacher.name, bio: teacher.bio } }),
+    ),
+  )
+  const tagBySlug = new Map(tags.map((tag) => [tag.slug, tag.id]))
+  const now = Date.now()
+  let enrollmentCount = 0
+
+  for (let i = 0; i < DEMO_COURSES.length; i++) {
+    const demo = DEMO_COURSES[i]
+    const course = await prisma.course.create({
+      data: {
+        title: demo.title,
+        summary: demo.summary,
+        audience: demo.audience,
+        difficulty: demo.difficulty,
+        badge: demo.badge ?? null,
+        status: 'published',
+        sortOrder: DEMO_COURSES.length - i,
+        teacherId: teachers[i % teachers.length].id,
+        publishedAt: new Date(now - (DEMO_COURSES.length - i) * 12 * 3600_000),
+        tags: {
+          create: demo.tagSlugs
+            .map((slug) => tagBySlug.get(slug))
+            .filter((id): id is number => typeof id === 'number')
+            .map((tagId) => ({ tagId })),
+        },
+      },
+    })
+
+    // 每门课让“每隔一个”的用户报名，人数固定可复现，不依赖随机数
+    const learners = users.filter((_, index) => (index + i) % 2 === 0)
+    for (const learner of learners) {
+      await prisma.enrollment.create({
+        data: {
+          courseId: course.id,
+          userId: learner.id,
+          status: 'enrolled',
+        },
+      })
+      enrollmentCount += 1
+    }
+  }
+
+  console.log(
+    `Seeded ${DEMO_COURSES.length} courses, ${teachers.length} teachers, ${enrollmentCount} enrollments.`,
+  )
+}
+
 // 种子数据是直接写库的，不会经过 API，也就不会触发 SearchService 的增量索引；
 // 所以播种结束后主动把数据同步进 Meilisearch 一次，避免线上执行 `prisma db seed`
 // 之后搜索一直查不到这批数据（reindexAll 只在 api 容器启动时跑一次）。
@@ -149,6 +313,8 @@ async function main() {
       }),
     ),
   )
+
+  await seedCourses(tags, allUsers)
 
   const existing = await prisma.article.count()
   if (existing > 0) {
