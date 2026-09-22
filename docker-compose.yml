@@ -101,7 +101,7 @@ services:
       # 对外公开的 API 地址，用于生成上传文件的访问链接
       PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:3001}
       UPLOAD_DIR: ./uploads
-      MAX_FILE_SIZE_MB: '5'
+      MAX_FILE_SIZE_MB: '10'
       # OSS 相关：不配置时上传存本地磁盘，配置后自动切到阿里云 OSS
       OSS_REGION: ${OSS_REGION:-}
       OSS_BUCKET: ${OSS_BUCKET:-}
