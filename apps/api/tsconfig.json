@@ -20,6 +20,6 @@
     "resolveJsonModule": true,
     "noImplicitAny": true
   },
-  "include": ["src/**/*", "prisma/seed.ts", "test/**/*"],
+  "include": ["src/**/*", "prisma/**/*", "test/**/*"],
   "exclude": ["node_modules", "dist"]
 }

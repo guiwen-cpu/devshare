@@ -17,6 +17,7 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:deploy": "prisma migrate deploy",
     "prisma:seed": "ts-node prisma/seed.ts",
+    "prisma:import": "ts-node prisma/import-courses.ts",
     "prisma:studio": "prisma studio"
   },
   "dependencies": {

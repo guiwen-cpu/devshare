@@ -102,6 +102,64 @@ docker compose -p devshare-staging --env-file .env.staging \
   exec -T api npx prisma db seed
 ```
 
+### 批量导入课程与讲师（一次性）
+
+生产的课程 / 讲师数据平时由管理员在 `/admin/courses`、`/admin/teachers` 录入；
+若要在生产快速灌入一批数据，用批量导入脚本。脚本走管理员 HTTP API（不直连数据库），
+**默认 dry-run**，且幂等（讲师按姓名、课程按标题去重，重复执行不会产生重复数据）。
+
+数据文件是一份自备的 JSON，仓库里附了可直接改的样例 `apps/api/prisma/courses.example.json`。
+
+前置：脚本要用**管理员**账号登录。prod 从不执行 seed，而注册接口只会建普通用户
+（`User.role` 默认 `user`），所以首次使用前先在服务器上把一个账号提权：
+
+```bash
+docker compose -p devshare-prod --env-file .env.prod \
+  -f docker-compose.yml -f docker-compose.prod.yml \
+  exec -T postgres psql -U devshare -d devshare \
+  -c "UPDATE users SET role='admin' WHERE email='you@example.com';"
+```
+
+方式一：在本地或任意能访问目标环境的机器上跑（仓库内已装好 ts-node，无需登录服务器）：
+
+```bash
+cp apps/api/prisma/courses.example.json courses.json   # 按样例改内容
+export ADMIN_EMAIL=admin@example.com
+export ADMIN_PASSWORD='<管理员密码>'
+export API_BASE_URL=https://www.example.com/api/v1
+
+pnpm --filter @devshare/api prisma:import -- --file courses.json           # 先看将要创建什么
+pnpm --filter @devshare/api prisma:import -- --file courses.json --apply   # 真正写入
+```
+
+方式二：在服务器容器内跑（镜像构建时已把脚本编译成 JS，容器内不需要 ts-node）。
+容器里没有你的文件，用 `--stdin` 把 JSON 从宿主机管道传进去，省掉拷文件：
+
+```bash
+cd /srv/devshare
+cat courses.json | docker compose -p devshare-prod --env-file .env.prod \
+  -f docker-compose.yml -f docker-compose.prod.yml \
+  exec -T api node prisma/import-courses.js --stdin --apply
+```
+
+如果更习惯落地成文件，也可以先拷贝再执行：
+
+```bash
+docker compose -p devshare-prod --env-file .env.prod \
+  -f docker-compose.yml -f docker-compose.prod.yml \
+  cp courses.json api:/tmp/courses.json
+docker compose -p devshare-prod --env-file .env.prod \
+  -f docker-compose.yml -f docker-compose.prod.yml \
+  exec -T api node prisma/import-courses.js --file /tmp/courses.json --apply
+```
+
+两种方式默认都是 dry-run，`--apply` 才真正写入；JSON 字段与 `--stdin` / `--update`
+等参数说明见 `apps/api/prisma/import-courses.ts` 文件头注释。三点注意：
+
+- 全局限流是 120 次 / 60 秒，脚本已按 700ms 间隔降速，调小间隔会撞 429；
+- 课程封面请填 OSS / CDN 绝对地址，本地 `/uploads/*` 在生产读不到；
+- 脚本只做新建 / 更新，不会删除任何数据；误导入在后台逐条删除即可。
+
 ## 5. 日常部署（CI/CD）
 
 流水线位于 `.github/workflows/ci.yml`，行为如下：
