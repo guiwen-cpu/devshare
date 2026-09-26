@@ -7,6 +7,9 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['@nuxtjs/i18n', '@nuxt/eslint'],
   css: ['~/assets/css/main.css'],
+  features: {
+    inlineStyles: true, // 开启内联
+  },
   app: {
     head: {
       // Nuxt 没有 index.html，浏览器标签页的 favicon 通过 <head> 注入。
@@ -18,7 +21,7 @@ export default defineNuxtConfig({
   experimental: {
     // 关闭 payload 提取：把 useAsyncData 数据内联进 HTML，避免 SSR 渲染与
     // _payload.json 各请求一次导致 viewCount 等动态字段不一致的 hydration 警告。
-    payloadExtraction: false,
+    // payloadExtraction: true,
   },
   components: [{ path: '~/components', pathPrefix: false }],
   vite: {
@@ -91,11 +94,14 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    // routeRules: {
-    //   '/oss-assets/**': {
-    //     proxy: 'https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/**',
-    //   },
-    // },
+    routeRules: {
+      // '/oss-assets/**': {
+      //   proxy: 'https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/**',
+      // },
+      '/api/**': {
+        proxy: 'http://127.0.0.1:3001/api/**',
+      },
+    },
     devProxy: {
       '/api': {
         // h3 匹配 '/api' 前缀路由时会剥掉 /api 再转发，所以 target 需补上 /api，
