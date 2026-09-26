@@ -81,9 +81,7 @@ function selectTab(key: string) {
       <h2 class="font-semibold text-slate-900">{{ t('home.courses') }}</h2>
     </div>
 
-    <div
-      class="flex items-center gap-2 overflow-x-auto py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-    >
+    <div class="flex items-center gap-2 overflow-x-auto py-3">
       <button
         v-for="tab in tabs"
         :key="tab.key"

@@ -161,6 +161,14 @@ useHead(() => ({ title: `${course.value?.title ?? ''} - DevShare` }))
             <BaseButton variant="ghost" block :loading="submitting" @click="cancelEnroll">
               {{ t('course.cancelEnroll') }}
             </BaseButton>
+            <!-- 报名成功后的去处：个人主页「课程」tab（?tab=courses 深链） -->
+            <NuxtLink
+              v-if="auth.user"
+              :to="{ path: localePath(`/user/${auth.user.id}`), query: { tab: 'courses' } }"
+              class="text-center text-sm text-brand-600 hover:text-brand-700 hover:underline"
+            >
+              {{ t('course.myEnrollments') }}
+            </NuxtLink>
           </template>
           <BaseButton v-else block :loading="submitting" @click="enroll">
             {{ t('course.enroll') }}

@@ -85,7 +85,8 @@ watch(
     </div>
 
     <!-- 客户端激活后：切换为虚拟滚动，仅渲染可视窗口条目；滚动触底才触发父组件 loadMore -->
-    <div v-else ref="parentRef" class="overflow-auto" :style="{ height: 'calc(100vh - 240px)' }">
+    <!-- 高度只卡 maxHeight、由内容撑开：条目不足一屏时容器跟着内容收，不留大片空白 -->
+    <div v-else ref="parentRef" class="overflow-auto" :style="{ maxHeight: 'calc(100vh - 240px)' }">
       <div class="relative" :style="{ height: virtualizer.getTotalSize() + 'px' }">
         <div
           v-for="item in virtualizer.getVirtualItems()"

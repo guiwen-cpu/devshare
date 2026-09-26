@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { DEFAULT_TAGS } from '@devshare/shared'
 import {
+  BookOpen,
   GalleryHorizontalEnd,
   GraduationCap,
   LogOut,
@@ -134,6 +135,12 @@ async function onLogout() {
               class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
             >
               <User class="w-4 h-4 text-slate-400" /> {{ t('nav.profile') }}
+            </NuxtLink>
+            <NuxtLink
+              :to="{ path: localePath(`/user/${auth.user.id}`), query: { tab: 'courses' } }"
+              class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
+            >
+              <BookOpen class="w-4 h-4 text-slate-400" /> {{ t('nav.myCourses') }}
             </NuxtLink>
             <NuxtLink
               :to="localePath('/settings')"

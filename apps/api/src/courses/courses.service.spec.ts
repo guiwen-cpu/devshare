@@ -118,6 +118,103 @@ describe('CoursesService', () => {
       )
     })
 
+    it('matches a keyword against title, summary, teacher and tags', async () => {
+      prisma.course.findMany.mockResolvedValueOnce([])
+
+      await service.feed({ q: 'AI' })
+
+      expect(prisma.course.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: {
+            status: 'published',
+            AND: [
+              {
+                OR: [
+                  { title: { contains: 'AI', mode: 'insensitive' } },
+                  { summary: { contains: 'AI', mode: 'insensitive' } },
+                  { teacher: { name: { contains: 'AI', mode: 'insensitive' } } },
+                  {
+                    tags: {
+                      some: {
+                        tag: {
+                          OR: [
+                            { name: { contains: 'AI', mode: 'insensitive' } },
+                            { slug: { contains: 'AI', mode: 'insensitive' } },
+                          ],
+                        },
+                      },
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        }),
+      )
+    })
+
+    it('requires every whitespace-separated keyword to match', async () => {
+      prisma.course.findMany.mockResolvedValueOnce([])
+
+      await service.feed({ q: '  AI   李老师 ' })
+
+      const where = prisma.course.findMany.mock.calls[0][0].where
+      expect(where.AND).toHaveLength(2)
+      expect(where.AND[0].OR[0].title.contains).toBe('AI')
+      expect(where.AND[1].OR[0].title.contains).toBe('李老师')
+    })
+
+    it('ignores a blank keyword', async () => {
+      prisma.course.findMany.mockResolvedValueOnce([])
+
+      await service.feed({ q: '   ' })
+
+      expect(prisma.course.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({ where: { status: 'published' } }),
+      )
+    })
+
+    it('filters by difficulty only when one is given', async () => {
+      prisma.course.findMany.mockResolvedValue([])
+
+      await service.feed({ difficulty: 'advanced' })
+      expect(prisma.course.findMany).toHaveBeenLastCalledWith(
+        expect.objectContaining({ where: { status: 'published', difficulty: 'advanced' } }),
+      )
+
+      await service.feed({})
+      expect(prisma.course.findMany).toHaveBeenLastCalledWith(
+        expect.objectContaining({ where: { status: 'published' } }),
+      )
+    })
+
+    it('keeps keyword, difficulty, tag and cursor conditions together', async () => {
+      prisma.course.findMany.mockResolvedValueOnce([])
+      const cursor = Buffer.from(
+        JSON.stringify({ o: 0, p: '2026-01-01T00:00:00.000Z', id: 3 }),
+      ).toString('base64url')
+
+      await service.feed({ q: 'ai', difficulty: 'beginner', tag: 'ai', cursor })
+
+      const where = prisma.course.findMany.mock.calls[0][0].where
+      expect(where.status).toBe('published')
+      expect(where.difficulty).toBe('beginner')
+      expect(where.tags).toEqual({ some: { tag: { slug: 'ai' } } })
+      expect(where.AND).toHaveLength(1)
+      expect(where.OR).toHaveLength(3)
+    })
+
+    it('keeps keyword filters but still forces published for non-admins', async () => {
+      prisma.course.findMany.mockResolvedValueOnce([])
+
+      await service.feed({ status: 'all', difficulty: 'advanced', q: 'ai', viewer: user })
+
+      const where = prisma.course.findMany.mock.calls[0][0].where
+      expect(where.status).toBe('published')
+      expect(where.difficulty).toBe('advanced')
+      expect(where.AND).toHaveLength(1)
+    })
+
     it('returns a cursor when more rows exist', async () => {
       prisma.course.findMany.mockResolvedValueOnce([courseRow({ id: 3 }), courseRow({ id: 2 })])
 

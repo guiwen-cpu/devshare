@@ -25,7 +25,8 @@
     "db:seed": "pnpm --filter @devshare/api prisma:seed",
     "docker:up": "docker compose up -d --build",
     "docker:down": "docker compose down",
-    "lint:eslint": "eslint . --max-warnings=0"
+    "lint:eslint": "eslint . --max-warnings=0",
+    "clean": "rimraf \"**/node_modules\" \"**/dist\" \"**/.nuxt\" \"**/.output\" \"**/.pnpm-lock.yaml\""
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",

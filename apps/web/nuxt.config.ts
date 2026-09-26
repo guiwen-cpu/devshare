@@ -1,4 +1,6 @@
 import tailwindcss from '@tailwindcss/vite'
+import { visualizer } from 'rollup-plugin-visualizer'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -20,7 +22,32 @@ export default defineNuxtConfig({
   },
   components: [{ path: '~/components', pathPrefix: false }],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      visualizer({ open: true, gzipSize: true, brotliSize: true }),
+      ViteImageOptimizer({
+        includePublic: true, // 确保扫描 public 目录[citation:25]
+        png: { quality: 80 },
+        jpg: { quality: 80 },
+        webp: { quality: 75, lossless: false },
+        avif: { quality: 50, lossless: false },
+      }),
+    ],
+    build: {
+      rolldownOptions: {
+        // 注意：从 rollupOptions 改为 rolldownOptions
+        output: {
+          codeSplitting: {
+            groups: [
+              {
+                name: 'md-editor',
+                test: /md-editor-v3/, // 用正则匹配模块路径
+              },
+            ],
+          },
+        },
+      },
+    },
   },
 
   devServer: {
@@ -45,7 +72,9 @@ export default defineNuxtConfig({
     // SSR + SWR：首页与文章详情做服务端渲染并缓存
     '/': { swr: 60 },
     '/article/**': { swr: 60 },
-    '/courses/**': { swr: 60 },
+    '/courses/**': {
+      swr: 60,
+    },
     '/en': { swr: 60 },
     '/en/article/**': { swr: 60 },
     '/en/courses/**': { swr: 60 },

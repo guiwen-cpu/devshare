@@ -5,6 +5,7 @@ import {
   ErrorCodes,
   type CourseCategoryDTO,
   type CourseDetail,
+  type CourseDifficulty,
   type CourseListItem,
   type EnrollmentItem,
   type EnrollmentStatus,
@@ -52,6 +53,8 @@ export class CoursesService {
   async feed(opts: {
     tag?: string
     status?: 'published' | 'draft' | 'all'
+    difficulty?: CourseDifficulty
+    q?: string
     cursor?: string
     limit?: number
     viewer?: AuthenticatedUser
@@ -62,7 +65,33 @@ export class CoursesService {
 
     const where: Prisma.CourseWhereInput = {}
     if (status !== 'all') where.status = status
+    if (opts.difficulty) where.difficulty = opts.difficulty
     if (opts.tag) where.tags = { some: { tag: { slug: opts.tag } } }
+
+    // 关键词沿用文章搜索那套语义：按空白拆词，每个词都要在「标题 / 简介 / 讲师名 / 标签名」里命中一个。
+    // 关键词的 AND 与上面的 status/difficulty/tags、以及游标的 OR 是不同键，互不覆盖。
+    const keywords = opts.q?.trim().split(/\s+/).filter(Boolean) ?? []
+    if (keywords.length > 0) {
+      where.AND = keywords.map((word) => ({
+        OR: [
+          { title: { contains: word, mode: 'insensitive' as const } },
+          { summary: { contains: word, mode: 'insensitive' as const } },
+          { teacher: { name: { contains: word, mode: 'insensitive' as const } } },
+          {
+            tags: {
+              some: {
+                tag: {
+                  OR: [
+                    { name: { contains: word, mode: 'insensitive' as const } },
+                    { slug: { contains: word, mode: 'insensitive' as const } },
+                  ],
+                },
+              },
+            },
+          },
+        ],
+      }))
+    }
 
     // 草稿的 publishedAt 可能为 null，按 null 参与排序比较不可靠，这条查询改用 id 做游标
     const orderBy: Prisma.CourseOrderByWithRelationInput[] =

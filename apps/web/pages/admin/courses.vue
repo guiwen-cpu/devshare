@@ -1,5 +1,5 @@
 ﻿<script setup lang="ts">
-import { Pencil, Plus, Trash2, Users } from 'lucide-vue-next'
+import { Pencil, Plus, Search, Trash2, Users } from 'lucide-vue-next'
 import {
   COURSE_DIFFICULTIES,
   type CourseDetail,
@@ -29,6 +29,18 @@ const courses = ref<CourseListItem[]>([])
 const teachers = ref<TeacherDTO[]>([])
 const tags = ref<TagDTO[]>([])
 const loading = ref(false)
+const loadingMore = ref(false)
+const cursor = ref<string | null>(null)
+const endReached = ref(false)
+const tableRef = ref<{ scrollToTop: () => void } | null>(null)
+
+// 游标分页：每页 24 条（后端 limit 上限），滚动触底再追加下一页
+const PAGE_SIZE = 24
+
+// 筛选条件分两份：filters 是工具条上还没提交的草稿，applied 才是请求真正用的条件。
+// 输入框与下拉只改 filters，必须回车或点「搜索」才提交，不会边打字边打接口。
+const filters = reactive({ q: '', status: 'all', difficulty: '' })
+const applied = reactive({ q: '', status: 'all', difficulty: '' })
 
 const modalOpen = ref(false)
 const saving = ref(false)
@@ -60,30 +72,99 @@ const teacherOptions = computed(() =>
   teachers.value.map((it) => ({ value: it.id, label: it.name })),
 )
 
+// 工具条下拉：状态默认「全部」（草稿也列出来），难度同理，「全部」用空串表示不筛选
+const statusFilterOptions = computed(() => [
+  { value: 'all', label: t('common.all') },
+  { value: 'published', label: t('adminCourses.statusPublished') },
+  { value: 'draft', label: t('adminCourses.statusDraft') },
+])
+const difficultyFilterOptions = computed(() => [
+  { value: '', label: t('common.all') },
+  ...COURSE_DIFFICULTIES.map((value) => ({ value, label: difficultyLabel(value, locale.value) })),
+])
+
 // 报名名单弹窗
 const enrollOpen = ref(false)
 const enrollLoading = ref(false)
 const enrollCourse = ref<CourseListItem | null>(null)
 const enrollments = ref<EnrollmentItem[]>([])
 
-async function load() {
+// 请求参数：q / difficulty 为空就不带这个 key，status 直接透传（'all' 才会返回草稿）
+function feedQuery(extra: Record<string, string | number | undefined> = {}) {
+  return {
+    status: applied.status,
+    limit: PAGE_SIZE,
+    q: applied.q.trim() || undefined,
+    difficulty: applied.difficulty || undefined,
+    ...extra,
+  }
+}
+
+async function fetchFirstPage() {
   loading.value = true
+  endReached.value = false
+  cursor.value = null
   try {
-    const all: CourseListItem[] = []
-    let cursor: string | undefined
-    // 带 status=all 才会返回草稿；limit 上限 24，循环取完为止
-    for (let guard = 0; guard < 20; guard += 1) {
-      const res = await api.get<Paginated<CourseListItem>>('/courses', {
-        query: { status: 'all', limit: 24, cursor },
-      })
-      all.push(...res.items)
-      if (!res.nextCursor) break
-      cursor = res.nextCursor
-    }
-    courses.value = all
+    const res = await api.get<Paginated<CourseListItem>>('/courses', { query: feedQuery() })
+    courses.value = res.items
+    cursor.value = res.nextCursor
+    endReached.value = !res.nextCursor
   } finally {
     loading.value = false
   }
+}
+
+// 触底加载下一页：VirtualTable 在「最后一个可见行已接近列表末尾」时回调
+async function loadMore() {
+  if (loading.value || loadingMore.value || endReached.value || !cursor.value) return
+  loadingMore.value = true
+  try {
+    const res = await api.get<Paginated<CourseListItem>>('/courses', {
+      query: feedQuery({ cursor: cursor.value }),
+    })
+    courses.value.push(...res.items)
+    cursor.value = res.nextCursor
+    if (!res.nextCursor) endReached.value = true
+  } finally {
+    loadingMore.value = false
+  }
+}
+
+// 提交筛选：草稿条件拷进 applied，回到顶部再按新条件重拉第一页
+function applyFilters() {
+  applied.q = filters.q
+  applied.status = filters.status
+  applied.difficulty = filters.difficulty
+  tableRef.value?.scrollToTop()
+  void fetchFirstPage()
+}
+
+function clearFilters() {
+  filters.q = ''
+  filters.status = 'all'
+  filters.difficulty = ''
+  applyFilters()
+}
+
+// applied 里任一条件非默认时，空态用「搜索无结果」的文案
+const hasActiveFilter = computed(
+  () => applied.q.trim() !== '' || applied.status !== 'all' || applied.difficulty !== '',
+)
+
+// 就地更新后校验「枚举筛选」是否仍匹配：状态/难度不符的行要移出列表。
+// 关键词不参与判断 —— 分词与命中字段是后端语义，前端不复制一份。
+function keepRow(course: CourseListItem): boolean {
+  if (applied.status !== 'all' && course.status !== applied.status) return false
+  if (applied.difficulty && course.difficulty !== applied.difficulty) return false
+  return true
+}
+
+// 编辑保存后就地替换那一行，滚动位置与其它已加载的行都不动
+function replaceRow(course: CourseDetail) {
+  const index = courses.value.findIndex((it) => it.id === course.id)
+  if (index < 0) return
+  if (keepRow(course)) courses.value[index] = course
+  else courses.value.splice(index, 1)
 }
 
 async function loadOptions() {
@@ -176,15 +257,21 @@ async function save() {
   }
 
   saving.value = true
+  const isEdit = editingId.value !== null
   try {
-    if (editingId.value) {
-      await api.patch(`/courses/${editingId.value}`, payload)
+    if (isEdit) {
+      // 编辑：用返回的详情就地替换那一行，滚动位置与其它已加载的行都不动
+      replaceRow(await api.patch<CourseDetail>(`/courses/${editingId.value}`, payload))
     } else {
       await api.post('/courses', payload)
     }
     toast.success(t('common.saved'))
     modalOpen.value = false
-    await load()
+    if (!isEdit) {
+      // 新建的课不一定落在当前这页，回到顶部重拉第一页
+      tableRef.value?.scrollToTop()
+      await fetchFirstPage()
+    }
   } catch {
     /* useApi 已经弹过错误提示 */
   } finally {
@@ -194,16 +281,18 @@ async function save() {
 
 async function toggleStatus(course: CourseListItem) {
   const status: CourseStatus = course.status === 'published' ? 'draft' : 'published'
-  await api.patch(`/courses/${course.id}`, { status })
+  // 用 PATCH 返回的状态就地更新这一行，不重拉整页，滚动位置留在原处
+  const updated = await api.patch<CourseDetail>(`/courses/${course.id}`, { status })
   toast.success(t('common.saved'))
-  await load()
+  replaceRow(updated)
 }
 
 async function remove(course: CourseListItem) {
   if (!window.confirm(t('adminCourses.confirmDelete', { name: course.title }))) return
   await api.del(`/courses/${course.id}`)
   toast.success(t('common.saved'))
-  await load()
+  // 就地删除：其余行不动，滚动位置也不跳
+  courses.value = courses.value.filter((it) => it.id !== course.id)
 }
 
 async function openEnrollments(course: CourseListItem) {
@@ -223,54 +312,92 @@ onMounted(async () => {
     router.replace(localePath('/'))
     return
   }
-  await Promise.all([load(), loadOptions()])
+  await Promise.all([fetchFirstPage(), loadOptions()])
 })
 </script>
 
 <template>
   <div>
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
       <div>
         <h1 class="text-2xl font-bold text-slate-900">{{ t('nav.adminCourses') }}</h1>
         <p class="mt-1 text-sm text-slate-500">{{ t('adminCourses.subtitle') }}</p>
       </div>
-      <BaseButton @click="openCreate">
-        <Plus class="w-4 h-4" />
-        {{ t('adminCourses.new') }}
-      </BaseButton>
+
+      <!-- 工具条：搜索框 + 状态/难度筛选；下拉只改待提交的 filters，回车或点「搜索」才一起提交 -->
+      <div class="flex flex-wrap items-center gap-2">
+        <form
+          id="course-search"
+          class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-1.5 w-56 focus-within:ring-2 ring-brand-500/40"
+          @submit.prevent="applyFilters"
+        >
+          <Search class="w-4 h-4 text-slate-400" />
+          <input
+            v-model="filters.q"
+            type="search"
+            :placeholder="t('adminCourses.searchPlaceholder')"
+            class="bg-transparent outline-none text-sm w-full text-slate-700 placeholder:text-slate-400"
+          />
+        </form>
+
+        <BaseButton type="submit" form="course-search">
+          {{ t('adminCourses.searchAction') }}
+        </BaseButton>
+
+        <BaseSelect v-model="filters.status" :options="statusFilterOptions" class="w-28" />
+        <BaseSelect v-model="filters.difficulty" :options="difficultyFilterOptions" class="w-28" />
+
+        <BaseButton v-if="hasActiveFilter" variant="secondary" @click="clearFilters">
+          {{ t('adminCourses.clearSearch') }}
+        </BaseButton>
+
+        <BaseButton @click="openCreate">
+          <Plus class="w-4 h-4" />
+          {{ t('adminCourses.new') }}
+        </BaseButton>
+      </div>
     </div>
 
-    <div class="bg-white rounded-xl border border-slate-200 overflow-x-auto">
-      <table class="w-full text-sm min-w-[880px]">
-        <thead class="bg-slate-50 text-slate-500">
-          <tr>
-            <th class="text-left px-4 py-3 font-medium">{{ t('adminCourses.cover') }}</th>
-            <th class="text-left px-4 py-3 font-medium">{{ t('adminCourses.title') }}</th>
-            <th class="text-left px-4 py-3 font-medium">{{ t('adminCourses.teacher') }}</th>
-            <th class="text-left px-4 py-3 font-medium">{{ t('adminCourses.categories') }}</th>
-            <th class="text-left px-4 py-3 font-medium">{{ t('adminCourses.difficulty') }}</th>
-            <th class="text-right px-4 py-3 font-medium">{{ t('adminCourses.enrollCount') }}</th>
-            <th class="text-left px-4 py-3 font-medium">{{ t('adminCourses.status') }}</th>
-            <th class="text-right px-4 py-3 font-medium">{{ t('admin.actions') }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-if="loading">
-            <td colspan="8" class="px-4 py-10 text-center text-slate-400">
-              {{ t('common.loading') }}
-            </td>
-          </tr>
-          <tr v-else-if="courses.length === 0">
-            <td colspan="8">
-              <BaseEmpty :text="t('adminCourses.empty')" />
-            </td>
-          </tr>
-          <tr
-            v-for="course in courses"
-            :key="course.id"
-            class="border-t border-slate-100 hover:bg-slate-50"
-          >
-            <td class="px-4 py-3">
+    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+      <VirtualTable
+        ref="tableRef"
+        :items="courses"
+        :columns="8"
+        :loading="loading || loadingMore"
+        table-class="min-w-[880px]"
+        :end-reached="loadMore"
+      >
+        <template #head>
+          <th class="sticky top-0 z-10 bg-slate-50 px-4 py-3 text-left font-medium">
+            {{ t('adminCourses.cover') }}
+          </th>
+          <th class="sticky top-0 z-10 bg-slate-50 px-4 py-3 text-left font-medium">
+            {{ t('adminCourses.title') }}
+          </th>
+          <th class="sticky top-0 z-10 bg-slate-50 px-4 py-3 text-left font-medium">
+            {{ t('adminCourses.teacher') }}
+          </th>
+          <th class="sticky top-0 z-10 bg-slate-50 px-4 py-3 text-left font-medium">
+            {{ t('adminCourses.categories') }}
+          </th>
+          <th class="sticky top-0 z-10 bg-slate-50 px-4 py-3 text-left font-medium">
+            {{ t('adminCourses.difficulty') }}
+          </th>
+          <th class="sticky top-0 z-10 bg-slate-50 px-4 py-3 text-right font-medium">
+            {{ t('adminCourses.enrollCount') }}
+          </th>
+          <th class="sticky top-0 z-10 bg-slate-50 px-4 py-3 text-left font-medium">
+            {{ t('adminCourses.status') }}
+          </th>
+          <th class="sticky top-0 z-10 bg-slate-50 px-4 py-3 text-right font-medium">
+            {{ t('admin.actions') }}
+          </th>
+        </template>
+
+        <template #row="{ item }">
+          <!-- slot 泛型是 unknown（与 VirtualFeed 一致），先断言成 CourseListItem，再交给 v-for 做一次窄化 -->
+          <template v-for="course in [item as CourseListItem]" :key="course.id">
+            <td class="px-4 py-3 border-t border-slate-100">
               <div
                 class="relative w-16 h-9 rounded overflow-hidden"
                 :class="gradientForSeed(course.id)"
@@ -283,7 +410,7 @@ onMounted(async () => {
                 />
               </div>
             </td>
-            <td class="px-4 py-3 text-slate-900 font-medium max-w-64">
+            <td class="px-4 py-3 border-t border-slate-100 text-slate-900 font-medium max-w-64">
               <NuxtLink
                 :to="localePath(`/courses/${course.id}`)"
                 class="line-clamp-2 hover:text-brand-600"
@@ -291,18 +418,22 @@ onMounted(async () => {
                 {{ course.title }}
               </NuxtLink>
             </td>
-            <td class="px-4 py-3 text-slate-500 whitespace-nowrap">{{ course.teacher.name }}</td>
-            <td class="px-4 py-3 text-slate-500">
+            <td class="px-4 py-3 border-t border-slate-100 text-slate-500 whitespace-nowrap">
+              {{ course.teacher.name }}
+            </td>
+            <td class="px-4 py-3 border-t border-slate-100 text-slate-500">
               <span v-if="course.tags.length === 0">—</span>
               <span v-else class="line-clamp-1">{{
                 course.tags.map((x) => x.name).join('、')
               }}</span>
             </td>
-            <td class="px-4 py-3 text-slate-500 whitespace-nowrap">
+            <td class="px-4 py-3 border-t border-slate-100 text-slate-500 whitespace-nowrap">
               {{ difficultyLabel(course.difficulty, locale) }}
             </td>
-            <td class="px-4 py-3 text-right text-slate-500">{{ course.enrollCount }}</td>
-            <td class="px-4 py-3">
+            <td class="px-4 py-3 border-t border-slate-100 text-right text-slate-500">
+              {{ course.enrollCount }}
+            </td>
+            <td class="px-4 py-3 border-t border-slate-100">
               <span
                 class="inline-flex rounded px-1.5 py-0.5 text-xs"
                 :class="
@@ -318,7 +449,7 @@ onMounted(async () => {
                 }}
               </span>
             </td>
-            <td class="px-4 py-3 text-right">
+            <td class="px-4 py-3 border-t border-slate-100 text-right whitespace-nowrap">
               <div class="inline-flex items-center gap-1">
                 <BaseButton variant="ghost" size="sm" @click="openEnrollments(course)">
                   <Users class="w-4 h-4" /> {{ t('adminCourses.enrollments') }}
@@ -343,9 +474,18 @@ onMounted(async () => {
                 </BaseButton>
               </div>
             </td>
-          </tr>
-        </tbody>
-      </table>
+          </template>
+        </template>
+
+        <template #empty>
+          <td :colspan="8">
+            <BaseEmpty
+              v-if="!loading"
+              :text="hasActiveFilter ? t('adminCourses.searchEmpty') : t('adminCourses.empty')"
+            />
+          </td>
+        </template>
+      </VirtualTable>
     </div>
 
     <BaseModal

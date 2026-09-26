@@ -1,6 +1,6 @@
 import { ApiPropertyOptional } from '@nestjs/swagger'
 import { Type } from 'class-transformer'
-import { IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator'
+import { IsEnum, IsInt, IsOptional, IsString, Max, MaxLength, Min } from 'class-validator'
 
 export class QueryCoursesDto {
   @ApiPropertyOptional({ description: 'cursor 分页游标' })
@@ -20,6 +20,23 @@ export class QueryCoursesDto {
   @IsOptional()
   @IsString()
   tag?: string
+
+  @ApiPropertyOptional({
+    example: '李老师',
+    description: '关键词：命中标题 / 简介 / 讲师名 / 标签名，空白分隔的多词需全部命中',
+  })
+  @IsOptional()
+  @IsString()
+  @MaxLength(50)
+  q?: string
+
+  @ApiPropertyOptional({
+    enum: ['beginner', 'elementary', 'intermediate', 'advanced'],
+    description: '课程难度',
+  })
+  @IsOptional()
+  @IsEnum(['beginner', 'elementary', 'intermediate', 'advanced'])
+  difficulty?: 'beginner' | 'elementary' | 'intermediate' | 'advanced'
 
   @ApiPropertyOptional({
     enum: ['published', 'draft', 'all'],

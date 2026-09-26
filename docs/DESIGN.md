@@ -27,31 +27,33 @@
 
 ## 4. 组件规范（手写 Tailwind，无组件库）
 
-| 组件                                                          | 说明                                                                                                             |
-| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| BaseButton                                                    | primary / secondary / ghost / danger × sm / md / lg，loading / disabled                                          |
-| BaseInput / BaseTextarea / BaseSelect                         | 表单控件，聚焦 ring 反馈，错误态                                                                                 |
-| BaseModal                                                     | 遮罩 + 居中卡片 + Esc 关闭                                                                                       |
-| BaseDropdown                                                  | 点击触发 + 点击外部关闭                                                                                          |
-| BaseTabs                                                      | 下划线式 tab                                                                                                     |
-| BaseToast                                                     | 顶部居中消息，3.2s 自动消失                                                                                      |
-| BaseAvatar / BaseTag / BaseSkeleton / BaseSpinner / BaseEmpty | 展示类原子组件                                                                                                   |
-| ArticlePosterDialog / ArticlePosterCard                       | 文章海报：DOM 排版 750×1120 版面（页脚放文章二维码），弹窗直接预览海报 DOM，下载时才用 html2canvas 截成 2 倍 PNG |
-| ArticleCard                                                   | 信息流卡片，**固定高度 144px**（虚拟滚动前提）                                                                   |
-| VirtualFeed                                                   | TanStack Virtual 封装，SSR 首屏直出前 12 条，客户端激活后虚拟化                                                  |
-| HotRank                                                       | 热门榜，前三名彩色角标                                                                                           |
-| CourseCard                                                    | 课程卡片：16:9 封面（无图用渐变兜底）、角标、标题与摘要各 2 行截断、难度与报名人数                               |
-| HomeCourses                                                   | 首页「精品课程」板块：分类 tab（推荐 + 动态分类）+ 3×2 网格 + 「加载更多」（切 tab 重置游标）                    |
-| HomeCourseCategories                                          | 右栏「热门方向」：课程分类 + 已上架课程数，点击与左侧课程 tab 双向联动                                           |
-| HomeBanner                                                    | 首页顶部 Banner 轮播，内容全部来自后台配置（标题 / 副标题 / 图片 / 跳转地址）；无启用项时整块不渲染              |
-| /admin/banners                                                | 首页 Banner 管理：增删改查、排序值、启用停用，图片上传复用 /uploads（建议 1600×600）                             |
-| 课程详情页 /courses/:id                                       | 封面 + 标题 + 讲师卡 + 适合人群 + 课程简介 + 侧栏报名卡（公益免费，一键报名）                                    |
+| 组件                                                          | 说明                                                                                                                       |
+| ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| BaseButton                                                    | primary / secondary / ghost / danger × sm / md / lg，loading / disabled                                                    |
+| BaseInput / BaseTextarea / BaseSelect                         | 表单控件，聚焦 ring 反馈，错误态                                                                                           |
+| BaseModal                                                     | 遮罩 + 居中卡片 + Esc 关闭                                                                                                 |
+| BaseDropdown                                                  | 点击触发 + 点击外部关闭                                                                                                    |
+| BaseTabs                                                      | 下划线式 tab                                                                                                               |
+| BaseToast                                                     | 顶部居中消息，3.2s 自动消失                                                                                                |
+| BaseAvatar / BaseTag / BaseSkeleton / BaseSpinner / BaseEmpty | 展示类原子组件                                                                                                             |
+| ArticlePosterDialog / ArticlePosterCard                       | 文章海报：DOM 排版 750×1120 版面（页脚放文章二维码），弹窗直接预览海报 DOM，下载时才用 html2canvas 截成 2 倍 PNG           |
+| ArticleCard                                                   | 信息流卡片，**固定高度 144px**（虚拟滚动前提）                                                                             |
+| VirtualFeed                                                   | TanStack Virtual 封装，SSR 首屏直出前 12 条，客户端激活后虚拟化；容器高度由内容撑开，超过 `calc(100vh - 240px)` 才内部滚动 |
+| VirtualTable                                                  | TanStack Virtual 封装，SSR 首屏直出前 12 行，客户端激活后虚拟化；表头粘顶，上下 spacer 撑高度，触底回调给父组件            |
+| HotRank                                                       | 热门榜，前三名彩色角标                                                                                                     |
+| CourseCard                                                    | 课程卡片：16:9 封面（无图用渐变兜底）、角标、标题与摘要各 2 行截断、难度与报名人数                                         |
+| HomeCourses                                                   | 首页「精品课程」板块：分类 tab（推荐 + 动态分类）+ 3×2 网格 + 「加载更多」（切 tab 重置游标）                              |
+| HomeCourseCategories                                          | 右栏「热门方向」：课程分类 + 已上架课程数，点击与左侧课程 tab 双向联动                                                     |
+| HomeBanner                                                    | 首页顶部 Banner 轮播，内容全部来自后台配置（标题 / 副标题 / 图片 / 跳转地址）；无启用项时整块不渲染                        |
+| /admin/banners                                                | 首页 Banner 管理：增删改查、排序值、启用停用，图片上传复用 /uploads（建议 1600×600）                                       |
+| 课程详情页 /courses/:id                                       | 封面 + 标题 + 讲师卡 + 适合人群 + 课程简介 + 侧栏报名卡（公益免费，一键报名）                                              |
 
 ## 5. 交互与体验
 
 - 信息流：进入即 SSR 首屏 → 客户端虚拟滚动 + 触底加载更多；
+- 课程管理页（`/admin/courses`）：关键词（标题 / 讲师 / 标签）与状态、难度筛选只在回车或点「搜索」时提交，下拉改动不立即请求；列表 24 条一页走游标分页 + 虚拟滚动，滚到底自动加载更多；删除 / 上下架 / 编辑就地更新那一行，滚动位置不跳（改到不再匹配当前枚举筛选时该行从列表移除）。
 - 互动（点赞/收藏/关注）：乐观更新 + Toast 反馈；未登录点击跳转登录；
-- 课程报名：全部课程为公益免费课程，登录后点击即报名，不涉及支付与金额；取消报名保留记录并置为 `canceled`，报名人数按有效记录实时统计；未登录点击报名跳转登录。
+- 课程报名：全部课程为公益免费课程，登录后点击即报名，不涉及支付与金额；取消报名保留记录并置为 `canceled`，报名人数按有效记录实时统计；未登录点击报名跳转登录。报名记录入口：顶栏用户菜单「我的课程」与课程详情页侧栏「查看我的报名记录」（报名后出现）都指向个人主页「课程」tab（`/user/:id?tab=courses`），tab 与地址栏同步。
 - 首页 Banner：内容与顺序完全由后台 `/admin/banners` 决定，整张幻灯片是一个链接（站内路径带语言前缀，外链新窗口打开），5s 自动切换且悬停 / 聚焦即暂停，`prefers-reduced-motion` 下不自动播放；右下分段进度轨兼任「当前第几张」与「距离自动切换还剩多久」，图片加载失败退回品牌渐变打底；
 - 语言切换：顶栏下拉，保存到 `df_locale` cookie，URL `/zh` `/en` 前缀；
 - 图片：懒加载 + 封面缩略图，上传 ≤ 5MB 且仅图片。
