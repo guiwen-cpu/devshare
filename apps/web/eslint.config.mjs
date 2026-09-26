@@ -15,5 +15,6 @@ export default withNuxt({
         math: 'always',
       },
     ],
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 })
