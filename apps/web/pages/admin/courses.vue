@@ -2,6 +2,8 @@
 import { Pencil, Plus, Search, Trash2, Users } from 'lucide-vue-next'
 import {
   COURSE_DIFFICULTIES,
+  IMAGE_ACCEPT,
+  VIDEO_MIME_TYPES,
   type CourseDetail,
   type CourseDifficulty,
   type CourseInput,
@@ -11,11 +13,13 @@ import {
   type Paginated,
   type TagDTO,
   type TeacherDTO,
+  type VideoUploadConfig,
 } from '@devshare/shared'
 import { useAuthStore } from '~/stores/auth'
 import { difficultyLabel } from '~/utils/course'
 import { useUpload } from '~/composables/useUpload'
 import { gradientForSeed } from '~/utils/visual'
+import { formatFileSize, isAllowedVideoMime } from '~/utils/video'
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
@@ -23,7 +27,9 @@ const router = useRouter()
 const api = useApi()
 const auth = useAuthStore()
 const toast = useToast()
-const { uploadImage } = useUpload()
+const { uploadImage, fetchVideoConfig, uploadVideo } = useUpload()
+// 封面在 OSS 上，展示时统一改成 WebP（见 composables/useAssetUrl.ts）
+const { assetUrl } = useAssetUrl()
 
 const courses = ref<CourseListItem[]>([])
 const teachers = ref<TeacherDTO[]>([])
@@ -51,6 +57,7 @@ const formError = ref('')
 const form = reactive({
   title: '',
   cover: '',
+  videoUrl: '',
   summary: '',
   audience: [''],
   difficulty: 'beginner',
@@ -60,6 +67,19 @@ const form = reactive({
   status: 'draft',
   sortOrder: '0',
 })
+
+// 课程视频：走浏览器直传 OSS，后端只签发凭证；config 决定控件是否可用与体积/格式上限
+const videoConfig = ref<VideoUploadConfig>({ enabled: false, maxBytes: 0, accept: [] })
+const videoUploading = ref(false)
+const videoProgress = ref(0)
+
+const videoAccept = computed(() => videoConfig.value.accept.join(','))
+const videoTypesLabel = computed(() =>
+  (videoConfig.value.accept.length > 0 ? videoConfig.value.accept : [...VIDEO_MIME_TYPES])
+    .map((mime) => mime.replace('video/', ''))
+    .join(' / '),
+)
+const videoMaxLabel = computed(() => formatFileSize(videoConfig.value.maxBytes))
 
 const difficultyOptions = computed(() =>
   COURSE_DIFFICULTIES.map((value) => ({ value, label: difficultyLabel(value, locale.value) })),
@@ -179,6 +199,7 @@ async function loadOptions() {
 function resetForm() {
   form.title = ''
   form.cover = ''
+  form.videoUrl = ''
   form.summary = ''
   form.audience = ['']
   form.difficulty = 'beginner'
@@ -202,6 +223,7 @@ async function openEdit(course: CourseListItem) {
   editingId.value = detail.id
   form.title = detail.title
   form.cover = detail.cover ?? ''
+  form.videoUrl = detail.videoUrl ?? ''
   form.summary = detail.summary ?? ''
   form.audience = detail.audience.length > 0 ? [...detail.audience] : ['']
   form.difficulty = detail.difficulty
@@ -234,6 +256,37 @@ async function uploadCover(event: Event) {
   }
 }
 
+async function uploadCourseVideo(event: Event) {
+  const input = event.target as HTMLInputElement
+  const file = input.files?.[0]
+  if (!file) return
+  // 先做客户端校验，省掉一次白跑的上传；后端签凭证时还会再校验一遍
+  if (!isAllowedVideoMime(file.type, videoConfig.value.accept)) {
+    toast.error(t('adminCourses.videoTypeError', { types: videoTypesLabel.value }))
+    input.value = ''
+    return
+  }
+  if (file.size > videoConfig.value.maxBytes) {
+    toast.error(t('adminCourses.videoSizeError', { size: videoMaxLabel.value }))
+    input.value = ''
+    return
+  }
+  videoUploading.value = true
+  videoProgress.value = 0
+  try {
+    form.videoUrl = await uploadVideo(file, (percent) => {
+      videoProgress.value = percent
+    })
+    toast.success(t('common.saved'))
+  } catch {
+    /* useUpload 已经弹过错误提示 */
+  } finally {
+    videoUploading.value = false
+    videoProgress.value = 0
+    input.value = ''
+  }
+}
+
 async function save() {
   if (!form.title.trim()) {
     formError.value = t('adminCourses.requireTitle')
@@ -246,6 +299,7 @@ async function save() {
   const payload: CourseInput = {
     title: form.title.trim(),
     cover: form.cover.trim() || null,
+    videoUrl: form.videoUrl.trim() || null,
     summary: form.summary.trim() || null,
     audience: form.audience.map((item) => item.trim()).filter(Boolean),
     difficulty: form.difficulty as CourseDifficulty,
@@ -307,12 +361,21 @@ async function openEnrollments(course: CourseListItem) {
   }
 }
 
+// 读不到配置就按「未启用」处理：表单仍可手填地址，只是不能再上传
+async function loadVideoConfig() {
+  try {
+    videoConfig.value = await fetchVideoConfig()
+  } catch {
+    videoConfig.value = { enabled: false, maxBytes: 0, accept: [] }
+  }
+}
+
 onMounted(async () => {
   if (auth.user?.role !== 'admin') {
     router.replace(localePath('/'))
     return
   }
-  await Promise.all([fetchFirstPage(), loadOptions()])
+  await Promise.all([fetchFirstPage(), loadOptions(), loadVideoConfig()])
 })
 </script>
 
@@ -404,7 +467,7 @@ onMounted(async () => {
               >
                 <img
                   v-if="course.cover"
-                  :src="course.cover"
+                  :src="assetUrl(course.cover)"
                   :alt="course.title"
                   class="absolute inset-0 w-full h-full object-cover"
                 />
@@ -501,13 +564,13 @@ onMounted(async () => {
           <BaseButton size="sm" variant="secondary" :loading="uploading">
             <label class="cursor-pointer">
               {{ t('common.upload') }}
-              <input type="file" accept="image/*" class="hidden" @change="uploadCover" />
+              <input type="file" :accept="IMAGE_ACCEPT" class="hidden" @change="uploadCover" />
             </label>
           </BaseButton>
         </div>
         <div v-if="form.cover" class="relative w-56">
           <img
-            :src="form.cover"
+            :src="assetUrl(form.cover)"
             :alt="t('adminCourses.cover')"
             class="aspect-video w-full rounded-lg border border-slate-200 object-cover"
           />
@@ -518,6 +581,66 @@ onMounted(async () => {
           >
             ×
           </button>
+        </div>
+
+        <div class="rounded-lg border border-slate-200 p-4 flex flex-col gap-3">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div class="min-w-0">
+              <p class="text-sm font-medium text-slate-700">
+                {{ t('adminCourses.video') }}
+              </p>
+              <p class="mt-0.5 text-xs text-slate-400">
+                {{ t('adminCourses.videoHint', { size: videoMaxLabel, types: videoTypesLabel }) }}
+              </p>
+            </div>
+            <BaseButton
+              v-if="videoConfig.enabled"
+              size="sm"
+              variant="secondary"
+              :loading="videoUploading"
+            >
+              <label class="cursor-pointer">
+                {{ form.videoUrl ? t('adminCourses.videoReplace') : t('adminCourses.videoUpload') }}
+                <input
+                  type="file"
+                  :accept="videoAccept"
+                  class="hidden"
+                  @change="uploadCourseVideo"
+                />
+              </label>
+            </BaseButton>
+            <BaseButton v-else size="sm" variant="secondary" disabled>
+              {{ t('adminCourses.videoUpload') }}
+            </BaseButton>
+          </div>
+
+          <p v-if="!videoConfig.enabled" class="text-xs text-slate-400">
+            {{ t('adminCourses.videoDisabled') }}
+          </p>
+
+          <div v-else-if="videoUploading" class="flex items-center gap-2">
+            <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-100">
+              <div
+                class="h-full rounded-full bg-brand-500"
+                :style="{ width: videoProgress + '%' }"
+              />
+            </div>
+            <span class="text-xs tabular-nums text-slate-500">{{ videoProgress }}%</span>
+          </div>
+
+          <div v-else-if="form.videoUrl" class="flex items-center gap-2">
+            <span class="min-w-0 flex-1 truncate text-xs text-slate-500">
+              {{ form.videoUrl }}
+            </span>
+            <BaseButton
+              variant="ghost"
+              size="sm"
+              class="text-red-500 hover:text-red-600"
+              @click="form.videoUrl = ''"
+            >
+              {{ t('adminCourses.videoRemove') }}
+            </BaseButton>
+          </div>
         </div>
 
         <BaseTextarea v-model="form.summary" :label="t('adminCourses.summary')" :rows="3" />

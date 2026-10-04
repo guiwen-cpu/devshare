@@ -32,6 +32,15 @@ export class CreateCourseDto {
   @MaxLength(500)
   cover?: string
 
+  @ApiPropertyOptional({
+    example: 'https://cdn.example.com/course.mp4',
+    description: '课程视频地址（浏览器直传 OSS 后回填），传 null 表示移除',
+  })
+  @IsOptional()
+  @IsString()
+  @MaxLength(1000)
+  videoUrl?: string | null
+
   @ApiPropertyOptional({ description: '课程简介' })
   @IsOptional()
   @IsString()

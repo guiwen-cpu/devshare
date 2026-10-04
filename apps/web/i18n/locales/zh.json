@@ -82,6 +82,7 @@
     "teacher": "授课老师",
     "audience": "适合人群",
     "summary": "课程简介",
+    "video": "课程视频",
     "difficulty": "难度",
     "enroll": "立即报名",
     "enrolled": "已报名",
@@ -94,6 +95,23 @@
     "freeNotice": "公益免费课程，报名即可学习",
     "notFound": "课程不存在或已下架",
     "empty": "暂无课程"
+  },
+  "player": {
+    "play": "播放",
+    "pause": "暂停",
+    "mute": "静音",
+    "unmute": "取消静音",
+    "volume": "音量",
+    "speed": "播放速度",
+    "progress": "播放进度",
+    "fullscreen": "全屏",
+    "exitFullscreen": "退出全屏",
+    "loading": "视频加载中",
+    "error": "视频加载失败，请稍后重试",
+    "retry": "重试",
+    "resumePrompt": "上次看到 {time}",
+    "resumeContinue": "继续播放 {time}",
+    "resumeRestart": "从头播放"
   },
   "user": {
     "articles": "文章",
@@ -169,6 +187,14 @@
     "editTitle": "编辑课程",
     "title": "课程标题",
     "cover": "课程封面",
+    "video": "课程视频",
+    "videoHint": "支持 {types}，单个文件不超过 {size}",
+    "videoUpload": "上传视频",
+    "videoReplace": "替换视频",
+    "videoRemove": "移除",
+    "videoDisabled": "需先在服务端配置 OSS 与 STS 角色才能上传视频",
+    "videoTypeError": "仅支持 {types} 格式的视频",
+    "videoSizeError": "视频不能超过 {size}",
     "summary": "课程简介",
     "audience": "适合人群",
     "audiencePlaceholder": "一行一条，例如：有编程基础的开发者",
@@ -209,7 +235,7 @@
     "title": "标题",
     "subtitle": "副标题",
     "image": "图片",
-    "imageHint": "建议 1600×600 的横图，首页按约 2:1 裁切显示",
+    "imageHint": "建议 1600×600 的横图，首页按约 2:1 裁切显示；支持 {types}",
     "link": "跳转地址",
     "linkPlaceholder": "站内路径 /courses/1，或外链 https://…",
     "sortOrder": "排序值",
@@ -250,7 +276,8 @@
     "retry": "重试",
     "back": "返回",
     "all": "全部",
-    "close": "关闭"
+    "close": "关闭",
+    "imageUploadHint": "支持 {types}，不超过 {size}"
   },
   "errors": {
     "UNAUTHORIZED": "请先登录",
@@ -262,8 +289,8 @@
     "INVALID_REFRESH_TOKEN": "登录已过期，请重新登录",
     "RATE_LIMITED": "操作太频繁，请稍后再试",
     "INTERNAL_ERROR": "服务器开小差了，请稍后再试",
-    "UPLOAD_TOO_LARGE": "图片太大",
-    "UNSUPPORTED_FILE_TYPE": "仅支持图片文件",
+    "UPLOAD_TOO_LARGE": "文件太大",
+    "UNSUPPORTED_FILE_TYPE": "不支持的文件类型",
     "SEARCH_UNAVAILABLE": "搜索暂不可用",
     "VALIDATION_FAILED": "提交内容有误，请检查",
     "CONFLICT": "标签名称或标识已存在",
@@ -271,7 +298,9 @@
     "COURSE_NOT_FOUND": "课程不存在",
     "TEACHER_NOT_FOUND": "讲师不存在",
     "TEACHER_IN_USE": "该讲师名下还有课程，无法删除",
-    "BANNER_NOT_FOUND": "Banner 不存在"
+    "BANNER_NOT_FOUND": "Banner 不存在",
+    "VIDEO_UPLOAD_DISABLED": "视频上传未启用：请检查服务端 OSS 配置与 STS 角色（OSS_STS_ROLE_ARN）",
+    "IMAGE_UPLOAD_DISABLED": "图片上传未启用：请检查服务端 OSS 配置与 STS 角色（OSS_STS_ROLE_ARN）"
   },
   "footer": {
     "desc": "DevShare（技享）—— 开发者技术分享社区",

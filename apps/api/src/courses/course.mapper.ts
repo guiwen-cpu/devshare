@@ -22,6 +22,7 @@ export function toCourseListItem(row: CourseWithRelations): CourseListItem {
     id: row.id,
     title: row.title,
     cover: row.cover,
+    videoUrl: row.videoUrl,
     summary: row.summary,
     teacher: row.teacher,
     tags: row.tags.map((t) => t.tag),

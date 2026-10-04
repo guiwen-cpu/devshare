@@ -6,6 +6,8 @@ import { gradientForSeed } from '~/utils/visual'
 defineProps<{ course: CourseListItem }>()
 const { locale } = useI18n()
 const localePath = useLocalePath()
+// 封面在 OSS 上，展示时统一改成 WebP（见 composables/useAssetUrl.ts）
+const { assetUrl } = useAssetUrl()
 </script>
 
 <template>
@@ -17,7 +19,7 @@ const localePath = useLocalePath()
     <div class="relative aspect-video overflow-hidden" :class="gradientForSeed(course.id)">
       <img
         v-if="course.cover"
-        :src="course.cover"
+        :src="assetUrl(course.cover)"
         :alt="course.title"
         loading="lazy"
         class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

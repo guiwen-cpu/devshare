@@ -1,6 +1,6 @@
 ﻿<script setup lang="ts">
 import { Pencil, Plus, Trash2 } from 'lucide-vue-next'
-import type { TeacherDTO, TeacherInput } from '@devshare/shared'
+import { IMAGE_ACCEPT, type TeacherDTO, type TeacherInput } from '@devshare/shared'
 import { useAuthStore } from '~/stores/auth'
 import { useUpload } from '~/composables/useUpload'
 
@@ -191,7 +191,7 @@ onMounted(async () => {
           <BaseButton size="sm" variant="secondary" :loading="uploading">
             <label class="cursor-pointer">
               {{ t('common.upload') }}
-              <input type="file" accept="image/*" class="hidden" @change="uploadAvatar" />
+              <input type="file" :accept="IMAGE_ACCEPT" class="hidden" @change="uploadAvatar" />
             </label>
           </BaseButton>
         </div>

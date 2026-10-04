@@ -1006,6 +1006,7 @@
       "title": "Vue 3 Composition API 从零到实战",
       "teacher": "陈子轩老师",
       "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "videoUrl": null,
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",

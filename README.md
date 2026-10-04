@@ -6,9 +6,10 @@
 
 - **内容**：文章发布 / 草稿 / 编辑 / 删除、Markdown 渲染、标签与封面、最新与热门信息流、点赞收藏评论、关注关系；
 - **发现**：文章与作者全文检索（Meilisearch，DB 兜底）、热门榜（时间衰减 + 互动加权）；
-- **课程**：首页「精品课程」板块（分类 tab + 加载更多）、课程详情、公益免费报名、报名记录入口（顶栏用户菜单「我的课程」与课程详情页侧栏，落到个人主页「课程」tab `/user/:id?tab=courses`）、后台课程与讲师管理（增删改查 / 上下架 / 报名名单）；
+- **课程**：首页「精品课程」板块（分类 tab + 加载更多）、课程详情（含课程视频：后台弹窗直传 OSS，详情页自定义播放器支持拖拽进度 / 倍速 / 全屏 / 续播）、公益免费报名、报名记录入口（顶栏用户菜单「我的课程」与课程详情页侧栏，落到个人主页「课程」tab `/user/:id?tab=courses`）、后台课程与讲师管理（增删改查 / 上下架 / 报名名单 / 课程视频上传）；
 - **运营**：首页顶部 Banner 轮播内容全部来自后台配置（标题 / 副标题 / 图片 / 跳转地址 / 排序 / 启用），未配置启用项时首页顶部整块不显示；
-- **账号**：注册登录、刷新令牌、个人资料与头像、中英双语。
+- **账号**：注册登录、刷新令牌、个人资料与头像、中英双语；
+- **上传**：图片与课程视频都由浏览器 SDK 直传阿里云 OSS（服务端只签发 STS 临时凭证，文件体不经过 Node 与 nginx），图片展示时按需经 OSS 图片处理输出 WebP；未配置 OSS 时所有上传入口置灰，没有本地磁盘兜底。
 
 ## 技术栈
 
@@ -53,6 +54,9 @@ Copy-Item apps/api/.env.example apps/api/.env        # API 本地环境变量（
 # 注意：如果修改了根 .env 里的 POSTGRES_PASSWORD，
 # 必须同步修改 apps/api/.env 里 DATABASE_URL 的密码，否则数据库认证失败
 
+# 注意：图片 / 视频上传走浏览器直传阿里云 OSS（没有本地磁盘兜底），
+# 本地要验收上传需在 .env 填好 OSS_* 与 OSS_STS_ROLE_ARN，详见 docs/LOCAL_DEV.md
+
 # 3. 启动依赖（PostgreSQL / Redis / Meilisearch）
 docker compose up -d postgres redis meilisearch
 docker compose ps   # 三个服务都应为 running
@@ -89,6 +93,8 @@ pnpm dev
 
 - [需求分析 PRD](docs/PRD.md)
 - [设计规范（品牌/组件）](docs/DESIGN.md)
+- [Nuxt 学习指南（前端）](docs/NUXT_GUIDE.md)
+- [后端学习指南（前端视角）](docs/BACKEND_GUIDE.md)
 - [本地开发启动指南](docs/LOCAL_DEV.md)
 - [开发问题汇总（踩坑记录）](docs/PITFALLS.md)
 - [部署手册](docs/DEPLOY.md)

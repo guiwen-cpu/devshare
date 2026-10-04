@@ -8,6 +8,8 @@ const props = defineProps<{ banners: BannerDTO[] }>()
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+// Banner 图在 OSS 上，展示时统一改成 WebP（见 composables/useAssetUrl.ts）
+const { assetUrl } = useAssetUrl()
 
 // 自动切换间隔，同时喂给 JS 定时器和进度条动画，两者不会走散
 const PLAY_INTERVAL = 5000
@@ -95,7 +97,7 @@ onBeforeUnmount(stop)
       >
         <img
           v-if="!failedImages.has(item.banner.id)"
-          :src="item.banner.image"
+          :src="assetUrl(item.banner.image)"
           alt=""
           loading="lazy"
           class="absolute inset-0 h-full w-full object-cover"

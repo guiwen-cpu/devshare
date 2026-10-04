@@ -27,6 +27,7 @@
  *     "status": "published",             // draft | published，published 会自动写发布时间
  *     "sortOrder": 10,
  *     "cover": null,                     // 建议填 OSS/CDN 绝对地址，本地路径生产读不到
+ *     "videoUrl": null,                  // 可选：课程视频地址（mp4/webm，后台弹窗用浏览器 SDK 直传 OSS 后回填）
  *     "tagSlugs": ["frontend"]           // 复用标签表，未知 slug 会被忽略并告警
  *   }]
  * }
@@ -57,6 +58,7 @@ interface CourseSeed {
   title: string
   teacher: string
   cover?: string | null
+  videoUrl?: string | null
   summary?: string | null
   audience?: string[]
   difficulty?: Difficulty
@@ -257,6 +259,7 @@ async function main() {
     const payload = {
       title: course.title.trim(),
       cover: course.cover ?? null,
+      videoUrl: course.videoUrl ?? null,
       summary: course.summary ?? null,
       audience: course.audience ?? [],
       difficulty: course.difficulty ?? 'beginner',

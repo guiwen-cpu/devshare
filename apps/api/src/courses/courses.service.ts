@@ -180,6 +180,7 @@ export class CoursesService {
       data: {
         title: dto.title.trim(),
         cover: dto.cover?.trim() || null,
+        videoUrl: dto.videoUrl?.trim() || null,
         summary: dto.summary?.trim() || null,
         audience: this.cleanAudience(dto.audience),
         difficulty: dto.difficulty,
@@ -210,6 +211,7 @@ export class CoursesService {
     const data: Prisma.CourseUncheckedUpdateInput = {}
     if (dto.title !== undefined) data.title = dto.title.trim()
     if (dto.cover !== undefined) data.cover = dto.cover?.trim() || null
+    if (dto.videoUrl !== undefined) data.videoUrl = dto.videoUrl?.trim() || null
     if (dto.summary !== undefined) data.summary = dto.summary?.trim() || null
     if (dto.audience !== undefined) data.audience = this.cleanAudience(dto.audience)
     if (dto.difficulty !== undefined) data.difficulty = dto.difficulty

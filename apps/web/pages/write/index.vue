@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ArticleDetail, TagDTO } from '@devshare/shared'
+import { IMAGE_ACCEPT, type ArticleDetail, type TagDTO } from '@devshare/shared'
 import type { UploadImgEvent } from 'md-editor-v3'
 import { useUpload } from '~/composables/useUpload'
 import { useImageCropper } from '~/composables/useImageCropper'
@@ -16,6 +16,8 @@ const router = useRouter()
 const localePath = useLocalePath()
 const toast = useToast()
 const { uploadImage } = useUpload()
+// 封面在 OSS 上，展示时统一改成 WebP（见 composables/useAssetUrl.ts）
+const { assetUrl } = useAssetUrl()
 const {
   open: cropperOpen,
   src: cropperSrc,
@@ -101,7 +103,7 @@ async function submit(publish: boolean) {
           <BaseButton size="sm" variant="secondary" :loading="uploading">
             <label class="cursor-pointer">
               {{ t('common.upload') }}
-              <input type="file" accept="image/*" class="hidden" @change="uploadCover" />
+              <input type="file" :accept="IMAGE_ACCEPT" class="hidden" @change="uploadCover" />
             </label>
           </BaseButton>
         </div>
@@ -109,7 +111,7 @@ async function submit(publish: boolean) {
 
       <div v-if="form.cover" class="relative mt-2">
         <img
-          :src="form.cover"
+          :src="assetUrl(form.cover)"
           :alt="t('write.cover')"
           class="h-40 w-full rounded-lg border border-slate-200 object-cover"
         />

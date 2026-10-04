@@ -10,6 +10,8 @@ const { locale } = useI18n()
 const now = useNow()
 const localePath = useLocalePath()
 const router = useRouter()
+// 封面与头像都在 OSS 上，展示时统一改成 WebP（见 composables/useAssetUrl.ts）
+const { assetUrl } = useAssetUrl()
 function handleToArticlaDetail() {
   router.push(localePath(`/article/${props.article.id}`))
 }
@@ -93,7 +95,7 @@ const visibleTags = computed(() => props.article.tags.slice(0, 2))
     >
       <img
         v-if="props.article.cover"
-        :src="props.article.cover"
+        :src="assetUrl(props.article.cover)"
         :alt="props.article.title"
         loading="lazy"
         class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

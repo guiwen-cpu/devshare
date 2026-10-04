@@ -26,6 +26,8 @@ const toast = useToast()
 const localePath = useLocalePath()
 const now = useNow()
 const hydrated = useHydrated()
+// 封面与正文插图都在 OSS 上，展示时统一改成 WebP（见 composables/useAssetUrl.ts）
+const { assetUrl, assetHtml } = useAssetUrl()
 
 const articleId = computed(() => Number(route.params.id))
 
@@ -248,7 +250,7 @@ useHead(() => ({
             @click="coverPreviewOpen = true"
           >
             <img
-              :src="article.cover"
+              :src="assetUrl(article.cover)"
               :alt="article.title"
               class="w-full transition duration-300 group-hover:scale-105"
             />
@@ -263,7 +265,7 @@ useHead(() => ({
 
       <!-- contentHtml 已由后端 markdown 渲染后经 xss 白名单清洗，见 apps/api/src/articles/markdown.util.ts -->
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div class="prose-content" v-html="article.contentHtml" />
+      <div class="prose-content" v-html="assetHtml(article.contentHtml)" />
 
       <div class="flex items-center justify-center gap-3 mt-8 pt-6 border-t border-slate-100">
         <BaseButton :variant="article.likedByMe ? 'primary' : 'secondary'" @click="toggleLike">
@@ -349,7 +351,7 @@ useHead(() => ({
           @click="closeCoverPreview"
         >
           <img
-            :src="article.cover"
+            :src="assetUrl(article.cover)"
             :alt="article.title"
             class="max-h-full max-w-full cursor-default rounded-lg object-contain shadow-2xl"
             @click.stop

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Pencil, Plus, Trash2 } from 'lucide-vue-next'
-import type { BannerDTO, BannerInput } from '@devshare/shared'
+import { IMAGE_ACCEPT, IMAGE_MIME_TYPES, type BannerDTO, type BannerInput } from '@devshare/shared'
 import { useAuthStore } from '~/stores/auth'
 import { useUpload } from '~/composables/useUpload'
 
@@ -11,6 +11,12 @@ const api = useApi()
 const auth = useAuthStore()
 const toast = useToast()
 const { uploadImage } = useUpload()
+// 图片在 OSS 上，展示时统一改成 WebP（见 composables/useAssetUrl.ts）
+const { assetUrl } = useAssetUrl()
+/// 允许的图片格式，用于上传提示（不接受 SVG，原因见 shared/src/index.ts）
+const imageTypesLabel = computed(() =>
+  IMAGE_MIME_TYPES.map((mime) => mime.replace('image/', '').toUpperCase()).join(' / '),
+)
 
 const banners = ref<BannerDTO[]>([])
 const loading = ref(false)
@@ -203,7 +209,7 @@ onMounted(async () => {
             <td class="px-4 py-3">
               <div class="relative w-28 h-12 rounded-lg overflow-hidden bg-slate-100">
                 <img
-                  :src="banner.image"
+                  :src="assetUrl(banner.image)"
                   :alt="banner.title"
                   class="absolute inset-0 w-full h-full object-cover"
                 />
@@ -271,14 +277,21 @@ onMounted(async () => {
           <BaseButton size="sm" variant="secondary" :loading="uploading">
             <label class="cursor-pointer">
               {{ t('common.upload') }}
-              <input type="file" accept="image/*" class="hidden" @change="uploadBannerImage" />
+              <input
+                type="file"
+                :accept="IMAGE_ACCEPT"
+                class="hidden"
+                @change="uploadBannerImage"
+              />
             </label>
           </BaseButton>
         </div>
-        <p class="-mt-2 text-xs text-slate-400">{{ t('adminBanners.imageHint') }}</p>
+        <p class="-mt-2 text-xs text-slate-400">
+          {{ t('adminBanners.imageHint', { types: imageTypesLabel }) }}
+        </p>
         <div v-if="form.image" class="relative w-56">
           <img
-            :src="form.image"
+            :src="assetUrl(form.image)"
             :alt="t('adminBanners.image')"
             class="aspect-video w-full rounded-lg border border-slate-200 object-cover"
           />

@@ -8,6 +8,7 @@ function courseRow(overrides: Record<string, unknown> = {}) {
     id: 1,
     title: 'AI 时代再学 Java（漫画版）',
     cover: null,
+    videoUrl: null,
     summary: '前端转全栈必修',
     audience: ['前端转全栈', '零基础入门'],
     difficulty: 'beginner',
@@ -83,6 +84,7 @@ describe('CoursesService', () => {
         id: 1,
         title: 'AI 时代再学 Java（漫画版）',
         cover: null,
+        videoUrl: null,
         summary: '前端转全栈必修',
         teacher: { id: 1, name: '李老师', avatar: null, bio: '十年后端经验' },
         tags: [{ id: 2, name: 'AI', slug: 'ai' }],
@@ -369,6 +371,26 @@ describe('CoursesService', () => {
         }),
       )
     })
+
+    it('persists a trimmed videoUrl and stores null for a blank one', async () => {
+      prisma.teacher.findUnique.mockResolvedValueOnce({ id: 1 })
+      prisma.tag.findMany.mockResolvedValueOnce([])
+      prisma.course.create.mockResolvedValueOnce(courseRow())
+
+      await service.create(admin, { ...baseDto, videoUrl: '  https://cdn.devshare.dev/v.mp4  ' })
+
+      expect(prisma.course.create.mock.calls[0][0].data.videoUrl).toBe(
+        'https://cdn.devshare.dev/v.mp4',
+      )
+
+      prisma.teacher.findUnique.mockResolvedValueOnce({ id: 1 })
+      prisma.tag.findMany.mockResolvedValueOnce([])
+      prisma.course.create.mockResolvedValueOnce(courseRow())
+
+      await service.create(admin, { ...baseDto, videoUrl: '   ' })
+
+      expect(prisma.course.create.mock.calls[1][0].data.videoUrl).toBeNull()
+    })
   })
 
   describe('update', () => {
@@ -409,6 +431,38 @@ describe('CoursesService', () => {
       const data = prisma.course.update.mock.calls[0][0].data
       expect(data.tags).toBeUndefined()
       expect(data.title).toBe('新标题')
+    })
+
+    it('sets a trimmed videoUrl when provided', async () => {
+      prisma.course.findUnique.mockResolvedValueOnce({ id: 1, status: 'published' })
+      prisma.course.update.mockResolvedValueOnce(courseRow())
+      prisma.enrollment.count.mockResolvedValueOnce(0)
+
+      await service.update(admin, 1, { videoUrl: '  https://cdn.devshare.dev/v.mp4  ' })
+
+      expect(prisma.course.update.mock.calls[0][0].data.videoUrl).toBe(
+        'https://cdn.devshare.dev/v.mp4',
+      )
+    })
+
+    it('clears videoUrl when null is passed', async () => {
+      prisma.course.findUnique.mockResolvedValueOnce({ id: 1, status: 'published' })
+      prisma.course.update.mockResolvedValueOnce(courseRow({ videoUrl: null }))
+      prisma.enrollment.count.mockResolvedValueOnce(0)
+
+      await service.update(admin, 1, { videoUrl: null })
+
+      expect(prisma.course.update.mock.calls[0][0].data.videoUrl).toBeNull()
+    })
+
+    it('leaves videoUrl untouched when the field is omitted', async () => {
+      prisma.course.findUnique.mockResolvedValueOnce({ id: 1, status: 'published' })
+      prisma.course.update.mockResolvedValueOnce(courseRow())
+      prisma.enrollment.count.mockResolvedValueOnce(0)
+
+      await service.update(admin, 1, { title: '只改标题' })
+
+      expect(prisma.course.update.mock.calls[0][0].data.videoUrl).toBeUndefined()
     })
   })
 

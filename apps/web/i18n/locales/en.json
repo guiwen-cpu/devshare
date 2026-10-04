@@ -82,6 +82,7 @@
     "teacher": "Instructor",
     "audience": "Who it is for",
     "summary": "About this course",
+    "video": "Course video",
     "difficulty": "Level",
     "enroll": "Enroll now",
     "enrolled": "Enrolled",
@@ -94,6 +95,23 @@
     "freeNotice": "Free community course — just enroll to start learning",
     "notFound": "This course is unavailable",
     "empty": "No courses yet"
+  },
+  "player": {
+    "play": "Play",
+    "pause": "Pause",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "volume": "Volume",
+    "speed": "Playback speed",
+    "progress": "Playback progress",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit fullscreen",
+    "loading": "Loading video",
+    "error": "Video failed to load. Try again.",
+    "retry": "Retry",
+    "resumePrompt": "You stopped at {time}",
+    "resumeContinue": "Resume at {time}",
+    "resumeRestart": "Play from start"
   },
   "user": {
     "articles": "Articles",
@@ -169,6 +187,14 @@
     "editTitle": "Edit course",
     "title": "Course title",
     "cover": "Cover",
+    "video": "Course video",
+    "videoHint": "Supports {types}, up to {size}",
+    "videoUpload": "Upload video",
+    "videoReplace": "Replace video",
+    "videoRemove": "Remove",
+    "videoDisabled": "Configure OSS and an STS role on the server to upload videos",
+    "videoTypeError": "Only {types} videos are supported",
+    "videoSizeError": "Video must be under {size}",
     "summary": "Summary",
     "audience": "Who it is for",
     "audiencePlaceholder": "One per line, e.g. Developers with coding basics",
@@ -209,7 +235,7 @@
     "title": "Title",
     "subtitle": "Subtitle",
     "image": "Image",
-    "imageHint": "A 1600×600 landscape image works best — the homepage crops it to about 2:1",
+    "imageHint": "A 1600×600 landscape image works best — the homepage crops it to about 2:1; supports {types}",
     "link": "Link",
     "linkPlaceholder": "In-site path /courses/1, or an https:// URL",
     "sortOrder": "Sort order",
@@ -250,7 +276,8 @@
     "retry": "Retry",
     "back": "Back",
     "all": "All",
-    "close": "Close"
+    "close": "Close",
+    "imageUploadHint": "Supports {types}, up to {size}"
   },
   "errors": {
     "UNAUTHORIZED": "Please sign in first",
@@ -262,8 +289,8 @@
     "INVALID_REFRESH_TOKEN": "Session expired, please sign in again",
     "RATE_LIMITED": "Too many requests, try again later",
     "INTERNAL_ERROR": "Server error, try again later",
-    "UPLOAD_TOO_LARGE": "Image is too large",
-    "UNSUPPORTED_FILE_TYPE": "Images only",
+    "UPLOAD_TOO_LARGE": "File is too large",
+    "UNSUPPORTED_FILE_TYPE": "Unsupported file type",
     "SEARCH_UNAVAILABLE": "Search unavailable",
     "VALIDATION_FAILED": "Please check your input",
     "CONFLICT": "Tag name or slug already exists",
@@ -271,7 +298,9 @@
     "COURSE_NOT_FOUND": "Course not found",
     "TEACHER_NOT_FOUND": "Instructor not found",
     "TEACHER_IN_USE": "This instructor still has courses and cannot be deleted",
-    "BANNER_NOT_FOUND": "Banner not found"
+    "BANNER_NOT_FOUND": "Banner not found",
+    "VIDEO_UPLOAD_DISABLED": "Video upload is unavailable: check the server's OSS config and STS role (OSS_STS_ROLE_ARN)",
+    "IMAGE_UPLOAD_DISABLED": "Image upload is unavailable: check the server's OSS config and STS role (OSS_STS_ROLE_ARN)"
   },
   "footer": {
     "desc": "DevShare — developer tech sharing community",

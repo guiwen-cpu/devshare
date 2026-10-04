@@ -126,6 +126,25 @@ pnpm dev
 
 首页 Banner 同样在后台维护：`http://localhost:3000/admin/banners`（入口在右上角头像下拉的「Banner 管理」，仅管理员可见），可配置标题 / 副标题 / 图片 / 跳转地址 / 排序 / 启用；**默认没有种子数据，所以首页顶部整块不显示**，需要先在后台建一条启用中的 Banner 才会出现（图片建议 1600×600）。
 
+上传（头像 / 封面 / Banner 图与课程视频）全部走**浏览器 SDK 直传 OSS**（ali-oss + STS 临时凭证）：本机 `.env` 没配 `OSS_*`、或没填 `OSS_STS_ROLE_ARN` 时，所有上传入口都会置灰（没有本地磁盘兜底）。要验收上传必须连一套真实 OSS，下面四条缺一不可：
+
+1. 填好 `OSS_REGION` / `OSS_BUCKET` / `OSS_ACCESS_KEY_ID` / `OSS_ACCESS_KEY_SECRET` / `OSS_PUBLIC_URL`；
+2. 建一个 RAM 角色并把 ARN 填进 `OSS_STS_ROLE_ARN`，再给 RAM 子账号 `sts:AssumeRole` 权限（见 §7）；
+3. 对象保持**公共读**（播放依赖它）；
+4. bucket 的跨域规则放行 `PUT, GET, POST, DELETE, HEAD` 与请求头 `*`，来源包含 `http://localhost:3000`，并**暴露 `ETag`**（分片上传要读它）。
+
+第 4 条最容易踩：bucket 上往往已经有一条旧的跨域规则，但它只放行了 `GET, HEAD`、也没暴露 `ETag`——现在图片和视频都由浏览器直传，只放行 GET/HEAD 会让上传在预检阶段就被拒（报错特征与改法见 §7）。配好后这样验证：
+
+```powershell
+# 期望 200，且响应头带 Access-Control-Allow-Methods 与 Access-Control-Expose-Headers: ETag
+curl -i -X OPTIONS 'https://<bucket>.<region>.aliyuncs.com/' `
+  -H 'Origin: http://localhost:3000' `
+  -H 'Access-Control-Request-Method: PUT' `
+  -H 'Access-Control-Request-Headers: content-type'
+```
+
+图片与视频都走浏览器直传：单图上限由 `MAX_IMAGE_SIZE_MB` 控制（默认 20MB，原图上传、不做服务端转码，展示时按需经 OSS 图片处理输出 WebP；bucket 没开通图片处理时在前端 `apps/web/.env` 设 `NUXT_PUBLIC_OSS_IMAGE_WEBP=off` 回退原图，该文件不存在就从 `apps/web/.env.example` 复制一份——Nuxt 只读它自己目录下的 `.env`，仓库根 `.env` 对它不生效）；单视频上限由 `MAX_VIDEO_SIZE_MB` 控制（默认 4096，即 4GB）；因为文件体不经过后端，这两个上限都不受 nginx `client_max_body_size` 与 multer 影响。STS 临时凭证的有效期由 `OSS_STS_DURATION_SECONDS` 控制（默认 3600 秒，下限 900，上限受角色 `MaxSessionDuration` 约束）；SDK 会在凭证过期前自动续签（续签复用同一个对象名），所以不需要靠调大有效期来支持超长上传。
+
 ## 4. 日常启动（第二次及以后）
 
 数据库容器和数据已经就绪，不需要再迁移/播种，两步即可：
@@ -163,17 +182,18 @@ pnpm dev
 
 ## 7. 常见问题排查
 
-| 现象                                                 | 原因                                                                                                                                                                                    | 解决办法                                                                                                         |
-| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `docker: command not found`                          | Docker CLI 不在 PATH 或引擎未启动                                                                                                                                                       | 打开 Docker Desktop 等引擎变绿，重开终端                                                                         |
-| `P1000: Authentication failed`                       | 两个 `.env` 密码不一致                                                                                                                                                                  | 核对根 `.env` 与 `apps/api/.env` 的密码并改为一致                                                                |
-| `ECONNREFUSED` 连接失败                              | postgres/redis/meilisearch 容器没起来                                                                                                                                                   | `docker compose ps` 确认三个服务 running                                                                         |
-| `Failed to resolve import "@devshare/shared"`        | 残留的 Nuxt 进程占用 `.nuxt` 锁文件                                                                                                                                                     | 结束 3000 端口进程，删除 `apps/web/.nuxt/nuxt.lock`（若有），重新 `pnpm dev`                                     |
-| 端口被占用（3000/3001）                              | 上次的服务没关干净                                                                                                                                                                      | `Get-NetTCPConnection -LocalPort 3000,3001` 查看占用进程并结束                                                   |
-| 首页 500 / 接口异常                                  | 数据库没迁移或种子缺失                                                                                                                                                                  | 重新执行 `prisma:migrate` 和 `prisma:seed`                                                                       |
-| 图片/封面上传报 `Failed to fetch`（`<no response>`） | Windows 上 Nuxt 开发服务器默认只监听 IPv6 `::1`，浏览器请求 `127.0.0.1:3000` 连不上                                                                                                     | 在 `apps/web/nuxt.config.ts` 设置 `devServer.host: "::"`（并保留 `nitro.devProxy["/uploads"]`），重启 `pnpm dev` |
-| 控制台出现 Suspense 实验特性提示（非报错）           | Vue 创建 <Suspense> 边界时的 console.info 提示，边界来自 Nuxt 自身                                                                                                                      | 无需处理；项目已在 `apps/web/plugins/suspense-notice.client.ts` 里做开发期过滤（`utils/dev-console.ts`）         |
-| 页面报 `Failed to resolve import "#app-manifest"`    | 长时间运行的 dev server 内存里的别名指向已过期的 `.nuxt`，磁盘上的 `.nuxt` 被 `nuxt prepare` / `typecheck` / `pnpm install`（postinstall 会跑 `nuxt prepare`）或改 `nuxt.config` 重建过 | 重启 `pnpm dev` 即可，不用删 `.nuxt`                                                                             |
+| 现象                                                                                | 原因                                                                                                                                                                                    | 解决办法                                                                                                                                                          |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `docker: command not found`                                                         | Docker CLI 不在 PATH 或引擎未启动                                                                                                                                                       | 打开 Docker Desktop 等引擎变绿，重开终端                                                                                                                          |
+| `P1000: Authentication failed`                                                      | 两个 `.env` 密码不一致                                                                                                                                                                  | 核对根 `.env` 与 `apps/api/.env` 的密码并改为一致                                                                                                                 |
+| `ECONNREFUSED` 连接失败                                                             | postgres/redis/meilisearch 容器没起来                                                                                                                                                   | `docker compose ps` 确认三个服务 running                                                                                                                          |
+| `Failed to resolve import "@devshare/shared"`                                       | 残留的 Nuxt 进程占用 `.nuxt` 锁文件                                                                                                                                                     | 结束 3000 端口进程，删除 `apps/web/.nuxt/nuxt.lock`（若有），重新 `pnpm dev`                                                                                      |
+| 端口被占用（3000/3001）                                                             | 上次的服务没关干净                                                                                                                                                                      | `Get-NetTCPConnection -LocalPort 3000,3001` 查看占用进程并结束                                                                                                    |
+| 首页 500 / 接口异常                                                                 | 数据库没迁移或种子缺失                                                                                                                                                                  | 重新执行 `prisma:migrate` 和 `prisma:seed`                                                                                                                        |
+| 接口请求报 `Failed to fetch`（`<no response>`）                                     | Windows 上 Nuxt 开发服务器默认只监听 IPv6 `::1`，浏览器请求 `127.0.0.1:3000` 连不上                                                                                                     | 在 `apps/web/nuxt.config.ts` 设置 `devServer.host: "::"`，重启 `pnpm dev`                                                                                         |
+| 控制台出现 Suspense 实验特性提示（非报错）                                          | Vue 创建 <Suspense> 边界时的 console.info 提示，边界来自 Nuxt 自身                                                                                                                      | 无需处理；项目已在 `apps/web/plugins/suspense-notice.client.ts` 里做开发期过滤（`utils/dev-console.ts`）                                                          |
+| 页面报 `Failed to resolve import "#app-manifest"`                                   | 长时间运行的 dev server 内存里的别名指向已过期的 `.nuxt`，磁盘上的 `.nuxt` 被 `nuxt prepare` / `typecheck` / `pnpm install`（postinstall 会跑 `nuxt prepare`）或改 `nuxt.config` 重建过 | 重启 `pnpm dev` 即可，不用删 `.nuxt`                                                                                                                              |
+| 上传图片 / 视频报 CORS 或 403（AccessForbidden，或提示 expose-headers 里要加 etag） | bucket 的跨域规则没放行站点来源，或只放行 GET/HEAD、没暴露 ETag                                                                                                                         | OSS 控制台 → 跨域设置 → 编辑规则：来源加上 `http://localhost:3000`，Methods 勾 PUT/GET/POST/DELETE/HEAD，Headers 填 `*`，暴露 Headers 加 `ETag`，缓存时间改为 600 |
 
 ## 8. 端口占用检查（Windows）
 

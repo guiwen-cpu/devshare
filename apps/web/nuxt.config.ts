@@ -68,6 +68,9 @@ export default defineNuxtConfig({
       // 浏览器侧走同源代理（nginx / nitro devProxy）
       apiBase: '/api/v1',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+      // 读取时是否让 OSS 图片处理（IMG）把图片转成 WebP 再返回。
+      // 默认开启；写成 off / false / 0 可一键回退原图（见 composables/useAssetUrl.ts）
+      ossImageWebp: process.env.NUXT_PUBLIC_OSS_IMAGE_WEBP || 'on',
     },
   },
 
@@ -109,12 +112,6 @@ export default defineNuxtConfig({
         target: process.env.API_PROXY_TARGET || 'http://127.0.0.1:3001/api',
         changeOrigin: true,
       },
-      // '/uploads': {
-      //   target:
-      //     (process.env.API_PROXY_TARGET || 'http://127.0.0.1:3001/api').replace(/\/api$/, '') +
-      //     '/uploads',
-      //   changeOrigin: true,
-      // },
     },
   },
 
