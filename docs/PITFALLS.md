@@ -221,7 +221,7 @@ docker compose -p devshare-prod --env-file .env.prod \
 
 最后一条打印出新值就说明注入成功了，剩下「页面还是旧的」是缓存：`routeRules` 的 SWR 60s + CDN 60s，等约 2 分钟并刷 CDN。改的是构建期值（`i18n.baseUrl` 之类）时，要先改 GitHub 变量 `NUXT_PUBLIC_SITE_URL_PROD` 再重新触发 main 部署，别让两边长期不一致。
 
-顺带一提，上传文件、图片的绝对地址走的是 api 侧另一个变量 `PUBLIC_API_URL`（`apps/api/src/uploads/uploads.service.ts:43`），改完同样要重建 api 容器。
+顺带一提，上传图片 / 视频的绝对地址由 api 侧的 `OSS_PUBLIC_URL` 决定（`apps/api/src/uploads/uploads.service.ts`）：库里存的就是它拼对象名得到的地址，换 CDN 域名时改它并重建 api 容器即可；图片展示时前端还会追 `x-oss-process`，让 OSS 图片处理按需输出 WebP。
 
 **相关文件**：`apps/web/Dockerfile`、`apps/web/nuxt.config.ts`、`docker-compose.prod.yml`、`.github/workflows/ci.yml`、`docs/DEPLOY.md`
 **记录时间**：2026-09-20

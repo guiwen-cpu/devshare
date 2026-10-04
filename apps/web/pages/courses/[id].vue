@@ -12,6 +12,8 @@ const api = useApi()
 const auth = useAuthStore()
 const toast = useToast()
 const localePath = useLocalePath()
+// 封面在 OSS 上，展示时统一改成 WebP（见 composables/useAssetUrl.ts）
+const { assetUrl } = useAssetUrl()
 
 const courseId = computed(() => Number(route.params.id))
 
@@ -77,11 +79,18 @@ useHead(() => ({ title: `${course.value?.title ?? ''} - DevShare` }))
     <div v-else class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-6 items-start">
       <article class="min-w-0 flex flex-col gap-5">
         <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-          <!-- 没有封面图时用按课程 id 稳定的渐变底兜底 -->
+          <!-- 有课程视频就用播放器（角标浮层保留）；没有视频退回封面图，缺图再用渐变底兜底 -->
           <div class="relative aspect-video" :class="gradientForSeed(course.id)">
+            <CourseVideoPlayer
+              v-if="course.videoUrl"
+              :src="course.videoUrl"
+              :poster="course.cover"
+              :course-id="course.id"
+              :title="course.title"
+            />
             <img
-              v-if="course.cover"
-              :src="course.cover"
+              v-else-if="course.cover"
+              :src="assetUrl(course.cover)"
               :alt="course.title"
               class="absolute inset-0 w-full h-full object-cover"
             />
@@ -161,6 +170,14 @@ useHead(() => ({ title: `${course.value?.title ?? ''} - DevShare` }))
             <BaseButton variant="ghost" block :loading="submitting" @click="cancelEnroll">
               {{ t('course.cancelEnroll') }}
             </BaseButton>
+            <!-- 报名成功后的去处：个人主页「课程」tab（?tab=courses 深链） -->
+            <NuxtLink
+              v-if="auth.user"
+              :to="{ path: localePath(`/user/${auth.user.id}`), query: { tab: 'courses' } }"
+              class="text-center text-sm text-brand-600 hover:text-brand-700 hover:underline"
+            >
+              {{ t('course.myEnrollments') }}
+            </NuxtLink>
           </template>
           <BaseButton v-else block :loading="submitting" @click="enroll">
             {{ t('course.enroll') }}

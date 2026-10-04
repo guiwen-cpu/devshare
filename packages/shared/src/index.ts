@@ -145,6 +145,7 @@ export interface CourseListItem {
   id: number
   title: string
   cover: string | null
+  videoUrl: string | null
   summary: string | null
   teacher: CourseTeacherInfo
   tags: TagDTO[]
@@ -229,6 +230,7 @@ export interface CommentInput {
 export interface CourseInput {
   title: string
   cover?: string | null
+  videoUrl?: string | null
   summary?: string | null
   audience?: string[]
   difficulty: CourseDifficulty
@@ -256,6 +258,32 @@ export interface BannerDTO {
   createdAt: string
   updatedAt: string
 }
+
+/// 直传上传配置：前端据此决定控件是否可用，以及前置校验的体积/格式上限
+export interface UploadConfig {
+  enabled: boolean
+  maxBytes: number
+  accept: string[]
+}
+
+/// 图片与视频共用同一形状，保留两个具名别名让调用处语义清晰
+export type VideoUploadConfig = UploadConfig
+export type ImageUploadConfig = UploadConfig
+
+/// 浏览器用 ali-oss SDK 直传 OSS 所需的 STS 临时凭证（长期 AccessKey 不下发，
+/// 会话策略已把可写的对象名钉死；expiration 是临时凭证自己的过期时间）
+export interface OssUploadSts {
+  region: string
+  bucket: string
+  key: string
+  accessKeyId: string
+  accessKeySecret: string
+  securityToken: string
+  expiration: string
+  publicUrl: string
+}
+
+export type VideoUploadSts = OssUploadSts
 
 export interface BannerInput {
   title: string
@@ -298,6 +326,8 @@ export const ErrorCodes = {
   TEACHER_NOT_FOUND: 'TEACHER_NOT_FOUND',
   TEACHER_IN_USE: 'TEACHER_IN_USE',
   BANNER_NOT_FOUND: 'BANNER_NOT_FOUND',
+  VIDEO_UPLOAD_DISABLED: 'VIDEO_UPLOAD_DISABLED',
+  IMAGE_UPLOAD_DISABLED: 'IMAGE_UPLOAD_DISABLED',
 } as const
 
 export type ErrorCode = (typeof ErrorCodes)[keyof typeof ErrorCodes]
@@ -318,3 +348,34 @@ export const DEFAULT_TAGS = [
 export function isLocale(value: unknown): value is Locale {
   return value === 'zh' || value === 'en'
 }
+
+/// 课程视频：只收浏览器能直接播放的封装格式，其它格式（如 .mov）需要转码，不在本期范围
+export const VIDEO_MIME_TYPES = ['video/mp4', 'video/webm']
+export const VIDEO_MIME_EXT: Record<string, string> = {
+  'video/mp4': '.mp4',
+  'video/webm': '.webm',
+}
+
+/// 上传图片：只收浏览器能直接渲染的位图格式。**不含 SVG** —— 它是可执行脚本的
+/// XML 文档，上传后能从 OSS 域名执行脚本，属于存储型 XSS 的常见入口。
+export const IMAGE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif']
+
+/// 扩展名统一由服务端按 MIME 推导（不信客户端文件名，避免路径穿越）
+export const IMAGE_MIME_EXT: Record<string, string> = {
+  'image/jpeg': '.jpg',
+  'image/png': '.png',
+  'image/webp': '.webp',
+  'image/gif': '.gif',
+  'image/avif': '.avif',
+}
+
+/// 直接喂给 <input type=file accept=...> 的取值
+export const IMAGE_ACCEPT = IMAGE_MIME_TYPES.join(',')
+
+/// 读取时的 WebP 转换：原图直传上 OSS，展示时由 OSS 图片处理（IMG）按需输出 WebP，
+/// 上传链路与库里存的 URL 都不带这个参数（IMG 未开通时靠前端开关整体关掉）
+export const OSS_IMAGE_WEBP_PROCESS = 'image/format,webp'
+
+/// 上传到 OSS 的对象统一带这个缓存头：对象名是 UUID、内容永不改变，可以放心长期缓存。
+/// 图片与视频（浏览器 SDK）都靠请求头携带，前后端共用这个常量避免漂移。
+export const UPLOAD_CACHE_CONTROL = 'public,max-age=31536000,immutable'

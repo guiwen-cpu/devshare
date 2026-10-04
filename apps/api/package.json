@@ -17,6 +17,7 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:deploy": "prisma migrate deploy",
     "prisma:seed": "ts-node prisma/seed.ts",
+    "prisma:import": "ts-node prisma/import-courses.ts",
     "prisma:studio": "prisma studio"
   },
   "dependencies": {
@@ -47,7 +48,6 @@
     "prisma": "^6.8.2",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
-    "sharp": "^0.35.4",
     "xss": "^1.0.15"
   },
   "devDependencies": {
@@ -61,7 +61,6 @@
     "@types/express": "^5.0.3",
     "@types/jest": "^29.5.14",
     "@types/markdown-it": "^14.1.2",
-    "@types/multer": "^1.4.13",
     "@types/node": "^22.15.3",
     "@types/node-cron": "^3.0.11",
     "@types/passport-jwt": "^4.0.1",

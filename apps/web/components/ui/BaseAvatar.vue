@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { User } from 'lucide-vue-next'
 
+// 头像存在 OSS 上，展示时统一改成 WebP（见 composables/useAssetUrl.ts）
+const { assetUrl } = useAssetUrl()
+
 const props = withDefaults(
   defineProps<{ src?: string | null; name?: string; size?: 'xs' | 'sm' | 'md' | 'lg' }>(),
   {
@@ -26,7 +29,7 @@ const initial = computed(() => (props.name ?? '').trim().charAt(0).toUpperCase()
   >
     <img
       v-if="src"
-      :src="src"
+      :src="assetUrl(src)"
       :alt="name ?? 'avatar'"
       class="w-full h-full object-cover"
       loading="lazy"

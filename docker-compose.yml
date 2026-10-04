@@ -98,19 +98,19 @@ services:
       # Meilisearch 地址：用服务名 meilisearch 当域名
       MEILI_HOST: http://meilisearch:7700
       MEILI_MASTER_KEY: ${MEILI_MASTER_KEY:-devshare-meili-master-key}
-      # 对外公开的 API 地址，用于生成上传文件的访问链接
-      PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:3001}
-      UPLOAD_DIR: ./uploads
-      MAX_FILE_SIZE_MB: '10'
-      # OSS 相关：不配置时上传存本地磁盘，配置后自动切到阿里云 OSS
+      # 图片体积上限（MB）：图片由浏览器直传 OSS，不经过 multer/nginx
+      MAX_IMAGE_SIZE_MB: ${MAX_IMAGE_SIZE_MB:-20}
+      # 课程视频体积上限（MB）：视频走浏览器直传 OSS，不经过 multer/nginx
+      MAX_VIDEO_SIZE_MB: ${MAX_VIDEO_SIZE_MB:-4096}
+      # 直传用 STS 临时凭证：角色 ARN 留空则图片与视频上传都不可用
+      OSS_STS_ROLE_ARN: ${OSS_STS_ROLE_ARN:-}
+      OSS_STS_DURATION_SECONDS: ${OSS_STS_DURATION_SECONDS:-3600}
+      # OSS 相关：图片与视频都直传阿里云 OSS，不配置时上传功能不可用（没有本地磁盘兜底）
       OSS_REGION: ${OSS_REGION:-}
       OSS_BUCKET: ${OSS_BUCKET:-}
       OSS_ACCESS_KEY_ID: ${OSS_ACCESS_KEY_ID:-}
       OSS_ACCESS_KEY_SECRET: ${OSS_ACCESS_KEY_SECRET:-}
       OSS_PUBLIC_URL: ${OSS_PUBLIC_URL:-}
-    volumes:
-      # 上传文件存到命名卷 uploaddata，容器重建文件不丢
-      - uploaddata:/app/uploads
     depends_on:
       # 等 postgres/redis 健康后再启动 api（数据库没就绪时 api 会连库失败）
       postgres:
@@ -149,6 +149,8 @@ services:
       NUXT_API_BASE: http://api:3000/api/v1
       # 站点对外 URL，Nuxt 生成 SEO/规范链接用；默认本地地址，服务器上由 .env 覆盖
       NUXT_PUBLIC_SITE_URL: ${NUXT_PUBLIC_SITE_URL:-http://localhost:3000}
+      # 读取 OSS 图片时是否让图片处理（IMG）转 WebP；off / false / 0 一键回退原图
+      NUXT_PUBLIC_OSS_IMAGE_WEBP: ${NUXT_PUBLIC_OSS_IMAGE_WEBP:-on}
     depends_on:
       - api
     healthcheck:
@@ -202,7 +204,6 @@ volumes:
   pgdata:
   redisdata:
   meilidata:
-  uploaddata:
   certbot-www:
   certbot-certs:
 

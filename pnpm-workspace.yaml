@@ -1,17 +1,19 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - 'apps/*'
+  - 'packages/*'
 
 overrides:
-  vite: "^8.2.0"
+  vite: '^8.2.0'
 
 allowBuilds:
-  "@prisma/client": true
-  "@prisma/engines": true
-  "prisma": true
-  "esbuild": true
-  "@tailwindcss/oxide": true
-  "vue-demi": true
-  "bcrypt": true
-  "unrs-resolver": true
-  "@scarf/scarf": true
+  '@prisma/client': true
+  '@prisma/engines': true
+  'prisma': true
+  'esbuild': true
+  '@tailwindcss/oxide': true
+  'vue-demi': true
+  'bcrypt': true
+  'unrs-resolver': true
+  '@scarf/scarf': true
+  sharp: true
+  rimraf: true

@@ -1,20 +1,28 @@
 <script setup lang="ts">
 import type { ArticleListItem, CourseListItem, Paginated, UserProfile } from '@devshare/shared'
 import { useAuthStore } from '~/stores/auth'
+import { useHydrated } from '~/composables/useHydrated'
+import { resolveProfileTab, type ProfileTab } from '~/utils/profile'
 
 const route = useRoute()
+const router = useRouter()
 const { t, locale } = useI18n()
 const api = useApi()
 const auth = useAuthStore()
+const hydrated = useHydrated()
 
 const userId = computed(() => Number(route.params.id))
-const tab = ref<'articles' | 'collects' | 'courses'>('articles')
 const articles = ref<ArticleListItem[]>([])
 const courses = ref<CourseListItem[]>([])
 const loading = ref(false)
 
 // 报名记录属于隐私数据，只有本人能看到「课程」tab（与 GET /users/:id/courses 的权限一致）
-const isSelf = computed(() => !!auth.user && auth.user.id === userId.value)
+// 登录态只有客户端知道，等 hydration 之后再解开，避免 SSR 首帧与客户端不一致
+const isSelf = computed(() => hydrated.value && !!auth.user && auth.user.id === userId.value)
+
+// /user/:id?tab=courses 深链：顶栏「我的课程」与课程详情页报名后的入口都落到这里。
+// 首屏按登录态取初值（SSR 与 hydration 首帧一致），之后登录态或 query 变化再跟着走
+const tab = ref<ProfileTab>(resolveProfileTab(route.query.tab, isSelf.value))
 
 const tabs = computed(() => {
   const list = [
@@ -23,6 +31,20 @@ const tabs = computed(() => {
   ]
   if (isSelf.value) list.push({ key: 'courses', label: t('user.courses') })
   return list
+})
+
+watch([isSelf, () => route.query.tab], ([self, queryTab]) => {
+  tab.value = resolveProfileTab(queryTab, self)
+})
+
+// tab 同步回地址栏，刷新或分享后仍停在同一个 tab（只同步本人可见的 tab）
+watch(tab, (value) => {
+  if (!import.meta.client) return
+  if (value !== 'articles' && !isSelf.value) return
+  const query = { ...route.query }
+  if (value === 'articles') delete query.tab
+  else query.tab = value
+  router.replace({ query })
 })
 
 const { data: profile, pending } = await useAsyncData(

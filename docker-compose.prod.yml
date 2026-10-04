@@ -52,8 +52,6 @@ services:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
       # 允许哪些前端来源跨域访问 API（prod 一般是 https://www.example.com）
       CORS_ORIGINS: ${CORS_ORIGINS}
-      # 对外公开的 API 地址，用于生成上传文件的访问链接等
-      PUBLIC_API_URL: ${PUBLIC_API_URL}
 
   # ---------- 前端 Nuxt（只覆盖镜像和环境变量）----------
   web:
@@ -69,3 +67,5 @@ services:
       # 用服务名 api + 容器端口 3000 访问，走内网不走公网。
       # 变量名必须是 NUXT_API_BASE（Nuxt 运行时覆盖 runtimeConfig.apiBase）。
       NUXT_API_BASE: http://api:3000/api/v1
+      # 读取 OSS 图片时是否让图片处理（IMG）转 WebP；off / false / 0 一键回退原图
+      NUXT_PUBLIC_OSS_IMAGE_WEBP: ${NUXT_PUBLIC_OSS_IMAGE_WEBP:-on}

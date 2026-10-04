@@ -26,11 +26,15 @@ export class CoursesController {
 
   @Get()
   @UseGuards(OptionalJwtAuthGuard)
-  @ApiOperation({ summary: '课程列表（默认仅 published，管理员可用 status=all 查草稿）' })
+  @ApiOperation({
+    summary: '课程列表（默认仅 published，管理员可用 status=all 查草稿，支持关键词与难度筛选）',
+  })
   async feed(@Query() query: QueryCoursesDto, @CurrentUser() viewer?: AuthenticatedUser) {
     return this.courses.feed({
       tag: query.tag,
       status: query.status,
+      difficulty: query.difficulty,
+      q: query.q,
       cursor: query.cursor,
       limit: query.limit,
       viewer,

@@ -146,6 +146,7 @@ model Course {
   id                 Int          @id @default(autoincrement())
   title              String       @db.VarChar(200)
   cover              String?
+  videoUrl           String?
   summary            String?      @db.VarChar(500)
   audience           String[]
   difficulty         String       @default("beginner")

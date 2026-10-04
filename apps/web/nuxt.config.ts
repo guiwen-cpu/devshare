@@ -1,10 +1,15 @@
 import tailwindcss from '@tailwindcss/vite'
+import { visualizer } from 'rollup-plugin-visualizer'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
   modules: ['@nuxtjs/i18n', '@nuxt/eslint'],
   css: ['~/assets/css/main.css'],
+  features: {
+    inlineStyles: true, // 开启内联
+  },
   app: {
     head: {
       // Nuxt 没有 index.html，浏览器标签页的 favicon 通过 <head> 注入。
@@ -16,11 +21,36 @@ export default defineNuxtConfig({
   experimental: {
     // 关闭 payload 提取：把 useAsyncData 数据内联进 HTML，避免 SSR 渲染与
     // _payload.json 各请求一次导致 viewCount 等动态字段不一致的 hydration 警告。
-    payloadExtraction: false,
+    // payloadExtraction: true,
   },
   components: [{ path: '~/components', pathPrefix: false }],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      visualizer({ open: true, gzipSize: true, brotliSize: true }),
+      ViteImageOptimizer({
+        includePublic: true, // 确保扫描 public 目录[citation:25]
+        png: { quality: 80 },
+        jpg: { quality: 80 },
+        webp: { quality: 75, lossless: false },
+        avif: { quality: 50, lossless: false },
+      }),
+    ],
+    build: {
+      rolldownOptions: {
+        // 注意：从 rollupOptions 改为 rolldownOptions
+        output: {
+          codeSplitting: {
+            groups: [
+              {
+                name: 'md-editor',
+                test: /md-editor-v3/, // 用正则匹配模块路径
+              },
+            ],
+          },
+        },
+      },
+    },
   },
 
   devServer: {
@@ -38,6 +68,9 @@ export default defineNuxtConfig({
       // 浏览器侧走同源代理（nginx / nitro devProxy）
       apiBase: '/api/v1',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+      // 读取时是否让 OSS 图片处理（IMG）把图片转成 WebP 再返回。
+      // 默认开启；写成 off / false / 0 可一键回退原图（见 composables/useAssetUrl.ts）
+      ossImageWebp: process.env.NUXT_PUBLIC_OSS_IMAGE_WEBP || 'on',
     },
   },
 
@@ -45,7 +78,9 @@ export default defineNuxtConfig({
     // SSR + SWR：首页与文章详情做服务端渲染并缓存
     '/': { swr: 60 },
     '/article/**': { swr: 60 },
-    '/courses/**': { swr: 60 },
+    '/courses/**': {
+      swr: 60,
+    },
     '/en': { swr: 60 },
     '/en/article/**': { swr: 60 },
     '/en/courses/**': { swr: 60 },
@@ -62,11 +97,14 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    // routeRules: {
-    //   '/oss-assets/**': {
-    //     proxy: 'https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/**',
-    //   },
-    // },
+    routeRules: {
+      // '/oss-assets/**': {
+      //   proxy: 'https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/**',
+      // },
+      '/api/**': {
+        proxy: 'http://127.0.0.1:3001/api/**',
+      },
+    },
     devProxy: {
       '/api': {
         // h3 匹配 '/api' 前缀路由时会剥掉 /api 再转发，所以 target 需补上 /api，
@@ -74,12 +112,6 @@ export default defineNuxtConfig({
         target: process.env.API_PROXY_TARGET || 'http://127.0.0.1:3001/api',
         changeOrigin: true,
       },
-      // '/uploads': {
-      //   target:
-      //     (process.env.API_PROXY_TARGET || 'http://127.0.0.1:3001/api').replace(/\/api$/, '') +
-      //     '/uploads',
-      //   changeOrigin: true,
-      // },
     },
   },
 

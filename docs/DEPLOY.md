@@ -102,6 +102,64 @@ docker compose -p devshare-staging --env-file .env.staging \
   exec -T api npx prisma db seed
 ```
 
+### 批量导入课程与讲师（一次性）
+
+生产的课程 / 讲师数据平时由管理员在 `/admin/courses`、`/admin/teachers` 录入；
+若要在生产快速灌入一批数据，用批量导入脚本。脚本走管理员 HTTP API（不直连数据库），
+**默认 dry-run**，且幂等（讲师按姓名、课程按标题去重，重复执行不会产生重复数据）。
+
+数据文件是一份自备的 JSON，仓库里附了可直接改的样例 `apps/api/prisma/courses.example.json`。
+
+前置：脚本要用**管理员**账号登录。prod 从不执行 seed，而注册接口只会建普通用户
+（`User.role` 默认 `user`），所以首次使用前先在服务器上把一个账号提权：
+
+```bash
+docker compose -p devshare-prod --env-file .env.prod \
+  -f docker-compose.yml -f docker-compose.prod.yml \
+  exec -T postgres psql -U devshare -d devshare \
+  -c "UPDATE users SET role='admin' WHERE email='you@example.com';"
+```
+
+方式一：在本地或任意能访问目标环境的机器上跑（仓库内已装好 ts-node，无需登录服务器）：
+
+```bash
+cp apps/api/prisma/courses.example.json courses.json   # 按样例改内容
+export ADMIN_EMAIL=admin@example.com
+export ADMIN_PASSWORD='<管理员密码>'
+export API_BASE_URL=https://www.example.com/api/v1
+
+pnpm --filter @devshare/api prisma:import -- --file courses.json           # 先看将要创建什么
+pnpm --filter @devshare/api prisma:import -- --file courses.json --apply   # 真正写入
+```
+
+方式二：在服务器容器内跑（镜像构建时已把脚本编译成 JS，容器内不需要 ts-node）。
+容器里没有你的文件，用 `--stdin` 把 JSON 从宿主机管道传进去，省掉拷文件：
+
+```bash
+cd /srv/devshare
+cat courses.json | docker compose -p devshare-prod --env-file .env.prod \
+  -f docker-compose.yml -f docker-compose.prod.yml \
+  exec -T api node prisma/import-courses.js --stdin --apply
+```
+
+如果更习惯落地成文件，也可以先拷贝再执行：
+
+```bash
+docker compose -p devshare-prod --env-file .env.prod \
+  -f docker-compose.yml -f docker-compose.prod.yml \
+  cp courses.json api:/tmp/courses.json
+docker compose -p devshare-prod --env-file .env.prod \
+  -f docker-compose.yml -f docker-compose.prod.yml \
+  exec -T api node prisma/import-courses.js --file /tmp/courses.json --apply
+```
+
+两种方式默认都是 dry-run，`--apply` 才真正写入；JSON 字段与 `--stdin` / `--update`
+等参数说明见 `apps/api/prisma/import-courses.ts` 文件头注释。三点注意：
+
+- 全局限流是 120 次 / 60 秒，脚本已按 700ms 间隔降速，调小间隔会撞 429；
+- 课程封面 / 视频请填 OSS / CDN 绝对地址（后台上传会自动写入 OSS 地址），历史本地 `/uploads/*` 链接不再兼容；
+- 脚本只做新建 / 更新，不会删除任何数据；误导入在后台逐条删除即可。
+
 ## 5. 日常部署（CI/CD）
 
 流水线位于 `.github/workflows/ci.yml`，行为如下：
@@ -146,14 +204,22 @@ docker compose -p devshare-prod --env-file .env.prod \
   -f docker-compose.yml -f docker-compose.prod.yml restart nginx
 ```
 
-## 7. OSS + CDN（图片加速）
+## 7. OSS + CDN（图片与视频）
 
-1. 开通 OSS，创建 Bucket（如 `devshare-assets`，私有读写）。
-2. 创建 RAM 子账号，授权 Bucket 的 `PutObject`，拿到 AccessKey。
+1. 开通 OSS，创建 Bucket（如 `devshare-assets`，权限设为**公共读**——图片展示与视频播放都直接读它）。
+2. 创建 RAM 子账号，授权 Bucket 的 `PutObject` 和 `sts:AssumeRole`（图片与视频都由浏览器直传，服务端只签发临时凭证），拿到 AccessKey。
 3. 在 `.env.staging` / `.env.prod` 填入 `OSS_*`，`OSS_PUBLIC_URL` 指向 CDN 加速域名（如 `https://cdn.example.com`）。
 4. 阿里云 CDN：添加加速域名 `cdn.example.com` → 源站类型"OSS 域名"。
-5. CDN 缓存规则：`*.jpg/*.png/*.webp` 缓存 30 天，`/uploads/*` 缓存 7 天。
-6. 代码层（`apps/api/src/uploads`）检测到 OSS 配置后自动切换为 OSS 上传，无需改动前端。
+5. CDN 缓存规则：`/uploads/*` 缓存 30 天（对象名是 UUID、内容不可变，与对象上的 `Cache-Control: public,max-age=31536000,immutable` 一致）。
+6. 图片与视频都由**浏览器直传 OSS**，服务端不再落盘：没配 `OSS_*` 或 `OSS_STS_ROLE_ARN` 时，所有上传入口（头像 / 封面 / Banner 图 / 课程视频）一律置灰，没有本地磁盘兜底。展示图片时前端会追 `x-oss-process=image/format,webp`，由 OSS 图片处理（IMG）按需输出 WebP；bucket 没开通 IMG 时在 `.env.prod` / `.env.staging` 设 `NUXT_PUBLIC_OSS_IMAGE_WEBP=off` 一键回退原图（compose 会把它注入 web 容器）；单图上限用 `MAX_IMAGE_SIZE_MB` 调整（默认 20）。
+   写进 bucket 的对象都带 `Cache-Control: public,max-age=31536000,immutable`（对象名是 UUID、内容永不改变）：图片和视频都通过 SDK 的请求头携带（视频在 InitiateMultipartUpload 时写进对象元数据）；值取自 `@devshare/shared` 的 `UPLOAD_CACHE_CONTROL`，改缓存策略只改这一处。
+7. **课程视频**与图片共用同一套直传链路，视频还需要额外三步：
+   - 建一个 **RAM 角色**（信任实体选「当前账号」，`MaxSessionDuration` 默认 3600 秒，想签更久的凭证要在这里调大），给它 `oss:PutObject` 权限，把角色 ARN 填进 `OSS_STS_ROLE_ARN`；再给第 2 步那个 RAM 子账号加一条 `sts:AssumeRole` 权限（只允许它扮演这一个角色最稳妥）。视频走浏览器 **ali-oss SDK + STS 临时凭证**分片直传，长期 AccessKey 只留在服务端，下发的凭证用会话策略钉死到单个对象名；凭证有效期用 `OSS_STS_DURATION_SECONDS` 调整（默认 3600 秒，下限 900，上限受角色的 MaxSessionDuration 约束）。
+   - bucket 配置 **CORS** 规则，允许站点域名（`https://www.example.com` 与本地 `http://localhost:3000`）：`Allowed Method` 勾 `PUT, GET, POST, DELETE, HEAD`，`Allowed Header` 填 `*`，**务必在「暴露 Headers」里加上 `ETag`**（分片上传要读响应里的 ETag，缺了 SDK 会直接报错），缓存时间建议 600。图片和视频都从浏览器直传，GET/HEAD 不够——只放行 GET/HEAD 会让上传在预检阶段报 403 `AccessForbidden`；
+   - 对象**保持公共读**，`<video>` 才能直接流式播放（`OSS_PUBLIC_URL` 指向 CDN 加速域名时同理）。
+     图片与视频都走浏览器分片直传，文件体不经过 Node 与 nginx，因此 2GB+ 也不受 nginx `client_max_body_size 10m` 与 multer 内存缓冲限制；上限分别用 `MAX_IMAGE_SIZE_MB`（默认 20）与 `MAX_VIDEO_SIZE_MB`（默认 4096）调整；临时凭证由 SDK 在过期前自动续签（续签复用同一个对象名），不需要靠调大有效期来支持超长上传。
+
+     RAM 子账号只授 `PutObject`（视频另需 `sts:AssumeRole`）就够了——**应用从不删除对象**（换封面、换视频都只写新 key），代价是旧对象只能靠在控制台手动删，或配一条前缀限定的生命周期规则自动清理（不要作用于在用的 `uploads/**`，否则会把线上对象一并清掉）。
 
 ## 8. 主站 CDN（HTML 与静态资源加速）
 

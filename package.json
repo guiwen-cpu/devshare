@@ -25,7 +25,8 @@
     "db:seed": "pnpm --filter @devshare/api prisma:seed",
     "docker:up": "docker compose up -d --build",
     "docker:down": "docker compose down",
-    "lint:eslint": "eslint . --max-warnings=0"
+    "lint:eslint": "eslint . --max-warnings=0",
+    "preview:all": "concurrently -n api,web -c green,cyan \"pnpm --filter @devshare/api start:prod\" \"pnpm --filter @devshare/web preview\""
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
