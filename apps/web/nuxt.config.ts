@@ -21,7 +21,7 @@ export default defineNuxtConfig({
   experimental: {
     // 关闭 payload 提取：把 useAsyncData 数据内联进 HTML，避免 SSR 渲染与
     // _payload.json 各请求一次导致 viewCount 等动态字段不一致的 hydration 警告。
-    // payloadExtraction: true,
+    // payloadExtraction: false,
   },
   components: [{ path: '~/components', pathPrefix: false }],
   vite: {

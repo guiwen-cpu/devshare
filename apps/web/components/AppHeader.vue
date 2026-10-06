@@ -50,7 +50,7 @@ async function onLogout() {
 <template>
   <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center gap-4">
-      <NuxtLink :to="localePath('/')" class="flex items-center gap-2 shrink-0">
+      <NuxtLink :prefetch="false" :to="localePath('/')" class="flex items-center gap-2 shrink-0">
         <img src="~/assets/images/logo.svg" alt="" class="w-8 h-8 rounded-lg" />
         <span class="text-lg font-bold tracking-tight text-slate-900">DevShare</span>
       </NuxtLink>
