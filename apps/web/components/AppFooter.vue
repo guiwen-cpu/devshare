@@ -13,7 +13,7 @@ const localePath = useLocalePath()
         <span>{{ t('footer.desc') }}</span>
       </div>
       <div class="flex items-center gap-4">
-        <!-- <span>{{ t('footer.icp') }}</span> -->
+        <span>{{ t('footer.icp') }}</span>
         <a
           href="https://github.com/guiwen-cpu/devshare"
           target="_blank"
