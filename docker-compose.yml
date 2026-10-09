@@ -180,6 +180,7 @@ services:
       # 把宿主机上的 nginx 配置文件挂进容器（:ro = 只读），改配置不用重建镜像
       - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./deploy/errors:/usr/share/nginx/html/errors:ro
+      - ./deploy/certs:/etc/nginx/certs:ro
       # 证书相关目录：certbot 申请到的证书放在命名卷里，nginx 读它
       - certbot-www:/var/www/certbot:ro
       - certbot-certs:/etc/letsencrypt:ro
