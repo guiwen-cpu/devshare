@@ -150,7 +150,7 @@ const { data: article } = await useAsyncData(
 
 ### 11. 单测里 `import.meta.dev` 恒为 `undefined`，开发分支根本跑不到
 
-**现象**：`pnpm --filter @devshare/web test` 只有 `utils/image.spec.ts` 的「OSS 域名在开发环境返回代理 URL」失败——期望 `/oss-assets/foo/bar`，实收原始 OSS 地址。同一个函数在 `nuxt dev` 里行为完全正常，很容易以为是断言写错了。
+**现象**：`pnpm --filter @devshare/web test` 只有 `utils/image.spec.ts` 的「CDN 域名在开发环境返回代理 URL」失败——期望 `/oss-assets/foo/bar`，实收原始 CDN 地址。同一个函数在 `nuxt dev` 里行为完全正常，很容易以为是断言写错了。
 
 **原因**：`import.meta.dev` 不是 Vite 的内置变量（Vite 只提供 `import.meta.env.DEV` / `MODE`），它是 Nuxt 的 Vite 插件在构建时注入并**内联成字面量**的。`vitest.config.ts` 用的是纯 `vitest/config`，没加载 Nuxt 那套插件，于是 `import.meta.dev` 退化成一次普通属性访问，运行时拿到的是 `undefined`——注意**不是 `false`**。所以 `if (import.meta.dev && ...)` 会静默短路，测试看到的是「另一条分支」的结果，既不报错也不提示，只有断言失败这一条线索。
 
@@ -161,8 +161,8 @@ const { data: article } = await useAsyncData(
 ```ts
 export function toProxyUrl(url: string, dev = true): string {
   if (typeof url !== 'string') return ''
-  if (!dev || !url.startsWith(OSS_HOST)) return url
-  return url.replace(OSS_HOST, PROXY_PREFIX)
+  if (!dev || !url.startsWith(CDN_HOST)) return url
+  return url.replace(CDN_HOST, PROXY_PREFIX)
 }
 ```
 
@@ -222,6 +222,8 @@ docker compose -p devshare-prod --env-file .env.prod \
 最后一条打印出新值就说明注入成功了，剩下「页面还是旧的」是缓存：`routeRules` 的 SWR 60s + CDN 60s，等约 2 分钟并刷 CDN。改的是构建期值（`i18n.baseUrl` 之类）时，要先改 GitHub 变量 `NUXT_PUBLIC_SITE_URL_PROD` 再重新触发 main 部署，别让两边长期不一致。
 
 顺带一提，上传图片 / 视频的绝对地址由 api 侧的 `OSS_PUBLIC_URL` 决定（`apps/api/src/uploads/uploads.service.ts`）：库里存的就是它拼对象名得到的地址，换 CDN 域名时改它并重建 api 容器即可；图片展示时前端还会追 `x-oss-process`，让 OSS 图片处理按需输出 WebP。
+
+前端侧（`apps/web/utils/image.ts`）另有一层域名映射：`CDN_HOST` 是当前的 CDN 域名，`LEGACY_OSS_HOST` 是老数据里存的 OSS 直连域名，展示时统一换成前者（`toCdnUrl`），所以换域名要两处一起改——api 的 `OSS_PUBLIC_URL` 管新上传，前端的 `CDN_HOST` 管展示，老文章 / 老课程的图片靠后者映射，不用刷库。
 
 **相关文件**：`apps/web/Dockerfile`、`apps/web/nuxt.config.ts`、`docker-compose.prod.yml`、`.github/workflows/ci.yml`、`docs/DEPLOY.md`
 **记录时间**：2026-09-20

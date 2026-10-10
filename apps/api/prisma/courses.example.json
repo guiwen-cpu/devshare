@@ -2,1002 +2,1002 @@
   "teachers": [
     {
       "name": "陈子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "林子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "周子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "黄子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "吴子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "徐子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "郑子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "何子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "许子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "唐子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "罗子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "梁子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "宋子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "郭子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "彭子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "谢子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "韩子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "冯子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "邓子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "曹子轩老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "陈浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "林浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "周浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "黄浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "吴浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "徐浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "郑浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "何浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "许浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "唐浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "罗浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "梁浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "宋浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "郭浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "彭浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "谢浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "韩浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "冯浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "邓浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "曹浩然老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "陈宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "林宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "周宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "黄宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "吴宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "徐宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "郑宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "何宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "许宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "唐宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "罗宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "梁宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "宋宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "郭宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "彭宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "谢宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "韩宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "冯宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "邓宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "曹宇航老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "陈俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "林俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "周俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "黄俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "吴俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "徐俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "郑俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "何俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "许俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "唐俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "罗俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "梁俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "宋俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "郭俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "彭俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "谢俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "韩俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "冯俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "邓俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "曹俊杰老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "陈泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "林泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "周泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "黄泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "吴泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "徐泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "郑泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "何泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "许泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "唐泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "罗泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "梁泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "宋泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "郭泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "彭泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "谢泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "韩泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "冯泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "邓泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "曹泽宇老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "陈嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "林嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "周嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "黄嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "吴嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "徐嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "郑嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "何嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "许嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "唐嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "罗嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "梁嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "宋嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "郭嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "彭嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "谢嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "韩嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "冯嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "邓嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "曹嘉豪老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "陈博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "林博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "周博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "黄博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "吴博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "徐博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "郑博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "何博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "许博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "唐博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "罗博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "梁博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "宋博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "郭博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "彭博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "谢博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "韩博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "冯博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "邓博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "曹博文老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "陈天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "林天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "周天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "黄天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "吴天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "徐天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "郑天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "何天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "许天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "唐天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "罗天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "梁天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "宋天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "郭天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "彭天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "谢天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "韩天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "冯天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "邓天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "曹天佑老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "陈明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "林明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "周明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "黄明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "吴明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "徐明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "郑明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "何明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "许明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "唐明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "罗明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "梁明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "宋明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "郭明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "彭明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "谢明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "韩明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "冯明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "邓明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "曹明远老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "陈晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "林晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "周晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "黄晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "吴晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "徐晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "郑晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "何晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "许晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "唐晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     },
     {
       "name": "罗晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "前端架构师，专注大型 Web 应用、工程化与性能治理。"
     },
     {
       "name": "梁晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "后端工程师，长期实践高并发、分布式服务与稳定性建设。"
     },
     {
       "name": "宋晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "全栈工程师，关注 TypeScript、Node.js 与企业级应用架构。"
     },
     {
       "name": "郭晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "AI 应用工程师，专注大模型、RAG、Agent 与 AI 工程化落地。"
     },
     {
       "name": "彭晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "云原生工程师，专注 Docker、Kubernetes 与持续交付体系。"
     },
     {
       "name": "谢晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/20a31178-17e8-4474-83f4-f5e0712f0d6b.webp",
       "bio": "数据库工程师，长期实践 SQL 优化、缓存架构与数据治理。"
     },
     {
       "name": "韩晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/e262c403-5db0-4767-a460-603df60fbde3.webp",
       "bio": "技术负责人，关注架构设计、代码质量与研发效能。"
     },
     {
       "name": "冯晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/85617eb7-ecd6-405f-bb87-641e586d6ce9.webp",
       "bio": "开发者工具专家，专注自动化、测试、CI/CD 与工程效率。"
     },
     {
       "name": "邓晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/58753ede-2fbb-4e1f-9385-680ff74f614c.webp",
       "bio": "Vue 技术方向讲师，关注组件化、状态管理与前端架构。"
     },
     {
       "name": "曹晨曦老师",
-      "avatar": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
+      "avatar": "https://cdn.devshare.bond/uploads/2026/09/b453b16c-862a-432c-abb4-55dc8355e2d0.webp",
       "bio": "React 技术方向讲师，专注现代 React 与全栈应用开发。"
     }
   ],
@@ -1005,7 +1005,7 @@
     {
       "title": "Vue 3 Composition API 从零到实战",
       "teacher": "陈子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "videoUrl": null,
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
@@ -1018,7 +1018,7 @@
     {
       "title": "Vue 3 响应式原理与源码解析",
       "teacher": "林子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1030,7 +1030,7 @@
     {
       "title": "Vue Router 路由架构实战",
       "teacher": "周子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1042,7 +1042,7 @@
     {
       "title": "Pinia 状态管理最佳实践",
       "teacher": "黄子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1054,7 +1054,7 @@
     {
       "title": "Vue 3 组件设计与复用体系",
       "teacher": "吴子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "advanced",
@@ -1066,7 +1066,7 @@
     {
       "title": "Vue 3 + TypeScript 企业级项目实战",
       "teacher": "徐子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1078,7 +1078,7 @@
     {
       "title": "Vite 工程化配置与插件开发",
       "teacher": "郑子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1090,7 +1090,7 @@
     {
       "title": "Vite 构建性能优化实战",
       "teacher": "何子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1102,7 +1102,7 @@
     {
       "title": "前端 Monorepo 工程化实践",
       "teacher": "许子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1114,7 +1114,7 @@
     {
       "title": "TypeScript 类型体操入门到进阶",
       "teacher": "唐子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "advanced",
@@ -1126,7 +1126,7 @@
     {
       "title": "TypeScript 泛型与高级类型实战",
       "teacher": "罗子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1138,7 +1138,7 @@
     {
       "title": "React Hooks 核心原理与实践",
       "teacher": "梁子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1150,7 +1150,7 @@
     {
       "title": "React 组件架构设计实战",
       "teacher": "宋子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1162,7 +1162,7 @@
     {
       "title": "React 状态管理与数据流设计",
       "teacher": "郭子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1174,7 +1174,7 @@
     {
       "title": "React 性能优化与渲染机制",
       "teacher": "彭子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "advanced",
@@ -1186,7 +1186,7 @@
     {
       "title": "Next.js 全栈应用开发入门",
       "teacher": "谢子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1198,7 +1198,7 @@
     {
       "title": "React Server Components 实战",
       "teacher": "韩子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1210,7 +1210,7 @@
     {
       "title": "前端微前端架构实战",
       "teacher": "冯子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1222,7 +1222,7 @@
     {
       "title": "前端模块联邦 Module Federation",
       "teacher": "邓子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1234,7 +1234,7 @@
     {
       "title": "Web Components 组件化开发",
       "teacher": "曹子轩老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "advanced",
@@ -1246,7 +1246,7 @@
     {
       "title": "浏览器渲染原理与性能优化",
       "teacher": "陈浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1258,7 +1258,7 @@
     {
       "title": "Core Web Vitals 实战优化",
       "teacher": "林浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1270,7 +1270,7 @@
     {
       "title": "Lighthouse 性能诊断与优化",
       "teacher": "周浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1282,7 +1282,7 @@
     {
       "title": "前端首屏加载性能优化",
       "teacher": "黄浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1294,7 +1294,7 @@
     {
       "title": "图片资源压缩与 WebP 转换",
       "teacher": "吴浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "advanced",
@@ -1306,7 +1306,7 @@
     {
       "title": "前端缓存策略与离线能力",
       "teacher": "徐浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1318,7 +1318,7 @@
     {
       "title": "Service Worker PWA 实战",
       "teacher": "郑浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1330,7 +1330,7 @@
     {
       "title": "前端安全 XSS 与 CSRF 防护",
       "teacher": "何浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1342,7 +1342,7 @@
     {
       "title": "OAuth2 与 JWT 前端认证实践",
       "teacher": "许浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1354,7 +1354,7 @@
     {
       "title": "前端大文件上传与断点续传",
       "teacher": "唐浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "advanced",
@@ -1366,7 +1366,7 @@
     {
       "title": "WebSocket 实时通信实战",
       "teacher": "罗浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1378,7 +1378,7 @@
     {
       "title": "SSE 流式数据通信实战",
       "teacher": "梁浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1390,7 +1390,7 @@
     {
       "title": "Canvas 数据可视化开发",
       "teacher": "宋浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1402,7 +1402,7 @@
     {
       "title": "ECharts 企业级数据大屏实战",
       "teacher": "郭浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1414,7 +1414,7 @@
     {
       "title": "前端动画与交互体验优化",
       "teacher": "彭浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "advanced",
@@ -1426,7 +1426,7 @@
     {
       "title": "移动端 H5 适配与兼容性实战",
       "teacher": "谢浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1438,7 +1438,7 @@
     {
       "title": "跨端开发与 Hybrid 架构实践",
       "teacher": "韩浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1450,7 +1450,7 @@
     {
       "title": "前端自动化测试与 Vitest",
       "teacher": "冯浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1462,7 +1462,7 @@
     {
       "title": "Playwright 浏览器自动化测试",
       "teacher": "邓浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -1474,7 +1474,7 @@
     {
       "title": "前端 ESLint + Prettier 工程规范",
       "teacher": "曹浩然老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "advanced",
@@ -1486,7 +1486,7 @@
     {
       "title": "Git Hooks 与代码质量治理",
       "teacher": "陈宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -1498,7 +1498,7 @@
     {
       "title": "Node.js 核心模块与运行机制",
       "teacher": "林宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -1510,7 +1510,7 @@
     {
       "title": "Node.js 高性能 API 服务实战",
       "teacher": "周宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1522,7 +1522,7 @@
     {
       "title": "NestJS 企业级后端开发入门",
       "teacher": "黄宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1534,7 +1534,7 @@
     {
       "title": "NestJS 模块化架构与依赖注入",
       "teacher": "吴宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "advanced",
@@ -1546,7 +1546,7 @@
     {
       "title": "NestJS 权限认证与 RBAC 实战",
       "teacher": "徐宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -1558,7 +1558,7 @@
     {
       "title": "NestJS 文件上传与对象存储",
       "teacher": "郑宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -1570,7 +1570,7 @@
     {
       "title": "NestJS + Sharp 图片处理服务",
       "teacher": "何宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1582,7 +1582,7 @@
     {
       "title": "Express API 服务架构实战",
       "teacher": "许宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1594,7 +1594,7 @@
     {
       "title": "Node.js Stream 流式处理实战",
       "teacher": "唐宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "advanced",
@@ -1606,7 +1606,7 @@
     {
       "title": "Node.js Worker Threads 并发编程",
       "teacher": "罗宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -1618,7 +1618,7 @@
     {
       "title": "Node.js Event Loop 深入理解",
       "teacher": "梁宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -1630,7 +1630,7 @@
     {
       "title": "Node.js 日志与异常治理",
       "teacher": "宋宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1642,7 +1642,7 @@
     {
       "title": "Node.js 定时任务与任务调度",
       "teacher": "郭宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1654,7 +1654,7 @@
     {
       "title": "Node.js CLI 命令行工具开发",
       "teacher": "彭宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["Node.js 开发者", "希望使用 TypeScript/Node.js 做后端的前端工程师"],
       "difficulty": "advanced",
@@ -1666,7 +1666,7 @@
     {
       "title": "RESTful API 设计规范与实践",
       "teacher": "谢宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -1678,7 +1678,7 @@
     {
       "title": "GraphQL 服务端开发实战",
       "teacher": "韩宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -1690,7 +1690,7 @@
     {
       "title": "API 网关设计与实践",
       "teacher": "冯宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1702,7 +1702,7 @@
     {
       "title": "限流、熔断与降级实战",
       "teacher": "邓宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1714,7 +1714,7 @@
     {
       "title": "高并发系统架构入门",
       "teacher": "曹宇航老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "advanced",
@@ -1726,7 +1726,7 @@
     {
       "title": "秒杀系统设计与实现",
       "teacher": "陈俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -1738,7 +1738,7 @@
     {
       "title": "分布式锁实现与应用",
       "teacher": "林俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -1750,7 +1750,7 @@
     {
       "title": "幂等设计与重复请求治理",
       "teacher": "周俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1762,7 +1762,7 @@
     {
       "title": "消息队列架构与异步解耦",
       "teacher": "黄俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1774,7 +1774,7 @@
     {
       "title": "RabbitMQ 实战入门",
       "teacher": "吴俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "advanced",
@@ -1786,7 +1786,7 @@
     {
       "title": "Kafka 消息系统实战",
       "teacher": "徐俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -1798,7 +1798,7 @@
     {
       "title": "Redis 核心数据结构与实战",
       "teacher": "郑俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -1810,7 +1810,7 @@
     {
       "title": "Redis 缓存架构与一致性",
       "teacher": "何俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1822,7 +1822,7 @@
     {
       "title": "Redis 分布式锁与高并发",
       "teacher": "许俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -1834,7 +1834,7 @@
     {
       "title": "Redis Stream 实时任务处理",
       "teacher": "唐俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "advanced",
@@ -1846,7 +1846,7 @@
     {
       "title": "MySQL 索引原理与 SQL 优化",
       "teacher": "罗俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "beginner",
@@ -1858,7 +1858,7 @@
     {
       "title": "MySQL 事务与锁机制",
       "teacher": "梁俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "beginner",
@@ -1870,7 +1870,7 @@
     {
       "title": "MySQL 高性能分页与查询优化",
       "teacher": "宋俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "intermediate",
@@ -1882,7 +1882,7 @@
     {
       "title": "MySQL 慢查询诊断实战",
       "teacher": "郭俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "intermediate",
@@ -1894,7 +1894,7 @@
     {
       "title": "MySQL 主从复制与读写分离",
       "teacher": "彭俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "advanced",
@@ -1906,7 +1906,7 @@
     {
       "title": "MySQL 分库分表设计实战",
       "teacher": "谢俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "beginner",
@@ -1918,7 +1918,7 @@
     {
       "title": "PostgreSQL 入门与高级查询",
       "teacher": "韩俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "beginner",
@@ -1930,7 +1930,7 @@
     {
       "title": "PostgreSQL JSON 数据处理",
       "teacher": "冯俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "intermediate",
@@ -1942,7 +1942,7 @@
     {
       "title": "MongoDB 文档数据库实战",
       "teacher": "邓俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "intermediate",
@@ -1954,7 +1954,7 @@
     {
       "title": "Elasticsearch 搜索服务实战",
       "teacher": "曹俊杰老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "advanced",
@@ -1966,7 +1966,7 @@
     {
       "title": "Elasticsearch 查询与索引优化",
       "teacher": "陈泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "beginner",
@@ -1978,7 +1978,7 @@
     {
       "title": "数据库连接池与资源治理",
       "teacher": "林泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "beginner",
@@ -1990,7 +1990,7 @@
     {
       "title": "数据库备份恢复与容灾",
       "teacher": "周泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "intermediate",
@@ -2002,7 +2002,7 @@
     {
       "title": "SQL 编程与复杂业务查询",
       "teacher": "黄泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "intermediate",
@@ -2014,7 +2014,7 @@
     {
       "title": "数据库设计与范式实战",
       "teacher": "吴泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "advanced",
@@ -2026,7 +2026,7 @@
     {
       "title": "Docker 容器化开发入门",
       "teacher": "徐泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "beginner",
@@ -2038,7 +2038,7 @@
     {
       "title": "Docker 镜像构建与优化",
       "teacher": "郑泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "beginner",
@@ -2050,7 +2050,7 @@
     {
       "title": "Docker Compose 本地开发环境",
       "teacher": "何泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "intermediate",
@@ -2062,7 +2062,7 @@
     {
       "title": "Kubernetes 核心概念与实战",
       "teacher": "许泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "intermediate",
@@ -2074,7 +2074,7 @@
     {
       "title": "Kubernetes Deployment 与 Service",
       "teacher": "唐泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "advanced",
@@ -2086,7 +2086,7 @@
     {
       "title": "Kubernetes Ingress 流量治理",
       "teacher": "罗泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "beginner",
@@ -2098,7 +2098,7 @@
     {
       "title": "Kubernetes ConfigMap 与 Secret",
       "teacher": "梁泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "beginner",
@@ -2110,7 +2110,7 @@
     {
       "title": "Kubernetes HPA 自动扩缩容",
       "teacher": "宋泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "intermediate",
@@ -2122,7 +2122,7 @@
     {
       "title": "Kubernetes 日志与监控实战",
       "teacher": "郭泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "intermediate",
@@ -2134,7 +2134,7 @@
     {
       "title": "Helm Chart 包管理实战",
       "teacher": "彭泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "advanced",
@@ -2146,7 +2146,7 @@
     {
       "title": "Nginx 反向代理与负载均衡",
       "teacher": "谢泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "beginner",
@@ -2158,7 +2158,7 @@
     {
       "title": "Nginx 静态资源与缓存优化",
       "teacher": "韩泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "beginner",
@@ -2170,7 +2170,7 @@
     {
       "title": "CI/CD 持续集成与部署实战",
       "teacher": "冯泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "intermediate",
@@ -2182,7 +2182,7 @@
     {
       "title": "Jenkins Pipeline 自动化部署",
       "teacher": "邓泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "intermediate",
@@ -2194,7 +2194,7 @@
     {
       "title": "GitLab CI/CD 工程实践",
       "teacher": "曹泽宇老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "advanced",
@@ -2206,7 +2206,7 @@
     {
       "title": "阿里云 OSS 对象存储实战",
       "teacher": "陈嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "beginner",
@@ -2218,7 +2218,7 @@
     {
       "title": "对象存储 CDN 加速与缓存策略",
       "teacher": "林嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "beginner",
@@ -2230,7 +2230,7 @@
     {
       "title": "云服务器安全与部署规范",
       "teacher": "周嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "intermediate",
@@ -2242,7 +2242,7 @@
     {
       "title": "微服务架构设计入门",
       "teacher": "黄嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -2254,7 +2254,7 @@
     {
       "title": "微服务服务发现与配置中心",
       "teacher": "吴嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "advanced",
@@ -2266,7 +2266,7 @@
     {
       "title": "微服务链路追踪与可观测性",
       "teacher": "徐嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -2278,7 +2278,7 @@
     {
       "title": "OpenTelemetry 可观测性实战",
       "teacher": "郑嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "beginner",
@@ -2290,7 +2290,7 @@
     {
       "title": "Prometheus 监控指标实战",
       "teacher": "何嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "intermediate",
@@ -2302,7 +2302,7 @@
     {
       "title": "Grafana 监控大盘搭建",
       "teacher": "许嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "intermediate",
@@ -2314,7 +2314,7 @@
     {
       "title": "AI 大模型应用开发入门",
       "teacher": "唐嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "advanced",
@@ -2326,7 +2326,7 @@
     {
       "title": "LLM 大模型快速入门",
       "teacher": "罗嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2338,7 +2338,7 @@
     {
       "title": "Prompt Engineering 提示词工程",
       "teacher": "梁嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2350,7 +2350,7 @@
     {
       "title": "RAG 检索增强生成实战",
       "teacher": "宋嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2362,7 +2362,7 @@
     {
       "title": "向量数据库与语义检索",
       "teacher": "郭嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2374,7 +2374,7 @@
     {
       "title": "Embedding 向量模型应用实践",
       "teacher": "彭嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "advanced",
@@ -2386,7 +2386,7 @@
     {
       "title": "LangChain 应用开发入门",
       "teacher": "谢嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2398,7 +2398,7 @@
     {
       "title": "LangChain Agent 智能体实战",
       "teacher": "韩嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2410,7 +2410,7 @@
     {
       "title": "LangGraph 工作流智能体开发",
       "teacher": "冯嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2422,7 +2422,7 @@
     {
       "title": "AI Agent 工具调用与编排",
       "teacher": "邓嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2434,7 +2434,7 @@
     {
       "title": "Function Calling 应用实战",
       "teacher": "曹嘉豪老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "advanced",
@@ -2446,7 +2446,7 @@
     {
       "title": "MCP 模型上下文协议实战",
       "teacher": "陈博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2458,7 +2458,7 @@
     {
       "title": "MCP Server 开发入门",
       "teacher": "林博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2470,7 +2470,7 @@
     {
       "title": "AI Coding 提效工作流",
       "teacher": "周博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2482,7 +2482,7 @@
     {
       "title": "Cursor AI 编程实战",
       "teacher": "黄博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2494,7 +2494,7 @@
     {
       "title": "Claude Code 开发工作流",
       "teacher": "吴博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "advanced",
@@ -2506,7 +2506,7 @@
     {
       "title": "GitHub Copilot 工程实践",
       "teacher": "徐博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2518,7 +2518,7 @@
     {
       "title": "AI 辅助 Code Review 实战",
       "teacher": "郑博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2530,7 +2530,7 @@
     {
       "title": "AI 自动生成测试用例",
       "teacher": "何博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2542,7 +2542,7 @@
     {
       "title": "AI 驱动前端开发实战",
       "teacher": "许博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2554,7 +2554,7 @@
     {
       "title": "AI 驱动后端开发实战",
       "teacher": "唐博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "advanced",
@@ -2566,7 +2566,7 @@
     {
       "title": "AI 图片理解与多模态应用",
       "teacher": "罗博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2578,7 +2578,7 @@
     {
       "title": "多模态大模型应用开发",
       "teacher": "梁博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2590,7 +2590,7 @@
     {
       "title": "AI 知识库搭建与问答系统",
       "teacher": "宋博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2602,7 +2602,7 @@
     {
       "title": "企业级智能客服系统实战",
       "teacher": "郭博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2614,7 +2614,7 @@
     {
       "title": "AI 文档解析与结构化抽取",
       "teacher": "彭博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "advanced",
@@ -2626,7 +2626,7 @@
     {
       "title": "AI 工作流自动化开发",
       "teacher": "谢博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2638,7 +2638,7 @@
     {
       "title": "大模型上下文工程实战",
       "teacher": "韩博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2650,7 +2650,7 @@
     {
       "title": "大模型评测与质量保障",
       "teacher": "冯博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2662,7 +2662,7 @@
     {
       "title": "大模型成本优化与缓存",
       "teacher": "邓博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2674,7 +2674,7 @@
     {
       "title": "大模型流式输出与体验优化",
       "teacher": "曹博文老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "advanced",
@@ -2686,7 +2686,7 @@
     {
       "title": "AI 应用安全与数据脱敏",
       "teacher": "陈天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2698,7 +2698,7 @@
     {
       "title": "AI 应用日志与可观测性",
       "teacher": "林天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2710,7 +2710,7 @@
     {
       "title": "前端 AI SDK 集成实战",
       "teacher": "周天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2722,7 +2722,7 @@
     {
       "title": "Vue 3 + AI 智能应用实战",
       "teacher": "黄天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -2734,7 +2734,7 @@
     {
       "title": "React + AI Copilot 实战",
       "teacher": "吴天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "advanced",
@@ -2746,7 +2746,7 @@
     {
       "title": "Node.js + AI Agent 实战",
       "teacher": "徐天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2758,7 +2758,7 @@
     {
       "title": "Python AI 服务工程化",
       "teacher": "郑天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -2770,7 +2770,7 @@
     {
       "title": "Python FastAPI API 开发",
       "teacher": "何天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -2782,7 +2782,7 @@
     {
       "title": "Python 异步编程实战",
       "teacher": "许天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -2794,7 +2794,7 @@
     {
       "title": "Python 类型系统与工程实践",
       "teacher": "唐天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "advanced",
@@ -2806,7 +2806,7 @@
     {
       "title": "Python 自动化脚本开发",
       "teacher": "罗天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -2818,7 +2818,7 @@
     {
       "title": "FastAPI + PostgreSQL 实战",
       "teacher": "梁天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "beginner",
@@ -2830,7 +2830,7 @@
     {
       "title": "Celery 异步任务队列实战",
       "teacher": "宋天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -2842,7 +2842,7 @@
     {
       "title": "Django 企业应用开发入门",
       "teacher": "郭天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -2854,7 +2854,7 @@
     {
       "title": "JavaScript 异步编程与 Promise",
       "teacher": "彭天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "advanced",
@@ -2866,7 +2866,7 @@
     {
       "title": "JavaScript 事件循环与任务队列",
       "teacher": "谢天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -2878,7 +2878,7 @@
     {
       "title": "JavaScript 模块化与打包原理",
       "teacher": "韩天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -2890,7 +2890,7 @@
     {
       "title": "浏览器网络请求与 HTTP 实战",
       "teacher": "冯天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -2902,7 +2902,7 @@
     {
       "title": "HTTP/2 与 HTTP/3 性能优化",
       "teacher": "邓天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -2914,7 +2914,7 @@
     {
       "title": "CDN 原理与前端加速实践",
       "teacher": "曹天佑老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望掌握云原生技术的开发者", "负责部署、运维与平台建设的工程师"],
       "difficulty": "advanced",
@@ -2926,7 +2926,7 @@
     {
       "title": "Web 性能监控平台从零搭建",
       "teacher": "陈明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -2938,7 +2938,7 @@
     {
       "title": "前端错误监控与异常上报",
       "teacher": "林明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -2950,7 +2950,7 @@
     {
       "title": "前端埋点系统设计与实现",
       "teacher": "周明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -2962,7 +2962,7 @@
     {
       "title": "前端组件库设计与发布",
       "teacher": "黄明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -2974,7 +2974,7 @@
     {
       "title": "Vue 组件库从零搭建",
       "teacher": "吴明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "advanced",
@@ -2986,7 +2986,7 @@
     {
       "title": "React 组件库从零搭建",
       "teacher": "徐明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -2998,7 +2998,7 @@
     {
       "title": "Storybook 组件开发工作流",
       "teacher": "郑明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -3010,7 +3010,7 @@
     {
       "title": "Turborepo Monorepo 实战",
       "teacher": "何明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -3022,7 +3022,7 @@
     {
       "title": "pnpm Monorepo 依赖管理",
       "teacher": "许明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -3034,7 +3034,7 @@
     {
       "title": "Git 高级工作流与团队协作",
       "teacher": "唐明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望提升研发效率的开发者", "需要完善工程化体系的技术团队成员"],
       "difficulty": "advanced",
@@ -3046,7 +3046,7 @@
     {
       "title": "Git 分支策略与发布管理",
       "teacher": "罗明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望提升研发效率的开发者", "需要完善工程化体系的技术团队成员"],
       "difficulty": "beginner",
@@ -3058,7 +3058,7 @@
     {
       "title": "前端代码重构方法论与实战",
       "teacher": "梁明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -3070,7 +3070,7 @@
     {
       "title": "大型前端项目架构设计",
       "teacher": "宋明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -3082,7 +3082,7 @@
     {
       "title": "前端 BFF 架构实战",
       "teacher": "郭明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -3094,7 +3094,7 @@
     {
       "title": "Node.js BFF 服务实战",
       "teacher": "彭明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "advanced",
@@ -3106,7 +3106,7 @@
     {
       "title": "全栈 TypeScript 项目实战",
       "teacher": "谢明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -3118,7 +3118,7 @@
     {
       "title": "全栈多端开发实训营",
       "teacher": "韩明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -3130,7 +3130,7 @@
     {
       "title": "全栈多端开发实训营（前端篇）",
       "teacher": "冯明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -3142,7 +3142,7 @@
     {
       "title": "全栈多端开发实训营（后端篇）",
       "teacher": "邓明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -3154,7 +3154,7 @@
     {
       "title": "AI 产品工程化开发实战",
       "teacher": "曹明远老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "advanced",
@@ -3166,7 +3166,7 @@
     {
       "title": "AI 产品经理技术基础",
       "teacher": "陈晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -3178,7 +3178,7 @@
     {
       "title": "大模型应用架构设计",
       "teacher": "林晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "beginner",
@@ -3190,7 +3190,7 @@
     {
       "title": "企业级 AI Agent 平台开发",
       "teacher": "周晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -3202,7 +3202,7 @@
     {
       "title": "AI 搜索与智能推荐系统",
       "teacher": "黄晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "intermediate",
@@ -3214,7 +3214,7 @@
     {
       "title": "推荐系统基础与工程实践",
       "teacher": "吴晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望进入 AI 应用开发的开发者", "正在探索大模型工程实践的技术同学"],
       "difficulty": "advanced",
@@ -3226,7 +3226,7 @@
     {
       "title": "数据管道与 ETL 实战",
       "teacher": "徐晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "beginner",
@@ -3238,7 +3238,7 @@
     {
       "title": "实时数据处理架构实战",
       "teacher": "郑晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "beginner",
@@ -3250,7 +3250,7 @@
     {
       "title": "Redis + MySQL 缓存架构实战",
       "teacher": "何晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["需要提升数据库能力的开发者", "负责数据访问与性能优化的后端工程师"],
       "difficulty": "intermediate",
@@ -3262,7 +3262,7 @@
     {
       "title": "高性能 API 网关实战",
       "teacher": "许晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "intermediate",
@@ -3274,7 +3274,7 @@
     {
       "title": "高并发图片处理服务实战",
       "teacher": "唐晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "advanced",
@@ -3286,7 +3286,7 @@
     {
       "title": "Web 安全开发实战",
       "teacher": "罗晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -3298,7 +3298,7 @@
     {
       "title": "DevTools 浏览器调试技巧",
       "teacher": "梁晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "beginner",
@@ -3310,7 +3310,7 @@
     {
       "title": "Chrome 性能分析与调试",
       "teacher": "宋晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -3322,7 +3322,7 @@
     {
       "title": "正则表达式开发者实战",
       "teacher": "郭晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["希望提升研发效率的开发者", "需要完善工程化体系的技术团队成员"],
       "difficulty": "intermediate",
@@ -3334,7 +3334,7 @@
     {
       "title": "Linux 开发者常用命令与排障",
       "teacher": "彭晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/1cb023d5-70c2-49fd-b520-4489efafa2cb.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["希望提升研发效率的开发者", "需要完善工程化体系的技术团队成员"],
       "difficulty": "advanced",
@@ -3346,7 +3346,7 @@
     {
       "title": "Shell 脚本自动化运维",
       "teacher": "谢晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/0b9cb707-adda-4aea-a1b9-21c4d8e77c19.webp",
       "summary": "从真实项目出发，讲清核心原理、工程实践与常见坑点。",
       "audience": ["希望提升研发效率的开发者", "需要完善工程化体系的技术团队成员"],
       "difficulty": "beginner",
@@ -3358,7 +3358,7 @@
     {
       "title": "软件工程与代码质量体系",
       "teacher": "韩晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/35b25f26-1761-4e9c-875c-b9b8196f78fc.webp",
       "summary": "围绕企业常见场景，梳理从设计、编码到上线的完整流程。",
       "audience": ["希望提升研发效率的开发者", "需要完善工程化体系的技术团队成员"],
       "difficulty": "beginner",
@@ -3370,7 +3370,7 @@
     {
       "title": "技术方案设计与架构文档写作",
       "teacher": "冯晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/fe6b1219-e7c6-4839-bb1e-48eb381616c8.webp",
       "summary": "结合可运行示例，把抽象概念落到可以复用的代码与实践清单。",
       "audience": ["希望提升研发效率的开发者", "需要完善工程化体系的技术团队成员"],
       "difficulty": "intermediate",
@@ -3382,7 +3382,7 @@
     {
       "title": "前端国际化 i18n 与多语言工程实战",
       "teacher": "邓晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/226e8934-4014-42ba-85bf-aadc501df7be.webp",
       "summary": "以问题驱动的方式，覆盖核心 API、架构思路、调试方法和优化策略。",
       "audience": ["有前端基础的开发者", "希望提升 Web 工程能力的前端工程师"],
       "difficulty": "intermediate",
@@ -3394,7 +3394,7 @@
     {
       "title": "企业级日志平台与链路排障实战",
       "teacher": "曹晨曦老师",
-      "cover": "https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
+      "cover": "https://cdn.devshare.bond/uploads/2026/09/6cb94ca6-8d7d-4175-9d13-f491d32ff706.webp",
       "summary": "通过完整案例，帮助建立从入门到项目落地的完整知识链路。",
       "audience": ["有后端基础的开发者", "准备进阶服务端架构与性能的工程师"],
       "difficulty": "advanced",

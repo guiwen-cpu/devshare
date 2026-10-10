@@ -1,6 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import { isWebpProcessEnabled, ossImageUrl, rewriteOssImageUrls, toProxyUrl } from './image'
+import {
+  isWebpProcessEnabled,
+  ossImageUrl,
+  rewriteOssImageUrls,
+  toCdnUrl,
+  toProxyUrl,
+} from './image'
 
+// CDN = 展示用的加速域名（库里新数据存的也是它）；OSS = 老数据里存的直连域名
+const CDN = 'https://cdn.devshare.bond'
 const OSS = 'https://devshare-assets.oss-cn-guangzhou.aliyuncs.com'
 const WEBP = 'x-oss-process=image/format,webp'
 
@@ -16,8 +24,26 @@ describe('toProxyUrl', () => {
     )
   })
 
-  it('OSS 域名在开发环境返回代理 URL', () => {
-    expect(toProxyUrl(OSS + '/foo/bar', import.meta.env.DEV)).toBe('/oss-assets/foo/bar')
+  it('CDN 域名在开发环境返回代理 URL', () => {
+    expect(toProxyUrl(CDN + '/foo/bar', import.meta.env.DEV)).toBe('/oss-assets/foo/bar')
+  })
+})
+
+describe('toCdnUrl', () => {
+  it('把老数据里的 OSS 直连地址换成 CDN 域名，查询串原样保留', () => {
+    expect(toCdnUrl(OSS + '/uploads/images/2026/09/a.png')).toBe(
+      CDN + '/uploads/images/2026/09/a.png',
+    )
+    expect(toCdnUrl(OSS + '/uploads/2026/09/a.png?v=1')).toBe(CDN + '/uploads/2026/09/a.png?v=1')
+  })
+
+  it('已经是 CDN 域名或其它域名原样返回', () => {
+    expect(toCdnUrl(CDN + '/uploads/2026/09/a.png')).toBe(CDN + '/uploads/2026/09/a.png')
+    expect(toCdnUrl('https://images.example.com/photo.jpg')).toBe(
+      'https://images.example.com/photo.jpg',
+    )
+    // 只是同前缀的另一个域名（少个 /）不能误伤
+    expect(toCdnUrl(OSS + '.evil.com/uploads/a.png')).toBe(OSS + '.evil.com/uploads/a.png')
   })
 })
 
@@ -41,9 +67,12 @@ describe('ossImageUrl', () => {
     expect(ossImageUrl(123 as unknown as string)).toBe('')
   })
 
-  it('关掉开关时原样返回', () => {
+  it('关掉开关时不追 WebP 参数，但仍旧把老地址换成 CDN', () => {
+    expect(ossImageUrl(CDN + '/uploads/images/2026/10/a.jpg', false)).toBe(
+      CDN + '/uploads/images/2026/10/a.jpg',
+    )
     expect(ossImageUrl(OSS + '/uploads/images/2026/10/a.jpg', false)).toBe(
-      OSS + '/uploads/images/2026/10/a.jpg',
+      CDN + '/uploads/images/2026/10/a.jpg',
     )
   })
 
@@ -57,36 +86,36 @@ describe('ossImageUrl', () => {
     )
   })
 
-  it('OSS 上的位图追加上 WebP 参数', () => {
-    expect(ossImageUrl(OSS + '/uploads/images/2026/10/a.jpg')).toBe(
-      OSS + '/uploads/images/2026/10/a.jpg?' + WEBP,
+  it('OSS 上的位图换 CDN 域名后追加上 WebP 参数', () => {
+    expect(ossImageUrl(CDN + '/uploads/images/2026/10/a.jpg')).toBe(
+      CDN + '/uploads/images/2026/10/a.jpg?' + WEBP,
     )
-    // 老数据里的 uploads/年/月 形式同样命中
-    expect(ossImageUrl(OSS + '/uploads/2026/09/a.png')).toBe(OSS + '/uploads/2026/09/a.png?' + WEBP)
+    // 老数据里的 OSS 直连地址与 uploads/年/月 形式同样命中
+    expect(ossImageUrl(OSS + '/uploads/2026/09/a.png')).toBe(CDN + '/uploads/2026/09/a.png?' + WEBP)
   })
 
   it('已有查询串时用 & 追加', () => {
-    expect(ossImageUrl(OSS + '/uploads/2026/09/a.png?v=2')).toBe(
-      OSS + '/uploads/2026/09/a.png?v=2&' + WEBP,
+    expect(ossImageUrl(CDN + '/uploads/2026/09/a.png?v=2')).toBe(
+      CDN + '/uploads/2026/09/a.png?v=2&' + WEBP,
     )
   })
 
   it('已经带过参数就不重复追加', () => {
-    const done = OSS + '/uploads/2026/09/a.png?' + WEBP
+    const done = CDN + '/uploads/2026/09/a.png?' + WEBP
     expect(ossImageUrl(done)).toBe(done)
   })
 
   it('webp / gif / svg 不改写', () => {
-    expect(ossImageUrl(OSS + '/uploads/2026/09/a.webp')).toBe(OSS + '/uploads/2026/09/a.webp')
-    expect(ossImageUrl(OSS + '/uploads/2026/09/a.gif')).toBe(OSS + '/uploads/2026/09/a.gif')
-    expect(ossImageUrl(OSS + '/uploads/2026/09/a.svg')).toBe(OSS + '/uploads/2026/09/a.svg')
+    expect(ossImageUrl(CDN + '/uploads/2026/09/a.webp')).toBe(CDN + '/uploads/2026/09/a.webp')
+    expect(ossImageUrl(CDN + '/uploads/2026/09/a.gif')).toBe(CDN + '/uploads/2026/09/a.gif')
+    expect(ossImageUrl(CDN + '/uploads/2026/09/a.svg')).toBe(CDN + '/uploads/2026/09/a.svg')
     // 后缀判断要忽略大小写与前后的查询串
-    expect(ossImageUrl(OSS + '/uploads/2026/09/a.GIF?x=1')).toBe(OSS + '/uploads/2026/09/a.GIF?x=1')
+    expect(ossImageUrl(CDN + '/uploads/2026/09/a.GIF?x=1')).toBe(CDN + '/uploads/2026/09/a.GIF?x=1')
   })
 })
 
 describe('rewriteOssImageUrls', () => {
-  it('改写正文里的 <img>，且不动 <video> 的 src', () => {
+  it('改写正文里的 <img>（换成 CDN 并追 WebP），且不动 <video> 的 src', () => {
     const html =
       '<p>看图</p><img src="' +
       OSS +
@@ -96,33 +125,33 @@ describe('rewriteOssImageUrls', () => {
 
     const out = rewriteOssImageUrls(html)
 
-    expect(out).toContain('src="' + OSS + '/uploads/2026/09/a.png?' + WEBP + '"')
+    expect(out).toContain('src="' + CDN + '/uploads/2026/09/a.png?' + WEBP + '"')
     expect(out).toContain('src="' + OSS + '/uploads/videos/2026/09/v.mp4"')
   })
 
   it('多张图一次改完，外链与非图片地址保持原样', () => {
     const html =
       '<img src="' +
-      OSS +
+      CDN +
       '/uploads/2026/09/a.jpg"><img src="https://cdn.example.com/b.png"><img src="' +
-      OSS +
+      CDN +
       '/uploads/2026/09/c.webp">'
 
     const out = rewriteOssImageUrls(html)
 
     expect(out).toBe(
       '<img src="' +
-        OSS +
+        CDN +
         '/uploads/2026/09/a.jpg?' +
         WEBP +
         '"><img src="https://cdn.example.com/b.png"><img src="' +
-        OSS +
+        CDN +
         '/uploads/2026/09/c.webp">',
     )
   })
 
   it('开关关闭或内容为空时原样返回', () => {
-    const html = '<img src="' + OSS + '/uploads/2026/09/a.jpg">'
+    const html = '<img src="' + CDN + '/uploads/2026/09/a.jpg">'
     expect(rewriteOssImageUrls(html, false)).toBe(html)
     expect(rewriteOssImageUrls('')).toBe('')
     expect(rewriteOssImageUrls(null as unknown as string)).toBe('')
