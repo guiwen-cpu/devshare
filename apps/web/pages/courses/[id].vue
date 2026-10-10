@@ -13,7 +13,6 @@ const auth = useAuthStore()
 const toast = useToast()
 const localePath = useLocalePath()
 // 封面在 OSS 上，展示时统一改成 WebP（见 composables/useAssetUrl.ts）
-const { assetUrl } = useAssetUrl()
 
 const courseId = computed(() => Number(route.params.id))
 
@@ -83,14 +82,14 @@ useHead(() => ({ title: `${course.value?.title ?? ''} - DevShare` }))
           <div class="relative aspect-video" :class="gradientForSeed(course.id)">
             <CourseVideoPlayer
               v-if="course.videoUrl"
-              :src="course.videoUrl"
-              :poster="course.cover"
+              :src="toCdnUrl(course.videoUrl)"
+              :poster="ossImageUrl(course.cover)"
               :course-id="course.id"
               :title="course.title"
             />
             <img
               v-else-if="course.cover"
-              :src="assetUrl(course.cover)"
+              :src="ossImageUrl(course.cover)"
               :alt="course.title"
               class="absolute inset-0 w-full h-full object-cover"
             />
