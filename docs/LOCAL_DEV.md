@@ -128,10 +128,10 @@ pnpm dev
 
 上传（头像 / 封面 / Banner 图与课程视频）全部走**浏览器 SDK 直传 OSS**（ali-oss + STS 临时凭证）：本机 `.env` 没配 `OSS_*`、或没填 `OSS_STS_ROLE_ARN` 时，所有上传入口都会置灰（没有本地磁盘兜底）。要验收上传必须连一套真实 OSS，下面四条缺一不可：
 
-1. 填好 `OSS_REGION` / `OSS_BUCKET` / `OSS_ACCESS_KEY_ID` / `OSS_ACCESS_KEY_SECRET` / `OSS_PUBLIC_URL`；
+1. 填好 `OSS_REGION` / `OSS_BUCKET` / `OSS_ACCESS_KEY_ID` / `OSS_ACCESS_KEY_SECRET` / `OSS_PUBLIC_URL`（`OSS_PUBLIC_URL` 填 CDN 加速域名，如 `https://cdn.devshare.bond`）；
 2. 建一个 RAM 角色并把 ARN 填进 `OSS_STS_ROLE_ARN`，再给 RAM 子账号 `sts:AssumeRole` 权限（见 §7）；
 3. 对象保持**公共读**（播放依赖它）；
-4. bucket 的跨域规则放行 `PUT, GET, POST, DELETE, HEAD` 与请求头 `*`，来源包含 `http://localhost:3000`，并**暴露 `ETag`**（分片上传要读它）。
+4. bucket 的跨域规则放行 `PUT, GET, POST, DELETE, HEAD` 与请求头 `*`，来源包含 `http://localhost:3000` 与 CDN 域名（如 `https://cdn.devshare.bond`，海报用 canvas 读图需要），并**暴露 `ETag`**（分片上传要读它）。
 
 第 4 条最容易踩：bucket 上往往已经有一条旧的跨域规则，但它只放行了 `GET, HEAD`、也没暴露 `ETag`——现在图片和视频都由浏览器直传，只放行 GET/HEAD 会让上传在预检阶段就被拒（报错特征与改法见 §7）。配好后这样验证：
 

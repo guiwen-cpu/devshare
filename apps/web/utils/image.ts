@@ -1,13 +1,24 @@
 import { OSS_IMAGE_WEBP_PROCESS } from '@devshare/shared'
 
-const OSS_HOST = 'https://devshare-assets.oss-cn-guangzhou.aliyuncs.com'
+/// 图片与视频的 CDN 加速域名（回源到 OSS bucket）。换域名要改两处：
+/// 这里是展示侧，后端签发上传地址用的是 OSS_PUBLIC_URL（apps/api/.env）。
+const CDN_HOST = 'https://cdn.devshare.bond'
+/// 历史数据存的是 OSS 直连域名，展示时统一换成 CDN 域名——CDN 回源的就是同一个
+/// bucket、对象名不变，所以不用刷库，老文章 / 老课程也能走加速。
+const LEGACY_OSS_HOST = 'https://devshare-assets.oss-cn-guangzhou.aliyuncs.com'
 const PROXY_PREFIX = '/oss-assets'
+
+/// 把老数据里的 OSS 直连地址换成 CDN 域名；不是这个域名的地址原样返回
+export function toCdnUrl(url: string): string {
+  if (!url.startsWith(LEGACY_OSS_HOST + '/')) return url
+  return CDN_HOST + url.slice(LEGACY_OSS_HOST.length)
+}
 
 export function toProxyUrl(url: string, dev: boolean = true): string {
   if (typeof url !== 'string') return ''
   // 开发环境走同源代理，生产环境按需处理（见下文）
-  if (dev && url.startsWith(OSS_HOST)) {
-    return url.replace(OSS_HOST, PROXY_PREFIX)
+  if (dev && url.startsWith(CDN_HOST)) {
+    return url.replace(CDN_HOST, PROXY_PREFIX)
   }
   return url
 }
@@ -39,22 +50,25 @@ export function isWebpProcessEnabled(value: unknown): boolean {
  *
  * 上传的是原图、库里存的也是原图地址，只有展示时才追这个参数，因此：
  *   - 老数据（jpg/png/gif）不用迁移就能吃到 WebP；
- *   - 换 CDN / 关掉 IMG 只需要改前端开关，不用动数据库。
+ *   - 老数据里的 OSS 直连地址在这里顺手换成 CDN 域名（见 toCdnUrl）；
+ *   - 关掉 IMG 只需要改前端开关，不用动数据库。
  * 非 OSS 地址（外链图床、本地静态图）、已在用的 WebP、动图与矢量图都原样返回。
  */
 export function ossImageUrl(url: string | null | undefined, enabled: boolean = true): string {
   if (typeof url !== 'string' || url === '') return ''
-  if (!enabled) return url
+  // 换域名与转 WebP 是两件事：开关关掉时也要把老地址换成 CDN
+  const cdnUrl = toCdnUrl(url)
+  if (!enabled) return cdnUrl
   // 只改写上传到 OSS 的图；外链图床不认这个参数，硬加会让图片 404
-  if (!url.includes('/uploads/')) return url
-  if (url.includes(PROCESS_PARAM)) return url
+  if (!cdnUrl.includes('/uploads/')) return cdnUrl
+  if (cdnUrl.includes(PROCESS_PARAM)) return cdnUrl
 
   // 先剥掉查询串再判断后缀，形如 .../a.png?v=1 也要能认出来
-  const pathname = (url.split('?')[0] ?? '').toLowerCase()
-  if (SKIP_EXTENSIONS.some((ext) => pathname.endsWith(ext))) return url
+  const pathname = (cdnUrl.split('?')[0] ?? '').toLowerCase()
+  if (SKIP_EXTENSIONS.some((ext) => pathname.endsWith(ext))) return cdnUrl
 
-  const separator = url.includes('?') ? '&' : '?'
-  return url + separator + PROCESS_PARAM + '=' + OSS_IMAGE_WEBP_PROCESS
+  const separator = cdnUrl.includes('?') ? '&' : '?'
+  return cdnUrl + separator + PROCESS_PARAM + '=' + OSS_IMAGE_WEBP_PROCESS
 }
 
 /**
