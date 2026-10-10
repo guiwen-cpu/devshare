@@ -2,6 +2,8 @@
 
 从 0 到 1 实现的技术内容社区：Vue 3 + Nuxt 4（SSR）+ NestJS + PostgreSQL + Redis + Meilisearch，Docker 容器化部署，面向国内云 + CDN 上线。22
 
+线上访问：https://devshare.bond
+
 ## 功能
 
 - **内容**：文章发布 / 草稿 / 编辑 / 删除、Markdown 渲染、标签与封面、最新与热门信息流、点赞收藏评论、关注关系；
@@ -71,7 +73,7 @@ pnpm dev
 
 浏览器本地访问 `http://localhost:3000`，API 文档在 `http://localhost:3001/api/docs`。
 
-线上访问：https://devshare.cfd
+线上访问：https://devshare.bond
 
 常用脚本：
 
