@@ -64,6 +64,17 @@ const { data: article } = await useAsyncData(
 **相关文件**：`apps/web/nuxt.config.ts`
 **记录时间**：2026-09-18
 
+### 19. 信息流卡片整卡是链接、卡片里又套了标签 / 作者链接，SSR 报 NUXT_E4009
+
+**现象**：首页、标签页、搜索页的控制台出现 `[NUXT_E4009] You can't nest one <a> inside another <a>. This will cause a hydration error on client-side.` 这类警告。
+
+**原因**：`ArticleCard` 原来把整张卡片包在指向文章详情的 `<NuxtLink>` 里，卡片里的标签（`/tag/:slug`）和作者（`/user/:id`）也是 `NuxtLink`，落到 HTML 上就是链接套链接——HTML 不允许这种嵌套，Nuxt 只能在 SSR 阶段报 E4009（同时转发一条到浏览器控制台），客户端水合时两边的 DOM 结构对不上。
+
+**处理**：整卡不再自己做链接，改成「标题链接铺满整张卡片」：标题的 `NuxtLink` 带 `after:absolute after:inset-0 after:z-10`，伪元素盖住整张卡片，点卡片任意位置仍进详情；标签与作者各自 `relative z-20` 压在这层之上；卡片本身加 `isolate`，把这两层 z-index 关在卡片内部，不干扰页面上的其它元素。副作用：「阅读 / 点赞 / 评论」三个计数带 `title` 的 tooltip 现在位于链接层之下，悬停不再弹出（点整卡进详情的行为保留）。
+
+**相关文件**：`apps/web/components/ArticleCard.vue`
+**记录时间**：2026-10-15
+
 ## 海报截图（html2canvas）
 
 ### 5. 海报节点里用了 Tailwind 颜色类，截图直接抛错
