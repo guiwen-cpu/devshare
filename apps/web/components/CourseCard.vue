@@ -11,15 +11,19 @@ const { assetUrl } = useAssetUrl()
 </script>
 
 <template>
+  <!-- 课程卡片首屏就有 6 张，按可见性预取会把 6 个课程的 payload 一起拉下来；
+       interaction 保留 hover / touchstart 预取，导航体感不变 -->
   <NuxtLink
     :to="localePath(`/courses/${course.id}`)"
+    prefetch-on="interaction"
     class="group flex flex-col bg-white rounded-xl border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all overflow-hidden"
   >
     <!-- 封面固定 16:9；没有封面图时用按课程 id 稳定的渐变底兜底 -->
+    <!-- 栅格是 1/2/3 列，最宽的一档也就在 400px 上下，480 足够覆盖且远小于原图 -->
     <div class="relative aspect-video overflow-hidden" :class="gradientForSeed(course.id)">
       <img
         v-if="course.cover"
-        :src="assetUrl(course.cover)"
+        :src="assetUrl(course.cover, 480)"
         :alt="course.title"
         loading="lazy"
         class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

@@ -249,8 +249,9 @@ useHead(() => ({
             :aria-label="t('article.viewCover')"
             @click="coverPreviewOpen = true"
           >
+            <!-- 缩略图位只有 160px 宽，取 2 倍图；点开的大图在下面另走原图 -->
             <img
-              :src="assetUrl(article.cover)"
+              :src="assetUrl(article.cover, 320)"
               :alt="article.title"
               class="w-full transition duration-300 group-hover:scale-105"
             />

@@ -131,7 +131,7 @@ pnpm dev
 1. 填好 `OSS_REGION` / `OSS_BUCKET` / `OSS_ACCESS_KEY_ID` / `OSS_ACCESS_KEY_SECRET` / `OSS_PUBLIC_URL`（`OSS_PUBLIC_URL` 填 CDN 加速域名，如 `https://cdn.devshare.bond`）；
 2. 建一个 RAM 角色并把 ARN 填进 `OSS_STS_ROLE_ARN`，再给 RAM 子账号 `sts:AssumeRole` 权限（见 §7）；
 3. 对象保持**公共读**（播放依赖它）；
-4. bucket 的跨域规则放行 `PUT, GET, POST, DELETE, HEAD` 与请求头 `*`，来源包含 `http://localhost:3000` 与 CDN 域名（如 `https://cdn.devshare.bond`，海报用 canvas 读图需要），并**暴露 `ETag`**（分片上传要读它）。
+4. bucket 的跨域规则放行 `PUT, GET, POST, DELETE, HEAD` 与请求头 `*`，来源包含 `http://localhost:3000` 与 CDN 域名（如 `https://cdn.devshare.bond`，海报用 canvas 读图需要），并**暴露 `ETag`**（分片上传要读它）。线上站点域名 `https://devshare.bond` / `https://www.devshare.bond` 也必须在来源里，否则本地能传、线上上传直接 `connected: false`（见 PITFALLS 第 14 条）。
 
 第 4 条最容易踩：bucket 上往往已经有一条旧的跨域规则，但它只放行了 `GET, HEAD`、也没暴露 `ETag`——现在图片和视频都由浏览器直传，只放行 GET/HEAD 会让上传在预检阶段就被拒（报错特征与改法见 §7）。配好后这样验证：
 

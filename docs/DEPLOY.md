@@ -215,7 +215,7 @@ docker compose -p devshare-prod --env-file .env.prod \
    写进 bucket 的对象都带 `Cache-Control: public,max-age=31536000,immutable`（对象名是 UUID、内容永不改变）：图片和视频都通过 SDK 的请求头携带（视频在 InitiateMultipartUpload 时写进对象元数据）；值取自 `@devshare/shared` 的 `UPLOAD_CACHE_CONTROL`，改缓存策略只改这一处。
 7. **课程视频**与图片共用同一套直传链路，视频还需要额外三步：
    - 建一个 **RAM 角色**（信任实体选「当前账号」，`MaxSessionDuration` 默认 3600 秒，想签更久的凭证要在这里调大），给它 `oss:PutObject` 权限，把角色 ARN 填进 `OSS_STS_ROLE_ARN`；再给第 2 步那个 RAM 子账号加一条 `sts:AssumeRole` 权限（只允许它扮演这一个角色最稳妥）。视频走浏览器 **ali-oss SDK + STS 临时凭证**分片直传，长期 AccessKey 只留在服务端，下发的凭证用会话策略钉死到单个对象名；凭证有效期用 `OSS_STS_DURATION_SECONDS` 调整（默认 3600 秒，下限 900，上限受角色的 MaxSessionDuration 约束）。
-   - bucket 配置 **CORS** 规则，允许站点域名（`https://www.example.com`、CDN 域名 `https://cdn.devshare.bond` 与本地 `http://localhost:3000`——CDN 域名少不得，海报用 canvas 读图，缺 CORS 画布会被污染、导出直接抛错）：`Allowed Method` 勾 `PUT, GET, POST, DELETE, HEAD`，`Allowed Header` 填 `*`，**务必在「暴露 Headers」里加上 `ETag`**（分片上传要读响应里的 ETag，缺了 SDK 会直接报错），缓存时间建议 600。图片和视频都从浏览器直传，GET/HEAD 不够——只放行 GET/HEAD 会让上传在预检阶段报 403 `AccessForbidden`；
+   - bucket 配置 **CORS** 规则，把站点**实际用到的每个 Origin** 都填进「来源」（不支持通配符，`Origin` 是精确匹配的）：`https://devshare.bond`、`https://www.devshare.bond`、CDN 域名 `https://cdn.devshare.bond`（海报用 canvas 读图，缺了画布会被污染、导出直接抛错）与本地 `http://localhost:3000`。**只配 `localhost` 会出现「本地能传、线上传不了」**：线上那条预检 OPTIONS 返回 403 `AccessForbidden`，浏览器连 PUT 都不发，前端只看到 `connected: false`（详见 PITFALLS 第 14 条）。`Allowed Method` 勾 `PUT, GET, POST, DELETE, HEAD`，`Allowed Header` 填 `*`，**务必在「暴露 Headers」里加上 `ETag`**（分片上传要读响应里的 ETag，缺了 SDK 会直接报错），缓存时间建议 600。图片和视频都从浏览器直传，GET/HEAD 不够——只放行 GET/HEAD 会让上传在预检阶段报 403 `AccessForbidden`；
    - 对象**保持公共读**，`<video>` 才能直接流式播放（`OSS_PUBLIC_URL` 指向 CDN 加速域名时同理）。
      图片与视频都走浏览器分片直传，文件体不经过 Node 与 nginx，因此 2GB+ 也不受 nginx `client_max_body_size 10m` 与 multer 内存缓冲限制；上限分别用 `MAX_IMAGE_SIZE_MB`（默认 20）与 `MAX_VIDEO_SIZE_MB`（默认 4096）调整；临时凭证由 SDK 在过期前自动续签（续签复用同一个对象名），不需要靠调大有效期来支持超长上传。
 
@@ -223,8 +223,9 @@ docker compose -p devshare-prod --env-file .env.prod \
 
 ## 8. 主站 CDN（HTML 与静态资源加速）
 
-- 给 `www.example.com` 添加 CDN 加速域名，源站为 ECS IP（80/443）。
-- 缓存规则：`/_nuxt/*` 缓存 30 天（不可变）；`/`、`/article/*` 缓存 60 秒（SWR 语义，回源 Nuxt 已有 SWR 缓存）；其余不缓存（动态请求）。
+- `devshare.bond` 与 `www.devshare.bond` **两个**加速域名都要加，源站为 ECS IP（80/443），并且**缓存规则配成同一套**——只配一个、或两边规则不一致，就会出现"换个域名打开还是旧页面"（见 PITFALLS 第 15 条）。
+- 缓存规则：`/_nuxt/*` 缓存 30 天（不可变）；`/`、`/article/*`、`/courses/*` 缓存 60 秒（Nuxt 回源的 SWR 缓存就是 60 秒，CDN 别设更长，否则发版后旧 HTML 会一直命中）；其余不缓存（动态请求）。HTML 不要开「忽略参数」缓存。
+- 发版后页面还是旧的：先看 `curl -sI https://devshare.bond/` 的 `Age` / `X-Swift-CacheTime`，TTL 明显大于 60 就是命中了一条更长的规则，去 CDN 控制台改规则并「刷新预热」。
 - 海外用户可开启 CDN 海外节点，实现全球加速。
 
 ## 9. 更新与维护f

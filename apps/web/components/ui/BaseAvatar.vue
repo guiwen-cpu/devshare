@@ -27,9 +27,10 @@ const initial = computed(() => (props.name ?? '').trim().charAt(0).toUpperCase()
     class="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-brand-100 to-accent-100 text-brand-700 overflow-hidden shrink-0"
     :class="sizes[size]"
   >
+    <!-- 最大的一档是 lg 的 64px，取 2 倍图即可覆盖 DPR2，再大纯属浪费 -->
     <img
       v-if="src"
-      :src="assetUrl(src)"
+      :src="assetUrl(src, 128)"
       :alt="name ?? 'avatar'"
       class="w-full h-full object-cover"
       loading="lazy"

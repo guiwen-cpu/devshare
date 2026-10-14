@@ -12,8 +12,10 @@ export function useAssetUrl() {
   const enabled = isWebpProcessEnabled(config.public.ossImageWebp)
 
   return {
-    /// 用于 <img :src>：空值返回空串，非 OSS 地址原样返回
-    assetUrl: (url: string | null | undefined) => ossImageUrl(url, enabled),
+    /// 用于 <img :src>：空值返回空串，非 OSS 地址原样返回。
+    /// width 是可选的目标像素宽（给 Retina 屏传显示宽度的 2 倍），
+    /// 只在展示位明显小于原图时传——如列表封面、头像、缩略图。
+    assetUrl: (url: string | null | undefined, width?: number) => ossImageUrl(url, enabled, width),
     /// 用于文章正文：只改写 contentHtml 里的 <img src>
     assetHtml: (html: string) => rewriteOssImageUrls(html, enabled),
   }

@@ -46,6 +46,18 @@ export function isWebpProcessEnabled(value: unknown): boolean {
 }
 
 /**
+ * 在 WebP 算子前面插一段等比缩放，拼成 `image/resize,w_256/format,webp`。
+ *
+ * 不要再加 `limit` 参数。OSS 的 resize 默认就是「只缩不放」——实测拿
+ * `resize,w_3000` 去要一张 940×940 的原图，返回的仍是 940×940——所以
+ * `limit` 既没必要，加上还会让源站直接报 400（`image/resize,w_256/limit,0/...`
+ * 与 `/limit,1/...` 都试过，一律失败）。
+ */
+function withResize(width: number): string {
+  return OSS_IMAGE_WEBP_PROCESS.replace(/^image\//, `image/resize,w_${width}/`)
+}
+
+/**
  * 把 OSS 上的图片地址改写成「读取时由 OSS 图片处理（IMG）输出 WebP」。
  *
  * 上传的是原图、库里存的也是原图地址，只有展示时才追这个参数，因此：
@@ -53,8 +65,17 @@ export function isWebpProcessEnabled(value: unknown): boolean {
  *   - 老数据里的 OSS 直连地址在这里顺手换成 CDN 域名（见 toCdnUrl）；
  *   - 关掉 IMG 只需要改前端开关，不用动数据库。
  * 非 OSS 地址（外链图床、本地静态图）、已在用的 WebP、动图与矢量图都原样返回。
+ *
+ * `width` 是给「展示位明显小于原图」的场景用的（列表封面、头像、缩略图）：传了就让
+ * OSS 先按这个宽度等比缩小再转码，不传则与原来完全一致——首页曾经一次性下发 21 张
+ * 原图共 1.23 MB，其中 128×128 的卡片封面实发 163 KB，浪费了 95%。
+ * 注意它是「目标像素宽」，给 Retina 屏一般传显示宽度的 2 倍。
  */
-export function ossImageUrl(url: string | null | undefined, enabled: boolean = true): string {
+export function ossImageUrl(
+  url: string | null | undefined,
+  enabled: boolean = true,
+  width?: number,
+): string {
   if (typeof url !== 'string' || url === '') return ''
   // 换域名与转 WebP 是两件事：开关关掉时也要把老地址换成 CDN
   const cdnUrl = toCdnUrl(url)
@@ -68,7 +89,12 @@ export function ossImageUrl(url: string | null | undefined, enabled: boolean = t
   if (SKIP_EXTENSIONS.some((ext) => pathname.endsWith(ext))) return cdnUrl
 
   const separator = cdnUrl.includes('?') ? '&' : '?'
-  return cdnUrl + separator + PROCESS_PARAM + '=' + OSS_IMAGE_WEBP_PROCESS
+  // 宽度非法（0 / 负数 / NaN）时退回只转 WebP，不生成无效的 OSS 算子
+  const process =
+    typeof width === 'number' && Number.isFinite(width) && width > 0
+      ? withResize(Math.round(width))
+      : OSS_IMAGE_WEBP_PROCESS
+  return cdnUrl + separator + PROCESS_PARAM + '=' + process
 }
 
 /**

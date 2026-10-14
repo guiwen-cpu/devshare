@@ -248,6 +248,93 @@ docker compose -p devshare-prod --env-file .env.prod \
 **相关文件**：`docker-compose.prod.yml`、`docker-compose.staging.yml`、`deploy/deploy.sh`
 **记录时间**：2026-09-20
 
+### 14. 本地能传图片，线上点上传就报 XHR error / connected: false
+
+**现象**：线上后台选图后上传失败，控制台里 ali-oss 抛 `RequestError: XHR error (req "error"), PUT https://<bucket>.<region>.aliyuncs.com/uploads/images/... -1 (connected: false, keepalive socket: false)`；Network 里那条 PUT 是 `CORS error`（或者只能看到一条 403 的 OPTIONS）。换成 `pnpm dev` 在本地传同一张图却正常。
+
+**原因**：浏览器直传 OSS 是跨域请求（站点域名 → `*.aliyuncs.com`），能不能发出去由 **bucket 的跨域设置（CORS）** 决定，跟 `OSS_PUBLIC_URL` / CDN 域名无关——PUT 的目标地址是 ali-oss 用 STS 返回的 region 与 bucket 拼出来的默认域名（见 `apps/web/composables/useUpload.ts`）。而 CORS 是按 `Origin` 精确匹配的：本地开发 Origin 是 `http://localhost:3000`，线上是 `https://devshare.bond`，bucket 里只配了前者时，线上这条预检 OPTIONS 直接 403 `AccessForbidden`，浏览器于是连 PUT 都不发，SDK 只能报 `connected: false`。
+
+自己验一遍（`Origin` 换成站点域名，期望 200 且响应头带 `Access-Control-Allow-Origin`）：
+
+```bash
+curl -i -X OPTIONS 'https://<bucket>.<region>.aliyuncs.com/uploads/images/2026/10/x.jpg' \
+  -H 'Origin: https://devshare.bond' \
+  -H 'Access-Control-Request-Method: PUT' \
+  -H 'Access-Control-Request-Headers: cache-control,content-type,x-oss-security-token'
+```
+
+**处理**：OSS 控制台 → 该 bucket → 数据安全 → 跨域设置 → 编辑规则，把站点**实际用到的每个 Origin** 都写进「来源」：`https://devshare.bond`、`https://www.devshare.bond`（nginx 两个域名都收，少一个那个域名下就传不了）、`https://cdn.devshare.bond`（海报用 canvas 读图，CDN 域名也要放行）、`http://localhost:3000`（本地开发）。方法勾 `GET, HEAD, POST, PUT, DELETE`，允许 Headers 填 `*`，暴露 Headers 保留 `ETag`（分片上传要读响应头）。来源不支持通配符，换域名得回来加一条。
+
+**相关文件**：`apps/web/composables/useUpload.ts`、`docs/DEPLOY.md`、`docs/LOCAL_DEV.md`
+**记录时间**：2026-10-10
+
+### 15. 换域名 / 发新版后只有部分域名生效，另一个域名还是旧内容
+
+**现象**：把 OSS 直连地址换成 CDN 域名后，`https://www.devshare.bond` 打开是新地址，裸域 `https://devshare.bond` 打开还是老的 OSS 直连地址；用 IP 访问（绕开 CDN）也是新的。直连源站核对（`curl --resolve devshare.bond:443:<ECS_IP> https://devshare.bond/`）两个 Host 拿到的都是新构建，说明代码与容器没问题。`curl -sI https://devshare.bond/` 里 `Age` 已经上万秒、`X-Swift-CacheTime: 2592000`（30 天），带个 `?v=xxx` 也照样命中同一条缓存。
+
+**原因**：主站挂了两个 CDN 加速域名（裸域与 www），缓存规则是各配各的。裸域那条把 HTML 按 **30 天** 缓存、还开了「忽略参数」，源站发新版后 CDN 仍按旧 TTL 返回旧 HTML；Nuxt 那边回源的 `s-maxage=60, stale-while-revalidate` 被 30 天的 CDN 规则完全盖掉。www 那条是 60 秒，所以看起来"只有部分域名没生效"。
+
+**处理**：CDN 控制台把两个加速域名的缓存规则配成**同一套**（`/_nuxt/*` 30 天；`/`、`/article/*`、`/courses/*` 60 秒，别比 SSR 的 60 秒更长；其余不缓存；HTML 不要开忽略参数），改完必须「刷新预热」刷 `https://devshare.bond/`——HTML 已经被缓存，不刷就得等 TTL。自检：
+
+```bash
+curl -sI https://devshare.bond/ | grep -i -E 'x-swift-cachetime|age|x-cache'
+# 期望 X-Swift-CacheTime: 60 且 Age 是个小数字，而不是 2592000
+```
+
+**相关文件**：`apps/web/nuxt.config.ts`（routeRules 的 SSR / SWR）、`docs/DEPLOY.md` 第 8 节
+**记录时间**：2026-10-10
+
+## 前端性能与打包
+
+### 16. 首页白下了 918 KB 编辑器代码：rolldown 的 chunk 分组把 md-editor 并进了入口
+
+**现象**：首页 HTML 里出现 `/_nuxt/DTfbj-xN.js` 的 `modulepreload`，该 chunk 918 KB，内含 `md-editor-v3` + `katex` + `@codemirror` + `cropperjs`，还外带一个 66 KB 的渲染阻塞 `md-editor.css`——而首页一个编辑器都不用。入口 chunk 里明写着 `import{…}from"./DTfbj-xN.js"`。Lighthouse 移动端因此报 `unused-javascript` 687 KiB、`unused-css-rules` 64 KiB。一个旁证很好认：构建产物里只有 `md-editor.<hash>.css`，却没有对应的 `.js`，说明编辑器代码实际躺在别的 chunk 里。
+
+**原因**：`vite.build.rolldownOptions.output.codeSplitting.groups` 里配了 `{ name: 'md-editor', test: /md-editor-v3/ }`，本意是把它单独拆成一个懒加载 chunk。实测没有隔离出来，反而让整个编辑器依赖树和 Vue/Nuxt vendor 合并成了同一个 chunk；vendor 是入口所必需的，编辑器就被顺带静态加载了。
+
+**处理**：删掉整个 `codeSplitting.groups`，走 rolldown 默认切分。`md-editor-v3` 只被 `pages/write/*` 引用，默认行为下自然会落进懒加载 chunk（本次拆成 370 KB + 304 KB 两个）。首屏 JS 从 **1253 KB 降到 581 KB**，`md-editor.css` 也不再出现在首页。
+
+别只对着配置推演，一定要验证：
+
+```bash
+pnpm --filter @devshare/web build
+grep -l "md-editor-v3" apps/web/.output/public/_nuxt/*.js   # 找到编辑器 chunk 的文件名
+head -c 300 apps/web/.output/public/_nuxt/<入口>.js          # 入口的 import 列表里不该出现它
+```
+
+更直接的是起一遍构建产物 `node apps/web/.output/server/index.mjs`，`curl` 首页看 `<link rel="modulepreload">` 列表。
+
+**相关文件**：`apps/web/nuxt.config.ts`
+**记录时间**：2026-10-10
+
+### 17. 给 OSS 图片加 resize 后线上 400 / 参数完全不生效
+
+**现象**：卡片封面改用 `?x-oss-process=image/resize,w_256/limit,0/format,webp` 后，DevTools 里这条请求 `400 Bad Request`。
+
+**原因**：两件事叠在一起，且互相干扰。
+
+1. **`limit` 这个参数写法不对。** OSS 的 `resize` 默认就是「只缩不放」，`limit` 本就不需要；写成 `/limit,0` 会被源站直接拒掉（`/limit,1`、`w_256,h_256/limit,1` 同样失败）。实测拿 `image/resize,w_3000/format,webp` 去要一张 940×940 的原图，拿回来的仍是 940×940——不放大就是默认行为。
+2. **CDN 的缓存键忽略了查询参数。** `x-oss-process` 实际上只在首次回源那一次生效，之后同一路径不管带什么参数都吐同一份缓存体。表现极具迷惑性：给一张 `.jpg` 加 `image/format,webp`，返回的仍是 `image/jpeg`；给已经被缓存成整图 WebP 的 `.png` 加 `resize,w_64`，返回的还是那张整图；连 `image/totally-bogus-op` 这种源站必定报错的算子，经 CDN 也是 200。
+
+**处理**：
+
+- 代码侧去掉 `limit`，处理串就是 `image/resize,w_<W>/format,webp`（见 `apps/web/utils/image.ts`）。
+- CDN 控制台把覆盖 `/uploads/*` 的那条缓存规则的**「忽略参数」关掉**，然后**刷新预热**。否则每条路径上已经缓存错的内容（比如没转 WebP 的原图）会一直留到 TTL 到期（30 天）。这条和上面第 15 条是同一批缓存规则，建议一起核。
+
+**怎么验证源站行为**（CDN 会把参数吃掉，拿它验证只会得出错误结论）：**必须在浏览器里跑**，直接打 OSS 直连域名看尺寸——
+
+```js
+const img = new Image()
+img.onload = () => console.log(img.naturalWidth, img.naturalHeight)
+img.src =
+  'https://<bucket>.oss-cn-guangzhou.aliyuncs.com/uploads/.../a.jpg?x-oss-process=image/resize,w_256/format,webp'
+```
+
+`curl` 打 OSS 和 CDN 都会 403（防盗链），命令行验不了。
+
+**相关文件**：`apps/web/utils/image.ts`、`apps/web/utils/image.spec.ts`
+**记录时间**：2026-10-14
+
 ## 追加模板
 
 ```md
