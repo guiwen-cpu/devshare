@@ -10,7 +10,7 @@
  *   --file <path>  必填，JSON 数据文件
  *   --stdin        从标准输入读 JSON（与 --file 二选一，容器内管道传数据更方便）
  *   --apply        真正写入（省略则只做 dry-run）
- *   --update       已存在的讲师/课程改为 PATCH 更新；省略则跳过不动
+ *   --update       已存在的讲师/课程改为 PUT 更新；省略则跳过不动
  *
  * 仓库内附了一份可直接改的样例：prisma/courses.example.json
  *
@@ -99,7 +99,7 @@ function sleep(ms: number) {
 }
 
 async function request<T>(
-  method: 'GET' | 'POST' | 'PATCH',
+  method: 'GET' | 'POST' | 'PUT',
   path: string,
   body?: unknown,
   token?: string,
@@ -241,7 +241,7 @@ async function main() {
     } else if (shouldUpdate) {
       console.log(`  ~ 讲师 ${teacher.name} (id=${existingId})`)
       updated += 1
-      if (shouldApply) await request('PATCH', `/teachers/${existingId}`, payload, token)
+      if (shouldApply) await request('PUT', `/teachers/${existingId}`, payload, token)
     } else {
       console.log(`  = 讲师 ${teacher.name} 已存在，跳过`)
       skipped += 1
@@ -277,7 +277,7 @@ async function main() {
     } else if (shouldUpdate) {
       console.log(`  ~ 课程 ${course.title} (id=${existingId})`)
       updated += 1
-      if (shouldApply) await request('PATCH', `/courses/${existingId}`, payload, token)
+      if (shouldApply) await request('PUT', `/courses/${existingId}`, payload, token)
     } else {
       console.log(`  = 课程 ${course.title} 已存在，跳过`)
       skipped += 1

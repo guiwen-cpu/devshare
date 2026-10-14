@@ -139,7 +139,7 @@ async function deleteComment(comment: CommentItem) {
 
 const deleting = ref(false)
 
-// 作者本人或管理员可管理这篇文章（与后端 PATCH/DELETE /articles/:id 的判定一致）。
+// 作者本人或管理员可管理这篇文章（与后端 PUT/DELETE /articles/:id 的判定一致）。
 // 用 hydrated 兜住：登录态来自 localStorage，首帧必须等服务端/客户端对齐后再渲染。
 const canManage = computed(
   () =>

@@ -96,7 +96,7 @@ async function submit(publish: boolean) {
   if (!form.title.trim() || !form.contentMd.trim()) return
   saving.value = true
   try {
-    const updated = await api.patch<ArticleDetail>(`/articles/${articleId.value}`, {
+    const updated = await api.put<ArticleDetail>(`/articles/${articleId.value}`, {
       title: form.title,
       summary: form.summary || undefined,
       cover: form.cover || undefined,

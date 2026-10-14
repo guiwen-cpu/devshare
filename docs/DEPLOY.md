@@ -226,6 +226,7 @@ docker compose -p devshare-prod --env-file .env.prod \
 - `devshare.bond` 与 `www.devshare.bond` **两个**加速域名都要加，源站为 ECS IP（80/443），并且**缓存规则配成同一套**——只配一个、或两边规则不一致，就会出现"换个域名打开还是旧页面"（见 PITFALLS 第 15 条）。
 - 缓存规则：`/_nuxt/*` 缓存 30 天（不可变）；`/`、`/article/*`、`/courses/*` 缓存 60 秒（Nuxt 回源的 SWR 缓存就是 60 秒，CDN 别设更长，否则发版后旧 HTML 会一直命中）；其余不缓存（动态请求）。HTML 不要开「忽略参数」缓存。
 - 发版后页面还是旧的：先看 `curl -sI https://devshare.bond/` 的 `Age` / `X-Swift-CacheTime`，TTL 明显大于 60 就是命中了一条更长的规则，去 CDN 控制台改规则并「刷新预热」。
+- **这个 CDN 不支持 PATCH**：对任意路径发 PATCH，边缘节点会直接返回 400（`X-Swift-Error: request parse msg error`，`content-type: text/html` 且无响应体），请求根本到不了 NestJS，而本地直连 3001 是好的。所以全站的更新接口一律用 `PUT`，`useApi` 里不提供 `patch`（详见 PITFALLS 第 18 条）。要恢复 PATCH 得把主站加速换成 ESA。
 - 海外用户可开启 CDN 海外节点，实现全球加速。
 
 ## 9. 更新与维护f

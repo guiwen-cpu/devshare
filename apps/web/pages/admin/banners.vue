@@ -121,7 +121,7 @@ async function save() {
   saving.value = true
   try {
     if (editingId.value) {
-      await api.patch(`/banners/${editingId.value}`, payload)
+      await api.put(`/banners/${editingId.value}`, payload)
     } else {
       await api.post('/banners', payload)
     }
@@ -137,7 +137,7 @@ async function save() {
 
 async function toggleEnabled(banner: BannerDTO) {
   try {
-    await api.patch(`/banners/${banner.id}`, { enabled: !banner.enabled })
+    await api.put(`/banners/${banner.id}`, { enabled: !banner.enabled })
     toast.success(t('common.saved'))
     await load()
   } catch {

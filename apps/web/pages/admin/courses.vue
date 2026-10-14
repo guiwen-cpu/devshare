@@ -315,7 +315,7 @@ async function save() {
   try {
     if (isEdit) {
       // 编辑：用返回的详情就地替换那一行，滚动位置与其它已加载的行都不动
-      replaceRow(await api.patch<CourseDetail>(`/courses/${editingId.value}`, payload))
+      replaceRow(await api.put<CourseDetail>(`/courses/${editingId.value}`, payload))
     } else {
       await api.post('/courses', payload)
     }
@@ -335,8 +335,8 @@ async function save() {
 
 async function toggleStatus(course: CourseListItem) {
   const status: CourseStatus = course.status === 'published' ? 'draft' : 'published'
-  // 用 PATCH 返回的状态就地更新这一行，不重拉整页，滚动位置留在原处
-  const updated = await api.patch<CourseDetail>(`/courses/${course.id}`, { status })
+  // 用 PUT 返回的状态就地更新这一行，不重拉整页，滚动位置留在原处
+  const updated = await api.put<CourseDetail>(`/courses/${course.id}`, { status })
   toast.success(t('common.saved'))
   replaceRow(updated)
 }

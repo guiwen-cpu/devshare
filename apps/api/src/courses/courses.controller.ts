@@ -5,8 +5,8 @@ import {
   Get,
   Param,
   ParseIntPipe,
-  Patch,
   Post,
+  Put,
   Query,
   UseGuards,
 } from '@nestjs/common'
@@ -70,7 +70,8 @@ export class CoursesController {
     return this.courses.create(user, dto)
   }
 
-  @Patch(':id')
+  // 必须用 PUT：线上主站走阿里云 CDN，CDN 不支持 PATCH（边缘直接 400，见 PITFALLS 第 18 条）
+  @Put(':id')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: '更新课程（仅管理员）' })

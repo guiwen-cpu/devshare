@@ -88,12 +88,17 @@ export const useAuthStore = defineStore('auth', {
       if (import.meta.client) localStorage.removeItem('df_token')
     },
 
-    async rawRequest<T>(path: string, options: {
-      method?: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE'
-      body?: unknown
-    } = {}): Promise<T> {
+    async rawRequest<T>(
+      path: string,
+      options: {
+        method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
+        body?: unknown
+      } = {},
+    ): Promise<T> {
       const config = useRuntimeConfig()
-      const base = import.meta.server ? (config.apiBase as string) : (config.public.apiBase as string)
+      const base = import.meta.server
+        ? (config.apiBase as string)
+        : (config.public.apiBase as string)
       const headers: Record<string, string> = {}
       if (options.body) headers['Content-Type'] = 'application/json'
       if (this.token) headers.Authorization = `Bearer ${this.token}`

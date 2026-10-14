@@ -5,8 +5,8 @@ import {
   Get,
   Param,
   ParseIntPipe,
-  Patch,
   Post,
+  Put,
   UseGuards,
 } from '@nestjs/common'
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger'
@@ -35,7 +35,8 @@ export class TeachersController {
     return this.teachers.create(user, dto)
   }
 
-  @Patch(':id')
+  // 必须用 PUT：线上主站走阿里云 CDN，CDN 不支持 PATCH（边缘直接 400，见 PITFALLS 第 18 条）
+  @Put(':id')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: '更新讲师（仅管理员）' })

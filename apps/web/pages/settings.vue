@@ -62,7 +62,7 @@ async function uploadAvatar(e: Event) {
 async function save() {
   saving.value = true
   try {
-    const updated = await api.patch<UserProfile>('/users/me', {
+    const updated = await api.put<UserProfile>('/users/me', {
       username: form.username,
       bio: form.bio,
       avatar: form.avatar || undefined,
