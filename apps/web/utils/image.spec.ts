@@ -11,8 +11,9 @@ import {
 const CDN = 'https://cdn.devshare.bond'
 const OSS = 'https://devshare-assets.oss-cn-guangzhou.aliyuncs.com'
 const WEBP = 'x-oss-process=image/format,webp'
-// 按宽度裁剪的处理串：resize 在前、limit,0（不放大）紧跟着它、format,webp 收尾
-const RESIZE = (w: number) => `x-oss-process=image/resize,w_${w}/limit,0/format,webp`
+// 按宽度裁剪的处理串：resize 在前、format,webp 收尾。
+// 不要加 limit——OSS 的 resize 默认就不放大，加了反而让源站报 400
+const RESIZE = (w: number) => `x-oss-process=image/resize,w_${w}/format,webp`
 
 describe('toProxyUrl', () => {
   it('传入非字符串返回空字符串', () => {
@@ -116,8 +117,8 @@ describe('ossImageUrl', () => {
   })
 
   describe('按显示尺寸裁剪（width）', () => {
-    it('传 width 时缩放算子插在 format,webp 前面，并带上 limit,0', () => {
-      // limit,0 = 不放大：否则 OSS 会把小于目标宽度的图放大，反而更费流量
+    it('传 width 时缩放算子插在 format,webp 前面', () => {
+      // 不加 limit：OSS 的 resize 默认不放大，而带 limit 的写法会被源站拒绝（400）
       expect(ossImageUrl(CDN + '/uploads/2026/09/a.png', true, 256)).toBe(
         CDN + '/uploads/2026/09/a.png?' + RESIZE(256),
       )

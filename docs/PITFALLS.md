@@ -307,6 +307,34 @@ head -c 300 apps/web/.output/public/_nuxt/<入口>.js          # 入口的 impor
 **相关文件**：`apps/web/nuxt.config.ts`
 **记录时间**：2026-10-10
 
+### 17. 给 OSS 图片加 resize 后线上 400 / 参数完全不生效
+
+**现象**：卡片封面改用 `?x-oss-process=image/resize,w_256/limit,0/format,webp` 后，DevTools 里这条请求 `400 Bad Request`。
+
+**原因**：两件事叠在一起，且互相干扰。
+
+1. **`limit` 这个参数写法不对。** OSS 的 `resize` 默认就是「只缩不放」，`limit` 本就不需要；写成 `/limit,0` 会被源站直接拒掉（`/limit,1`、`w_256,h_256/limit,1` 同样失败）。实测拿 `image/resize,w_3000/format,webp` 去要一张 940×940 的原图，拿回来的仍是 940×940——不放大就是默认行为。
+2. **CDN 的缓存键忽略了查询参数。** `x-oss-process` 实际上只在首次回源那一次生效，之后同一路径不管带什么参数都吐同一份缓存体。表现极具迷惑性：给一张 `.jpg` 加 `image/format,webp`，返回的仍是 `image/jpeg`；给已经被缓存成整图 WebP 的 `.png` 加 `resize,w_64`，返回的还是那张整图；连 `image/totally-bogus-op` 这种源站必定报错的算子，经 CDN 也是 200。
+
+**处理**：
+
+- 代码侧去掉 `limit`，处理串就是 `image/resize,w_<W>/format,webp`（见 `apps/web/utils/image.ts`）。
+- CDN 控制台把覆盖 `/uploads/*` 的那条缓存规则的**「忽略参数」关掉**，然后**刷新预热**。否则每条路径上已经缓存错的内容（比如没转 WebP 的原图）会一直留到 TTL 到期（30 天）。这条和上面第 15 条是同一批缓存规则，建议一起核。
+
+**怎么验证源站行为**（CDN 会把参数吃掉，拿它验证只会得出错误结论）：**必须在浏览器里跑**，直接打 OSS 直连域名看尺寸——
+
+```js
+const img = new Image()
+img.onload = () => console.log(img.naturalWidth, img.naturalHeight)
+img.src =
+  'https://<bucket>.oss-cn-guangzhou.aliyuncs.com/uploads/.../a.jpg?x-oss-process=image/resize,w_256/format,webp'
+```
+
+`curl` 打 OSS 和 CDN 都会 403（防盗链），命令行验不了。
+
+**相关文件**：`apps/web/utils/image.ts`、`apps/web/utils/image.spec.ts`
+**记录时间**：2026-10-14
+
 ## 追加模板
 
 ```md

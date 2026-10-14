@@ -46,13 +46,15 @@ export function isWebpProcessEnabled(value: unknown): boolean {
 }
 
 /**
- * 在 WebP 算子前面插一段等比缩放，拼成 `image/resize,w_256/limit,0/format,webp`。
+ * 在 WebP 算子前面插一段等比缩放，拼成 `image/resize,w_256/format,webp`。
  *
- * `limit,0` 不能省：OSS 的 resize 默认会把小于目标宽度的图放大，卡片这类小展示位
- * 传大图时反而更费流量；加上它才是「只缩不放」。
+ * 不要再加 `limit` 参数。OSS 的 resize 默认就是「只缩不放」——实测拿
+ * `resize,w_3000` 去要一张 940×940 的原图，返回的仍是 940×940——所以
+ * `limit` 既没必要，加上还会让源站直接报 400（`image/resize,w_256/limit,0/...`
+ * 与 `/limit,1/...` 都试过，一律失败）。
  */
 function withResize(width: number): string {
-  return OSS_IMAGE_WEBP_PROCESS.replace(/^image\//, `image/resize,w_${width}/limit,0/`)
+  return OSS_IMAGE_WEBP_PROCESS.replace(/^image\//, `image/resize,w_${width}/`)
 }
 
 /**
