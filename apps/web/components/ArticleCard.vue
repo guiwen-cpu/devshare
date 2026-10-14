@@ -15,85 +15,90 @@ const visibleTags = computed(() => props.article.tags.slice(0, 2))
 </script>
 
 <template>
+  <!-- 卡片里还有标签 / 作者两个链接，而 HTML 不允许链接再套链接（SSR 会报 NUXT_E4009 并让水合失败），
+       所以整卡不再自己做链接：标题链接用 after 伪元素铺满整张卡片，点卡片任意位置仍能进详情，
+       标签与作者各自 z-20 压在这层之上；isolate 把这两层 z-index 关在卡片内部，不干扰页面其它元素。 -->
   <!-- 信息流一进页面就有十几张卡片，按可见性预取会把它们的 payload 一起拉下来；
        interaction 保留 hover / touchstart 预取，导航体感不变 -->
-  <NuxtLink :to="localePath(`/article/${props.article.id}`)" prefetch-on="interaction">
-    <article
-      class="group bg-white rounded-xl border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all h-40 flex gap-4 overflow-hidden p-4"
-    >
-      <div class="flex-1 min-w-0 flex flex-col">
-        <!-- 首行：序号/标签 + 发布时间 -->
-        <div class="flex items-center gap-1.5 min-w-0">
-          <span
-            v-if="showRank && rank !== undefined"
-            class="w-5 h-5 rounded-md text-xs font-bold text-white grid place-items-center shrink-0"
-            :class="rank <= 3 ? 'bg-red-500' : 'bg-slate-300'"
-          >
-            {{ rank }}
-          </span>
-          <NuxtLink
-            v-for="tag in visibleTags"
-            :key="tag.id"
-            :to="localePath(`/tag/${tag.slug}`)"
-            class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium transition-colors shrink-0"
-            :class="tagChipForSeed(tag.id)"
-            @click.stop
-          >
-            {{ tag.name }}
-          </NuxtLink>
-          <time class="ml-auto shrink-0 text-xs text-slate-400">
-            {{ timeAgo(props.article.publishedAt, locale, now) }}
-          </time>
-        </div>
+  <article
+    class="group relative isolate bg-white rounded-xl border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all h-40 flex gap-4 overflow-hidden p-4"
+  >
+    <div class="flex-1 min-w-0 flex flex-col">
+      <!-- 首行：序号/标签 + 发布时间 -->
+      <div class="flex items-center gap-1.5 min-w-0">
+        <span
+          v-if="showRank && rank !== undefined"
+          class="w-5 h-5 rounded-md text-xs font-bold text-white grid place-items-center shrink-0"
+          :class="rank <= 3 ? 'bg-red-500' : 'bg-slate-300'"
+        >
+          {{ rank }}
+        </span>
+        <NuxtLink
+          v-for="tag in visibleTags"
+          :key="tag.id"
+          :to="localePath(`/tag/${tag.slug}`)"
+          class="relative z-20 inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium transition-colors shrink-0"
+          :class="tagChipForSeed(tag.id)"
+        >
+          {{ tag.name }}
+        </NuxtLink>
+        <time class="ml-auto shrink-0 text-xs text-slate-400">
+          {{ timeAgo(props.article.publishedAt, locale, now) }}
+        </time>
+      </div>
 
-        <div
-          class="mt-1.5 text-[15px] font-semibold text-slate-900 leading-snug line-clamp-2 group-hover:text-brand-600 transition-colors"
+      <div
+        class="mt-1.5 text-[15px] font-semibold text-slate-900 leading-snug line-clamp-2 group-hover:text-brand-600 transition-colors"
+      >
+        <NuxtLink
+          :to="localePath(`/article/${props.article.id}`)"
+          prefetch-on="interaction"
+          class="rounded-sm after:absolute after:inset-0 after:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
         >
           {{ props.article.title }}
-        </div>
+        </NuxtLink>
+      </div>
 
-        <p class="mt-1 text-[13px] text-slate-500 line-clamp-1">
-          {{ props.article.summary ?? '' }}
-        </p>
+      <p class="mt-1 text-[13px] text-slate-500 line-clamp-1">
+        {{ props.article.summary ?? '' }}
+      </p>
 
-        <div class="mt-auto flex items-center gap-2 text-xs text-slate-400">
-          <NuxtLink
-            @click.stop
-            :to="localePath(`/user/${props.article.author.id}`)"
-            class="flex items-center gap-1.5 hover:text-brand-600 min-w-0"
-          >
-            <BaseAvatar
-              :src="props.article.author.avatar"
-              :name="props.article.author.username"
-              size="xs"
-            />
-            <span class="truncate max-w-28">{{ props.article.author.username }}</span>
-          </NuxtLink>
-          <span class="flex items-center gap-2.5 ml-auto shrink-0">
-            <span class="flex items-center gap-1" :title="$t('article.views')">
-              <Eye class="w-3.5 h-3.5" /> {{ formatCount(props.article.viewCount) }}
-            </span>
-            <span class="flex items-center gap-1" :title="$t('article.likes')">
-              <Heart class="w-3.5 h-3.5" /> {{ formatCount(props.article.likeCount) }}
-            </span>
-            <span class="flex items-center gap-1" :title="$t('article.comments')">
-              <MessageSquare class="w-3.5 h-3.5" /> {{ formatCount(props.article.commentCount) }}
-            </span>
+      <div class="mt-auto flex items-center gap-2 text-xs text-slate-400">
+        <NuxtLink
+          :to="localePath(`/user/${props.article.author.id}`)"
+          class="relative z-20 flex items-center gap-1.5 hover:text-brand-600 min-w-0"
+        >
+          <BaseAvatar
+            :src="props.article.author.avatar"
+            :name="props.article.author.username"
+            size="xs"
+          />
+          <span class="truncate max-w-28">{{ props.article.author.username }}</span>
+        </NuxtLink>
+        <span class="flex items-center gap-2.5 ml-auto shrink-0">
+          <span class="flex items-center gap-1" :title="$t('article.views')">
+            <Eye class="w-3.5 h-3.5" /> {{ formatCount(props.article.viewCount) }}
           </span>
-        </div>
+          <span class="flex items-center gap-1" :title="$t('article.likes')">
+            <Heart class="w-3.5 h-3.5" /> {{ formatCount(props.article.likeCount) }}
+          </span>
+          <span class="flex items-center gap-1" :title="$t('article.comments')">
+            <MessageSquare class="w-3.5 h-3.5" /> {{ formatCount(props.article.commentCount) }}
+          </span>
+        </span>
       </div>
+    </div>
 
-      <!-- 右侧缩略图：有封面图用图，否则用按文章 id 稳定的渐变色占位 -->
-      <!-- 展示位只有 128px 宽，要 2 倍图给 Retina 屏；不裁的话会下发整张原图 -->
-      <div class="relative w-32 shrink-0 self-stretch overflow-hidden rounded-lg">
-        <img
-          v-if="props.article.cover"
-          :src="assetUrl(props.article.cover, 256)"
-          :alt="props.article.title"
-          loading="lazy"
-          class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      </div>
-    </article>
-  </NuxtLink>
+    <!-- 右侧缩略图：有封面图用图，否则用按文章 id 稳定的渐变色占位 -->
+    <!-- 展示位只有 128px 宽，要 2 倍图给 Retina 屏；不裁的话会下发整张原图 -->
+    <div class="relative w-32 shrink-0 self-stretch overflow-hidden rounded-lg">
+      <img
+        v-if="props.article.cover"
+        :src="assetUrl(props.article.cover, 256)"
+        :alt="props.article.title"
+        loading="lazy"
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+    </div>
+  </article>
 </template>
