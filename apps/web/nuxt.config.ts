@@ -36,21 +36,13 @@ export default defineNuxtConfig({
         avif: { quality: 50, lossless: false },
       }),
     ],
-    build: {
-      rolldownOptions: {
-        // 注意：从 rollupOptions 改为 rolldownOptions
-        output: {
-          codeSplitting: {
-            groups: [
-              {
-                name: 'md-editor',
-                test: /md-editor-v3/, // 用正则匹配模块路径
-              },
-            ],
-          },
-        },
-      },
-    },
+    // 曾经这里配过 rolldownOptions.output.codeSplitting.groups，把 md-editor-v3
+    // 单独分成一个 chunk。实测它没有把编辑器隔离成懒加载 chunk，反而让整个编辑器
+    // 依赖树（md-editor-v3 + katex + @codemirror + cropperjs，构建产物约 918 KB）
+    // 并进了入口的 vendor chunk：首页 HTML 里出现它的 modulepreload，入口 chunk
+    // 里出现 import{...}from"./DTfbj-xN.js"，外加一个 66 KB 渲染阻塞的 md-editor.css。
+    // 首页一个编辑器都不用，却为此下载了近 1 MB。删掉分组规则后走 rolldown 默认
+    // 切分，编辑器只被 pages/write/* 引用，会自然落进懒加载 chunk。
   },
 
   devServer: {
@@ -97,9 +89,28 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    // ali-oss 只用于浏览器直传（见 composables/useUpload.ts 里的动态 import），
+    // 但它的 npm 包既没有 exports 字段，又把 lib/**/*.js 和 lib/**/*.ts 一起发布了。
+    // Nitro 打服务端包时会走进 ali-oss，并把无扩展名的 require('./common/utils/encoder')
+    // 解析到 .ts 上，而 Nitro 的 rollup 没有 TS 插件，于是报
+    // "Expected ',', got ':' (Note that you need plugins to import files that are not JavaScript)"。
+    // 在 rollup 这一层声明 external 最可靠：nitro.externals.external 在 Nitro 2.13 的
+    // 新 externals 插件里只用于和 inline 规则比优先级，并不能强制外置。
+    rollupConfig: {
+      plugins: [
+        {
+          // Nuxt 会把这里的插件排在 Nitro 内置插件（alias / externals / nodeResolve）之前，
+          // 所以能在 Nitro 走进 ali-oss 的源码之前就把它标成 external。
+          name: 'externalize-ali-oss',
+          resolveId(id: string) {
+            if (id === 'ali-oss') return { id, external: true }
+          },
+        },
+      ],
+    },
     routeRules: {
       // '/oss-assets/**': {
-      //   proxy: 'https://devshare-assets.oss-cn-guangzhou.aliyuncs.com/**',
+      //   proxy: 'https://cdn.devshare.bond/**',
       // },
       '/api/**': {
         proxy: 'http://127.0.0.1:3001/api/**',

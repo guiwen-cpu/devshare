@@ -11,6 +11,8 @@ import {
 const CDN = 'https://cdn.devshare.bond'
 const OSS = 'https://devshare-assets.oss-cn-guangzhou.aliyuncs.com'
 const WEBP = 'x-oss-process=image/format,webp'
+// 按宽度裁剪的处理串：resize 在前、limit,0（不放大）紧跟着它、format,webp 收尾
+const RESIZE = (w: number) => `x-oss-process=image/resize,w_${w}/limit,0/format,webp`
 
 describe('toProxyUrl', () => {
   it('传入非字符串返回空字符串', () => {
@@ -111,6 +113,67 @@ describe('ossImageUrl', () => {
     expect(ossImageUrl(CDN + '/uploads/2026/09/a.svg')).toBe(CDN + '/uploads/2026/09/a.svg')
     // 后缀判断要忽略大小写与前后的查询串
     expect(ossImageUrl(CDN + '/uploads/2026/09/a.GIF?x=1')).toBe(CDN + '/uploads/2026/09/a.GIF?x=1')
+  })
+
+  describe('按显示尺寸裁剪（width）', () => {
+    it('传 width 时缩放算子插在 format,webp 前面，并带上 limit,0', () => {
+      // limit,0 = 不放大：否则 OSS 会把小于目标宽度的图放大，反而更费流量
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.png', true, 256)).toBe(
+        CDN + '/uploads/2026/09/a.png?' + RESIZE(256),
+      )
+      // 老数据里的 OSS 直连域名同样生效
+      expect(ossImageUrl(OSS + '/uploads/2026/09/a.jpg', true, 480)).toBe(
+        CDN + '/uploads/2026/09/a.jpg?' + RESIZE(480),
+      )
+    })
+
+    it('已有查询串时用 & 追加', () => {
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.png?v=2', true, 128)).toBe(
+        CDN + '/uploads/2026/09/a.png?v=2&' + RESIZE(128),
+      )
+    })
+
+    it('不传 width 时行为与从前完全一致（回归保护）', () => {
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.png')).toBe(
+        CDN + '/uploads/2026/09/a.png?' + WEBP,
+      )
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.png', true, undefined)).toBe(
+        CDN + '/uploads/2026/09/a.png?' + WEBP,
+      )
+    })
+
+    it('宽度非法时退回只转 WebP，不生成无效算子', () => {
+      const plain = CDN + '/uploads/2026/09/a.png?' + WEBP
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.png', true, 0)).toBe(plain)
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.png', true, -10)).toBe(plain)
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.png', true, Number.NaN)).toBe(plain)
+    })
+
+    it('非整数宽度会取整', () => {
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.png', true, 255.6)).toBe(
+        CDN + '/uploads/2026/09/a.png?' + RESIZE(256),
+      )
+    })
+
+    it('关掉开关时不追任何处理串，width 也不生效', () => {
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.png', false, 256)).toBe(
+        CDN + '/uploads/2026/09/a.png',
+      )
+    })
+
+    it('跳过原有不该改写的地址：已带处理串 / webp / gif / svg / 外链', () => {
+      const done = CDN + '/uploads/2026/09/a.png?' + WEBP
+      expect(ossImageUrl(done, true, 256)).toBe(done)
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.webp', true, 256)).toBe(
+        CDN + '/uploads/2026/09/a.webp',
+      )
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.gif', true, 256)).toBe(
+        CDN + '/uploads/2026/09/a.gif',
+      )
+      expect(ossImageUrl('https://images.example.com/photo.jpg', true, 256)).toBe(
+        'https://images.example.com/photo.jpg',
+      )
+    })
   })
 })
 

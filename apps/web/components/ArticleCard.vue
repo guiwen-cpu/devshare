@@ -15,7 +15,9 @@ const visibleTags = computed(() => props.article.tags.slice(0, 2))
 </script>
 
 <template>
-  <NuxtLink :to="localePath(`/article/${props.article.id}`)">
+  <!-- 信息流一进页面就有十几张卡片，按可见性预取会把它们的 payload 一起拉下来；
+       interaction 保留 hover / touchstart 预取，导航体感不变 -->
+  <NuxtLink :to="localePath(`/article/${props.article.id}`)" prefetch-on="interaction">
     <article
       class="group bg-white rounded-xl border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all h-40 flex gap-4 overflow-hidden p-4"
     >
@@ -82,10 +84,11 @@ const visibleTags = computed(() => props.article.tags.slice(0, 2))
       </div>
 
       <!-- 右侧缩略图：有封面图用图，否则用按文章 id 稳定的渐变色占位 -->
+      <!-- 展示位只有 128px 宽，要 2 倍图给 Retina 屏；不裁的话会下发整张原图 -->
       <div class="relative w-32 shrink-0 self-stretch overflow-hidden rounded-lg">
         <img
           v-if="props.article.cover"
-          :src="assetUrl(props.article.cover)"
+          :src="assetUrl(props.article.cover, 256)"
           :alt="props.article.title"
           loading="lazy"
           class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

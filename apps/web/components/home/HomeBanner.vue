@@ -95,11 +95,14 @@ onBeforeUnmount(stop)
         :class="gradientForSeed(item.banner.id)"
         :aria-hidden="i !== current"
       >
+        <!-- 线上实测首屏 LCP 元素就是第一张 banner 图，且 LCP 11.1s 里有 8.2s（74%）
+             耗在「加载延迟」上——图本身下载只占 0.8s。标 fetchpriority=high 后浏览器
+             会在 preload 扫描阶段就发起请求，不必等布局算完才发现它。 -->
         <img
           v-if="!failedImages.has(item.banner.id)"
           :src="assetUrl(item.banner.image)"
           alt=""
-          loading="lazy"
+          :fetchpriority="i === 0 ? 'high' : 'low'"
           class="absolute inset-0 h-full w-full object-cover"
           @error="failedImages.add(item.banner.id)"
         />
