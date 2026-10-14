@@ -14,6 +14,8 @@ const WEBP = 'x-oss-process=image/format,webp'
 // 按宽度裁剪的处理串：resize 在前、format,webp 收尾。
 // 不要加 limit——OSS 的 resize 默认就不放大，加了反而让源站报 400
 const RESIZE = (w: number) => `x-oss-process=image/resize,w_${w}/format,webp`
+// 本来就是 WebP 的图只缩放、不转码
+const RESIZE_ONLY = (w: number) => `x-oss-process=image/resize,w_${w}`
 
 describe('toProxyUrl', () => {
   it('传入非字符串返回空字符串', () => {
@@ -108,12 +110,16 @@ describe('ossImageUrl', () => {
     expect(ossImageUrl(done)).toBe(done)
   })
 
-  it('webp / gif / svg 不改写', () => {
-    expect(ossImageUrl(CDN + '/uploads/2026/09/a.webp')).toBe(CDN + '/uploads/2026/09/a.webp')
+  it('gif / svg 不改写，webp 在没有宽度时也不动', () => {
     expect(ossImageUrl(CDN + '/uploads/2026/09/a.gif')).toBe(CDN + '/uploads/2026/09/a.gif')
     expect(ossImageUrl(CDN + '/uploads/2026/09/a.svg')).toBe(CDN + '/uploads/2026/09/a.svg')
+    // webp 已经不转码了，但没传宽度时依然原样返回
+    expect(ossImageUrl(CDN + '/uploads/2026/09/a.webp')).toBe(CDN + '/uploads/2026/09/a.webp')
     // 后缀判断要忽略大小写与前后的查询串
     expect(ossImageUrl(CDN + '/uploads/2026/09/a.GIF?x=1')).toBe(CDN + '/uploads/2026/09/a.GIF?x=1')
+    expect(ossImageUrl(CDN + '/uploads/2026/09/a.WEBP?x=1')).toBe(
+      CDN + '/uploads/2026/09/a.WEBP?x=1',
+    )
   })
 
   describe('按显示尺寸裁剪（width）', () => {
@@ -162,14 +168,34 @@ describe('ossImageUrl', () => {
       )
     })
 
-    it('跳过原有不该改写的地址：已带处理串 / webp / gif / svg / 外链', () => {
+    it('本来就是 WebP 的图只加缩放，不加 format,webp', () => {
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.webp', true, 256)).toBe(
+        CDN + '/uploads/2026/09/a.webp?' + RESIZE_ONLY(256),
+      )
+      // 老数据里的 OSS 直连域名同样生效；后缀判断忽略大小写
+      expect(ossImageUrl(OSS + '/uploads/2026/09/a.WEBP', true, 480)).toBe(
+        CDN + '/uploads/2026/09/a.WEBP?' + RESIZE_ONLY(480),
+      )
+    })
+
+    it('WebP 图已有查询串时用 & 追加，宽度非法时不加任何参数', () => {
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.webp?v=2', true, 128)).toBe(
+        CDN + '/uploads/2026/09/a.webp?v=2&' + RESIZE_ONLY(128),
+      )
+      const plain = CDN + '/uploads/2026/09/a.webp'
+      expect(ossImageUrl(plain, true, 0)).toBe(plain)
+      expect(ossImageUrl(plain, true, -10)).toBe(plain)
+      expect(ossImageUrl(plain, true, Number.NaN)).toBe(plain)
+    })
+
+    it('跳过原有不该改写的地址：已带处理串 / gif / svg / 外链', () => {
       const done = CDN + '/uploads/2026/09/a.png?' + WEBP
       expect(ossImageUrl(done, true, 256)).toBe(done)
-      expect(ossImageUrl(CDN + '/uploads/2026/09/a.webp', true, 256)).toBe(
-        CDN + '/uploads/2026/09/a.webp',
-      )
       expect(ossImageUrl(CDN + '/uploads/2026/09/a.gif', true, 256)).toBe(
         CDN + '/uploads/2026/09/a.gif',
+      )
+      expect(ossImageUrl(CDN + '/uploads/2026/09/a.svg', true, 256)).toBe(
+        CDN + '/uploads/2026/09/a.svg',
       )
       expect(ossImageUrl('https://images.example.com/photo.jpg', true, 256)).toBe(
         'https://images.example.com/photo.jpg',

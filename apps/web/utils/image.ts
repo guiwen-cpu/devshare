@@ -26,11 +26,14 @@ export function toProxyUrl(url: string, dev: boolean = true): string {
 /// OSS 图片处理（IMG）的参数名：地址里已经带了它，就说明改写过了
 const PROCESS_PARAM = 'x-oss-process'
 
-/// 这些后缀不做 WebP 转换：
-///   .webp —— 本来就是 WebP，再转一次纯属白花 IMG 的钱
+/// 这些后缀完全不做改写：
 ///   .gif  —— IMG 的 format,webp 会把动图压成静帧
 ///   .svg  —— 矢量图，IMG 处理不了
-const SKIP_EXTENSIONS = ['.webp', '.gif', '.svg']
+const SKIP_EXTENSIONS = ['.gif', '.svg']
+
+/// 本来就是 WebP：不再转码（再转一次纯属白花 IMG 的钱），
+/// 但按显示宽度等比缩小仍然值得做——见 ossImageUrl 里的分支
+const WEBP_EXTENSION = '.webp'
 
 /**
  * 判断「读取时转 WebP」是否开启。
@@ -45,16 +48,21 @@ export function isWebpProcessEnabled(value: unknown): boolean {
   return !['off', 'false', '0', 'no'].includes(normalized)
 }
 
+/// 只缩放的算子基串：传给 withResize 表示「缩完就到头，不再接别的算子」
+const RESIZE_ONLY_BASE = 'image'
+
 /**
- * 在 WebP 算子前面插一段等比缩放，拼成 `image/resize,w_256/format,webp`。
+ * 在算子串前面插一段等比缩放，拼成 `image/resize,w_256/format,webp`
+ * （传 RESIZE_ONLY_BASE 则拼成只缩放的 `image/resize,w_256`）。
  *
  * 不要再加 `limit` 参数。OSS 的 resize 默认就是「只缩不放」——实测拿
  * `resize,w_3000` 去要一张 940×940 的原图，返回的仍是 940×940——所以
  * `limit` 既没必要，加上还会让源站直接报 400（`image/resize,w_256/limit,0/...`
  * 与 `/limit,1/...` 都试过，一律失败）。
  */
-function withResize(width: number): string {
-  return OSS_IMAGE_WEBP_PROCESS.replace(/^image\//, `image/resize,w_${width}/`)
+function withResize(base: string, width: number): string {
+  // base 形如 `image/format,webp` 或 `image`；resize 永远排在第一个算子
+  return `image/resize,w_${Math.round(width)}${base.slice('image'.length)}`
 }
 
 /**
@@ -64,7 +72,8 @@ function withResize(width: number): string {
  *   - 老数据（jpg/png/gif）不用迁移就能吃到 WebP；
  *   - 老数据里的 OSS 直连地址在这里顺手换成 CDN 域名（见 toCdnUrl）；
  *   - 关掉 IMG 只需要改前端开关，不用动数据库。
- * 非 OSS 地址（外链图床、本地静态图）、已在用的 WebP、动图与矢量图都原样返回。
+ * 非 OSS 地址（外链图床、本地静态图）、动图与矢量图都原样返回；已经是 WebP 的图不转码，
+ * 只在传了 `width` 时追加缩放宽度的算子。
  *
  * `width` 是给「展示位明显小于原图」的场景用的（列表封面、头像、缩略图）：传了就让
  * OSS 先按这个宽度等比缩小再转码，不传则与原来完全一致——首页曾经一次性下发 21 张
@@ -86,15 +95,24 @@ export function ossImageUrl(
 
   // 先剥掉查询串再判断后缀，形如 .../a.png?v=1 也要能认出来
   const pathname = (cdnUrl.split('?')[0] ?? '').toLowerCase()
+
   if (SKIP_EXTENSIONS.some((ext) => pathname.endsWith(ext))) return cdnUrl
 
   const separator = cdnUrl.includes('?') ? '&' : '?'
   // 宽度非法（0 / 负数 / NaN）时退回只转 WebP，不生成无效的 OSS 算子
-  const process =
-    typeof width === 'number' && Number.isFinite(width) && width > 0
-      ? withResize(Math.round(width))
-      : OSS_IMAGE_WEBP_PROCESS
-  return cdnUrl + separator + PROCESS_PARAM + '=' + process
+  const validWidth = typeof width === 'number' && Number.isFinite(width) && width > 0
+  const suffix = separator + PROCESS_PARAM + '='
+
+  // 本来就是 WebP：跳过 format,webp，只在有宽度时按宽度缩放；没宽度就没必要动它
+  if (pathname.endsWith(WEBP_EXTENSION)) {
+    return validWidth ? cdnUrl + suffix + withResize(RESIZE_ONLY_BASE, width) : cdnUrl
+  }
+
+  return (
+    cdnUrl +
+    suffix +
+    (validWidth ? withResize(OSS_IMAGE_WEBP_PROCESS, width) : OSS_IMAGE_WEBP_PROCESS)
+  )
 }
 
 /**
