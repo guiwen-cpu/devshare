@@ -2,7 +2,8 @@ import type { ApiErrorBody } from '@devshare/shared'
 import { useAuthStore } from '~/stores/auth'
 
 export interface ApiOptions {
-  method?: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE'
+  // 不含 PATCH：线上主站走阿里云 CDN，CDN 不支持 PATCH，会把请求挡在边缘节点
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
   body?: unknown
   query?: Record<string, string | number | undefined>
   headers?: Record<string, string>
@@ -54,9 +55,10 @@ export function useApi() {
     get: <T>(path: string, options?: ApiOptions) => request<T>(path, { ...options, method: 'GET' }),
     post: <T>(path: string, body?: unknown, options?: ApiOptions) =>
       request<T>(path, { ...options, method: 'POST', body }),
-    patch: <T>(path: string, body?: unknown, options?: ApiOptions) =>
-      request<T>(path, { ...options, method: 'PATCH', body }),
-    del: <T>(path: string, options?: ApiOptions) => request<T>(path, { ...options, method: 'DELETE' }),
+    put: <T>(path: string, body?: unknown, options?: ApiOptions) =>
+      request<T>(path, { ...options, method: 'PUT', body }),
+    del: <T>(path: string, options?: ApiOptions) =>
+      request<T>(path, { ...options, method: 'DELETE' }),
     request,
   }
 }

@@ -53,7 +53,7 @@ async function save() {
   saving.value = true
   try {
     if (editingId.value) {
-      await api.patch(`/tags/${editingId.value}`, { name, slug: slug || undefined })
+      await api.put(`/tags/${editingId.value}`, { name, slug: slug || undefined })
     } else {
       await api.post('/tags', { name, slug: slug || undefined })
     }

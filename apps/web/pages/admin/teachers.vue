@@ -75,7 +75,7 @@ async function save() {
   saving.value = true
   try {
     if (editingId.value) {
-      await api.patch(`/teachers/${editingId.value}`, payload)
+      await api.put(`/teachers/${editingId.value}`, payload)
     } else {
       await api.post('/teachers', payload)
     }

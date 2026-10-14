@@ -335,6 +335,36 @@ img.src =
 **相关文件**：`apps/web/utils/image.ts`、`apps/web/utils/image.spec.ts`
 **记录时间**：2026-10-14
 
+### 18. 线上任何 PATCH 请求都 400，但本地 `pnpm dev` 改得好好的
+
+**现象**：后台编辑课程 / 标签 / 讲师 / Banner、改个人资料、更新文章，在线上统统报错。Network 里那条请求 `400 Bad Request`，响应**没有** API 那套 `{ statusCode, code, message }` JSON。同一个功能本地 `pnpm dev` 直连 3001 一切正常。
+
+**原因**：**返回 400 的不是 NestJS，而是阿里云 CDN 的边缘节点**——请求根本没到源站。CDN 不支持 PATCH 方法，在边缘直接拒掉，报错头是 `X-Swift-Error: request parse msg error`。本地不走 CDN，所以完全看不出来。
+
+判断依据（同一路径换方法对比，一眼就能看出是边缘拦截）：
+
+```bash
+curl -s -X PATCH -d '{}' -D - -o /dev/null https://devshare.bond/api/v1/courses/2
+# HTTP/2 400 / server: Tengine / via: kunlun8.cn9039 / x-swift-error: request parse msg error
+# content-type: text/html; content-length: 0        ← 没有 API 的 JSON 错误体
+
+curl -s -X POST -d '{}' -D - -o /dev/null https://devshare.bond/api/v1/courses/2
+# HTTP/2 404 + application/json                      ← 正常回源，是 NestJS 在答
+```
+
+注意这个坑会把排查带偏：payload 本身完全合法（拿它喂 `UpdateCourseDto` + 线上同一套 `ValidationPipe` 能过），DTO 怎么查都没问题；而且**不带 body、不带 token 也照样 400**，所以不是校验、不是鉴权、不是 `whitelist`。
+
+**处理**：全站弃用 PATCH，改 PUT（阿里云 CDN 支持 GET / HEAD / POST / PUT / DELETE）。
+
+- 后端 6 个 `@Patch` 路由改成 `@Put`：`articles`、`banners`、`courses`、`tags`、`teachers`、`users/me`。
+- 前端 `useApi` 只暴露 `put`，`ApiOptions.method` 里不再有 `PATCH`；`apps/web/stores/auth.ts` 的 `rawRequest` 同步收窄。
+- `apps/api/prisma/import-courses.ts` 的 `--update` 也改走 PUT。
+
+没有保留 `@Patch` 别名：留着的话，以后谁写了 PATCH 调用，本地跑得通、线上继续 400，等于把这个坑重新埋回来。真要 PATCH，得先把主站加速换成 ESA（边缘安全加速）——官方给的方案就是换产品，标准 CDN 不开这个口子。
+
+**相关文件**：`apps/api/src/*/*.controller.ts`、`apps/web/composables/useApi.ts`、`docs/DEPLOY.md` 第 8 节
+**记录时间**：2026-10-14
+
 ## 追加模板
 
 ```md

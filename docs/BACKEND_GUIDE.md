@@ -151,15 +151,15 @@ export class ArticlesController {
 
 Controller 的"套路"就这几个装饰器：
 
-| 装饰器                                          | 作用                         | 前端类比               |
-| ----------------------------------------------- | ---------------------------- | ---------------------- |
-| `@Controller('articles')`                       | 类级别，路由前缀             | `pages/articles/` 目录 |
-| `@Get()` / `@Post()` / `@Patch()` / `@Delete()` | 方法级别，HTTP 方法 + 路径   | fetch 的 method + URL  |
-| `@Param('id')`                                  | 取 URL 路径里的参数          | `route.params.id`      |
-| `@Query()`                                      | 取 `?sort=hot&limit=20`      | `route.query`          |
-| `@Body()`                                       | 取请求体（JSON）             | `fetch(url, { body })` |
-| `@CurrentUser()`                                | 取当前登录用户（项目自定义） | store 里的 `auth.user` |
-| `@UseGuards(...)`                               | 挂守卫，先过检查再进方法     | 路由中间件             |
+| 装饰器                                        | 作用                         | 前端类比               |
+| --------------------------------------------- | ---------------------------- | ---------------------- |
+| `@Controller('articles')`                     | 类级别，路由前缀             | `pages/articles/` 目录 |
+| `@Get()` / `@Post()` / `@Put()` / `@Delete()` | 方法级别，HTTP 方法 + 路径   | fetch 的 method + URL  |
+| `@Param('id')`                                | 取 URL 路径里的参数          | `route.params.id`      |
+| `@Query()`                                    | 取 `?sort=hot&limit=20`      | `route.query`          |
+| `@Body()`                                     | 取请求体（JSON）             | `fetch(url, { body })` |
+| `@CurrentUser()`                              | 取当前登录用户（项目自定义） | store 里的 `auth.user` |
+| `@UseGuards(...)`                             | 挂守卫，先过检查再进方法     | 路由中间件             |
 
 **Controller 里不写业务逻辑**——这是约定。它只做三件事：取参数、调用 Service、返回结果。
 
@@ -997,7 +997,7 @@ const moduleRef = await Test.createTestingModule({
 | 术语                 | 一句话解释                                                                               | 前端类比                                |
 | -------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- |
 | API                  | 后端对外开放的接口集合                                                                   | 你 fetch 的那些 URL                     |
-| REST                 | 用 HTTP 方法 + 资源路径表达操作（GET 查、POST 增、PATCH 改、DELETE 删）                  | 同一套 fetch 约定                       |
+| REST                 | 用 HTTP 方法 + 资源路径表达操作（GET 查、POST 增、PUT 改、DELETE 删）                    | 同一套 fetch 约定                       |
 | JSON                 | 前后端交换数据的格式                                                                     | JS 对象，但键必须双引号                 |
 | 状态码               | 200 成功 / 400 参数错 / 401 未登录 / 403 无权限 / 404 不存在 / 429 太频繁 / 500 服务器错 | 和前端拦截器里判断的一样                |
 | DTO                  | 接口输入 / 输出的数据形状定义                                                            | props 类型 + 运行时校验                 |
