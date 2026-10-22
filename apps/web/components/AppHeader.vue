@@ -13,12 +13,10 @@ import {
   UserCog,
 } from 'lucide-vue-next'
 import { useAuthStore } from '~/stores/auth'
-import { useHydrated } from '~/composables/useHydrated'
 
 const { t, locale, setLocale } = useI18n()
 const localePath = useLocalePath()
 const auth = useAuthStore()
-const hydrated = useHydrated()
 const router = useRouter()
 const route = useRoute()
 const toast = useToast()
@@ -118,96 +116,96 @@ async function onLogout() {
           </button>
         </template>
       </BaseDropdown>
-
-      <template v-if="hydrated && auth.isLoggedIn && auth.user">
-        <BaseDropdown align="right">
-          <template #trigger>
-            <BaseAvatar
-              :src="auth.user.avatar"
-              :name="auth.user.username"
-              size="sm"
-              class="cursor-pointer"
-            />
-          </template>
-          <template #default>
-            <NuxtLink
-              :to="localePath(`/user/${auth.user.id}`)"
-              class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
-            >
-              <User class="w-4 h-4 text-slate-400" /> {{ t('nav.profile') }}
-            </NuxtLink>
-            <NuxtLink
-              :to="{ path: localePath(`/user/${auth.user.id}`), query: { tab: 'courses' } }"
-              class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
-            >
-              <BookOpen class="w-4 h-4 text-slate-400" /> {{ t('nav.myCourses') }}
-            </NuxtLink>
-            <NuxtLink
-              :to="localePath('/settings')"
-              class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
-            >
-              <Settings class="w-4 h-4 text-slate-400" /> {{ t('nav.settings') }}
-            </NuxtLink>
-            <NuxtLink
-              v-if="auth.user?.role === 'admin'"
-              :to="localePath('/admin/tags')"
-              class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
-            >
-              <Tags class="w-4 h-4 text-slate-400" /> {{ t('nav.adminTags') }}
-            </NuxtLink>
-            <NuxtLink
-              v-if="auth.user?.role === 'admin'"
-              :to="localePath('/admin/courses')"
-              class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
-            >
-              <GraduationCap class="w-4 h-4 text-slate-400" /> {{ t('nav.adminCourses') }}
-            </NuxtLink>
-            <NuxtLink
-              v-if="auth.user?.role === 'admin'"
-              :to="localePath('/admin/teachers')"
-              class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
-            >
-              <UserCog class="w-4 h-4 text-slate-400" /> {{ t('nav.adminTeachers') }}
-            </NuxtLink>
-            <NuxtLink
-              v-if="auth.user?.role === 'admin'"
-              :to="localePath('/admin/banners')"
-              class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
-            >
-              <GalleryHorizontalEnd class="w-4 h-4 text-slate-400" /> {{ t('nav.adminBanners') }}
-            </NuxtLink>
-            <button
-              class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md text-red-500"
-              @click="onLogout"
-            >
-              <LogOut class="w-4 h-4" /> {{ t('nav.logout') }}
-            </button>
-          </template>
-        </BaseDropdown>
-      </template>
-      <template v-else>
+      <ClientOnly>
+        <template v-if="auth.isLoggedIn && auth.user">
+          <BaseDropdown align="right">
+            <template #trigger>
+              <BaseAvatar
+                :src="auth.user.avatar"
+                :name="auth.user.username"
+                size="sm"
+                class="cursor-pointer"
+              />
+            </template>
+            <template #default>
+              <NuxtLink
+                :to="localePath(`/user/${auth.user.id}`)"
+                class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
+              >
+                <User class="w-4 h-4 text-slate-400" /> {{ t('nav.profile') }}
+              </NuxtLink>
+              <NuxtLink
+                :to="{ path: localePath(`/user/${auth.user.id}`), query: { tab: 'courses' } }"
+                class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
+              >
+                <BookOpen class="w-4 h-4 text-slate-400" /> {{ t('nav.myCourses') }}
+              </NuxtLink>
+              <NuxtLink
+                :to="localePath('/settings')"
+                class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
+              >
+                <Settings class="w-4 h-4 text-slate-400" /> {{ t('nav.settings') }}
+              </NuxtLink>
+              <NuxtLink
+                v-if="auth.user?.role === 'admin'"
+                :to="localePath('/admin/tags')"
+                class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
+              >
+                <Tags class="w-4 h-4 text-slate-400" /> {{ t('nav.adminTags') }}
+              </NuxtLink>
+              <NuxtLink
+                v-if="auth.user?.role === 'admin'"
+                :to="localePath('/admin/courses')"
+                class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
+              >
+                <GraduationCap class="w-4 h-4 text-slate-400" /> {{ t('nav.adminCourses') }}
+              </NuxtLink>
+              <NuxtLink
+                v-if="auth.user?.role === 'admin'"
+                :to="localePath('/admin/teachers')"
+                class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
+              >
+                <UserCog class="w-4 h-4 text-slate-400" /> {{ t('nav.adminTeachers') }}
+              </NuxtLink>
+              <NuxtLink
+                v-if="auth.user?.role === 'admin'"
+                :to="localePath('/admin/banners')"
+                class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md"
+              >
+                <GalleryHorizontalEnd class="w-4 h-4 text-slate-400" /> {{ t('nav.adminBanners') }}
+              </NuxtLink>
+              <button
+                class="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-slate-50 rounded-md text-red-500"
+                @click="onLogout"
+              >
+                <LogOut class="w-4 h-4" /> {{ t('nav.logout') }}
+              </button>
+            </template>
+          </BaseDropdown>
+        </template>
+        <template v-else>
+          <NuxtLink
+            :to="localePath('/login')"
+            class="text-sm text-slate-600 hover:text-brand-600 px-2 py-1"
+          >
+            {{ t('nav.login') }}
+          </NuxtLink>
+          <NuxtLink
+            :to="localePath('/register')"
+            class="hidden sm:inline-flex items-center gap-1 text-sm bg-brand-500 text-white px-3 py-1.5 rounded-lg hover:bg-brand-600 transition-colors"
+          >
+            {{ t('nav.register') }}
+          </NuxtLink>
+        </template>
         <NuxtLink
-          :to="localePath('/login')"
-          class="text-sm text-slate-600 hover:text-brand-600 px-2 py-1"
+          v-if="auth.isLoggedIn"
+          :to="localePath('/write')"
+          class="hidden sm:inline-flex items-center gap-1 text-sm bg-accent-500 text-white px-3 py-1.5 rounded-lg hover:bg-accent-600 transition-colors"
         >
-          {{ t('nav.login') }}
+          <PenLine class="w-4 h-4" />
+          {{ t('nav.write') }}
         </NuxtLink>
-        <NuxtLink
-          :to="localePath('/register')"
-          class="hidden sm:inline-flex items-center gap-1 text-sm bg-brand-500 text-white px-3 py-1.5 rounded-lg hover:bg-brand-600 transition-colors"
-        >
-          {{ t('nav.register') }}
-        </NuxtLink>
-      </template>
-
-      <NuxtLink
-        v-if="hydrated && auth.isLoggedIn"
-        :to="localePath('/write')"
-        class="hidden sm:inline-flex items-center gap-1 text-sm bg-accent-500 text-white px-3 py-1.5 rounded-lg hover:bg-accent-600 transition-colors"
-      >
-        <PenLine class="w-4 h-4" />
-        {{ t('nav.write') }}
-      </NuxtLink>
+      </ClientOnly>
     </div>
   </header>
 </template>

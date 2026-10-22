@@ -193,7 +193,7 @@ useHead(() => ({
             <BaseTag v-for="tag in article.tags" :key="tag.id" :name="tag.name" :slug="tag.slug" />
           </div>
 
-          <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug mb-4">
+          <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug mb-4 line-clamp-2">
             {{ article.title }}
           </h1>
 
@@ -211,7 +211,8 @@ useHead(() => ({
               timeAgo(article.publishedAt, locale, now)
             }}</span>
             <span class="text-xs text-slate-400 flex items-center gap-1">
-              <Eye class="w-3.5 h-3.5" /> {{ formatCount(article.viewCount) }}
+              <Eye class="w-3.5 h-3.5" />
+              <ClientOnly>{{ formatCount(article.viewCount) }}</ClientOnly>
             </span>
             <BaseButton
               size="sm"
@@ -267,7 +268,6 @@ useHead(() => ({
       <!-- contentHtml 已由后端 markdown 渲染后经 xss 白名单清洗，见 apps/api/src/articles/markdown.util.ts -->
       <!-- eslint-disable-next-line vue/no-v-html -->
       <div class="prose-content" v-html="assetHtml(article.contentHtml)" />
-
       <div class="flex items-center justify-center gap-3 mt-8 pt-6 border-t border-slate-100">
         <BaseButton :variant="article.likedByMe ? 'primary' : 'secondary'" @click="toggleLike">
           <Heart class="w-4 h-4" :fill="article.likedByMe ? 'currentColor' : 'none'" />

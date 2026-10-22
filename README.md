@@ -97,6 +97,7 @@ pnpm dev
 - [设计规范（品牌/组件）](docs/DESIGN.md)
 - [Nuxt 学习指南（前端）](docs/NUXT_GUIDE.md)
 - [后端学习指南（前端视角）](docs/BACKEND_GUIDE.md)
+- [文章正文 XSS 防线（Markdown 白名单净化）](docs/MARKDOWN_XSS.md)
 - [本地开发启动指南](docs/LOCAL_DEV.md)
 - [开发问题汇总（踩坑记录）](docs/PITFALLS.md)
 - [部署手册](docs/DEPLOY.md)
