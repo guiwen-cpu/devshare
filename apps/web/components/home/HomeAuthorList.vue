@@ -32,7 +32,7 @@ const localePath = useLocalePath()
             <BookOpen class="w-3 h-3" /> {{ row.articleCount }} {{ t('home.posts') }}
           </span>
           <span class="flex items-center gap-1">
-            <Eye class="w-3 h-3" /> {{ formatCount(row.viewCount) }}
+            <Eye class="w-3 h-3" /> <ClientOnly>{{ formatCount(row.viewCount) }}</ClientOnly>
           </span>
         </p>
       </div>

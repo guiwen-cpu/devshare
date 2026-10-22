@@ -17,7 +17,8 @@ async function submit() {
   try {
     await auth.login(form.email, form.password)
     toast.success(t('auth.loginSuccess'))
-    const redirect = typeof route.query.redirect === 'string' ? route.query.redirect : localePath('/')
+    const redirect =
+      typeof route.query.redirect === 'string' ? route.query.redirect : localePath('/')
     await navigateTo(redirect)
   } catch (e) {
     error.value = (e as Error & { code?: string }).message || t('common.error')
@@ -34,7 +35,13 @@ useHead({ title: `${t('auth.loginTitle')} - DevShare` })
     <h1 class="text-xl font-bold text-slate-900 mb-6">{{ t('auth.loginTitle') }}</h1>
     <form class="flex flex-col gap-4" @submit.prevent="submit">
       <BaseInput v-model="form.email" type="email" :label="t('auth.email')" required />
-      <BaseInput v-model="form.password" type="password" :label="t('auth.password')" required />
+      <BaseInput
+        v-model="form.password"
+        type="password"
+        autocomplete="current-password"
+        :label="t('auth.password')"
+        required
+      />
       <p v-if="error" class="text-sm text-red-500">{{ error }}</p>
       <BaseButton type="submit" :loading="submitting" block>
         {{ t('auth.loginBtn') }}

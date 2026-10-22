@@ -77,7 +77,8 @@ const visibleTags = computed(() => props.article.tags.slice(0, 2))
         </NuxtLink>
         <span class="flex items-center gap-2.5 ml-auto shrink-0">
           <span class="flex items-center gap-1" :title="$t('article.views')">
-            <Eye class="w-3.5 h-3.5" /> {{ formatCount(props.article.viewCount) }}
+            <Eye class="w-3.5 h-3.5" />
+            <ClientOnly>{{ formatCount(props.article.viewCount) }}</ClientOnly>
           </span>
           <span class="flex items-center gap-1" :title="$t('article.likes')">
             <Heart class="w-3.5 h-3.5" /> {{ formatCount(props.article.likeCount) }}

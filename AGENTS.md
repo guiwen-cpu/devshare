@@ -29,7 +29,6 @@ DevShare（技享）monorepo：Nuxt 4 前端 + NestJS 后端 + PostgreSQL / Redi
 - 改前端逻辑：至少跑 `pnpm --filter @devshare/web test`；动了类型或公共 API 再跑 `nuxt typecheck`。
 - 改后端：跑 `pnpm --filter @devshare/api test`；动 Prisma schema 要跟迁移。
 - 先跑最贴近改动的窄测试，再逐步扩大。不要顺手修无关的失败，发现后口头说明即可。
-- `docs/DESIGN.md` 的表格当前 `prettier --check` 不通过（HEAD 上也不通过），除非任务就是改它，否则不要重排。
 
 ## 代码约定
 
@@ -37,7 +36,7 @@ DevShare（技享）monorepo：Nuxt 4 前端 + NestJS 后端 + PostgreSQL / Redi
 - 视觉以 `docs/DESIGN.md` 为准：颜色走 `@theme` token（`brand-500`、`accent-500` 等），字体栈和字号沿用该文档，不要引入新的设计体系。
 - 文案改动必须同时更新 `apps/web/i18n/locales/zh.json` 和 `en.json`，两边 key 保持一致。
 - 纯函数放 `apps/web/utils/*.ts`，测试与实现同目录同名（`poster.ts` ↔ `poster.spec.ts`，Vitest）。
-- 格式由 Prettier 决定：无分号、单引号、`printWidth 100`、`trailingComma all`、2 空格、LF、UTF-8。
+- 格式由 Prettier 决定：无分号、单引号、`printWidth 100`、`trailingComma all`、2 空格、UTF-8、`endOfLine: auto`。
 - **海报相关（`ArticlePosterCard` / `utils/poster.ts`）**：海报节点内不能用 Tailwind 颜色类 —— Tailwind v4 调色板是 `oklch()`，html2canvas 解析不了会直接抛错，颜色一律内联 hex；折行在 JS 里算好（html2canvas 不支持 `-webkit-line-clamp`）；预览套了 `transform: scale()`，截图时要在 html2canvas 的 `onclone` 里清掉祖先 transform。
 
 ## 设计新页面 / 新组件
