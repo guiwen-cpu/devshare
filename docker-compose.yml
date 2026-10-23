@@ -140,7 +140,7 @@ services:
       # Nuxt 以生产模式运行
       NODE_ENV: production
       # 监听所有网卡，这样 nginx 容器才能访问到 web 容器
-      HOST: 0.0.0.0
+      # HOST: 0.0.0.0
       # 容器内部端口（对外映射由 nginx 负责）
       PORT: 3000
       # 服务端直连 API：用服务名 api 当域名，走内网不走公网。
@@ -182,8 +182,8 @@ services:
       - ./deploy/errors:/usr/share/nginx/html/errors:ro
       - ./deploy/certs:/etc/nginx/certs:ro
       # 证书相关目录：certbot 申请到的证书放在命名卷里，nginx 读它
-      - certbot-www:/var/www/certbot:ro
-      - certbot-certs:/etc/letsencrypt:ro
+      # - certbot-www:/var/www/certbot:ro
+      # - certbot-certs:/etc/letsencrypt:ro
     depends_on:
       web:
         condition: service_healthy
